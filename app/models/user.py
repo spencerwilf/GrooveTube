@@ -17,8 +17,8 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(100), nullable=False) 
     profile_picture = db.Column(db.String(250))
 
-    videos = db.relationship('Video', back_populates='user')
-    comments = db.relationship('Comment', back_populates='user')
+    videos = db.relationship('Video', back_populates='user', cascade='all,delete')
+    comments = db.relationship('Comment', back_populates='user', cascade='all,delete')
 
     @property
     def password(self):
