@@ -13,6 +13,12 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    first_name = db.Column(db.String(100), nullable=False)
+    last_name = db.Column(db.String(100), nullable=False) 
+    profile_picture = db.Column(db.String(250))
+
+    videos = db.relationship('Video', back_populates='user')
+    comments = db.relationship('Comment', back_populates='user')
 
     @property
     def password(self):
@@ -28,6 +34,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
         }
