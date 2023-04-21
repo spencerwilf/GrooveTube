@@ -5,6 +5,8 @@ from ..forms.comment_form import CommentForm
 
 video_routes = Blueprint('videos', __name__)
 
+##TODO: Create a video, add likes to video
+
 ## Get all videos in the database
 @video_routes.route('')
 def get_videos():
@@ -23,6 +25,10 @@ def get_one_video(video_id):
     Get one videos in the database
     """
     video = Video.query.get(video_id)
+    
+    if not video:
+        return {"message": "video not found"}, 404
+
     return video.to_dict()
 
 
@@ -132,7 +138,8 @@ def add_comment_to_video(video_id):
             video_id = video.id,
             content = form.data['content']
         )
-
+        db.session.add(newComment)
+        db.session.commit()
         return newComment.to_dict()
     return {"message": "bad data"}, 404
 
