@@ -1,5 +1,5 @@
 const LOAD_COMMENTS = 'comments/LOAD_COMMENTS'
-// const LOAD_SINGLE_COMMENT = 'comments/LOAD_SINGLE_COMMENT'
+const LOAD_SINGLE_COMMENT = 'comments/LOAD_SINGLE_COMMENT'
 const CREATE_COMMENT = 'comments/CREATE_COMMENT'
 const DELETE_COMMENT = 'comments/DELETE_COMMENT'
 const UPDATE_COMMENT = 'comments/UPDATE_COMMENT'
@@ -14,12 +14,12 @@ const loadComments = payload => {
 }
 
 
-// const loadSingleComment = payload => {
-//     return {
-//         type: LOAD_SINGLE_COMMENT,
-//         payload
-//     }
-// }
+const loadSingleComment = payload => {
+    return {
+        type: LOAD_SINGLE_COMMENT,
+        payload
+    }
+}
 
 
 const createComment = payload => {
@@ -58,6 +58,16 @@ export const getCommentsThunk = (videoId) => async dispatch => {
     if (res.ok) {
         const data = await res.json()
         dispatch(loadComments(data))
+        return data
+    }
+}
+
+
+export const getSingleCommentThunk = (commentId) => async dispatch => {
+    const res = await fetch(`/api/comments/${commentId}`)
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(loadSingleComment(data))
         return data
     }
 }
@@ -115,11 +125,15 @@ const commentsReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case LOAD_COMMENTS:
-            return {...state, videoComments: {...action.payload}}
+            newState = {...state, videoComments: {}}
+            Object.values(action.payload).forEach(ele => newState.videoComments[ele.id] = ele)
+            return newState
+        case LOAD_SINGLE_COMMENT:
+            return {...state, singleComment: {...action.payload}}
         case CREATE_COMMENT:
             return {...state, videoComments: {...state.videoComments, ...action.payload}}
         case DELETE_COMMENT:
-            newState = {...state}
+            newState = {...state, videoComments: {...state.videoComments}}
             delete newState.videoComments[action.commentId]
             return newState
         case UPDATE_COMMENT:
