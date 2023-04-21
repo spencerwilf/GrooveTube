@@ -5,8 +5,12 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_videos():
     v1 = Video(
-        user_id=1, title='This Is Video 1', description='Nice description',
-        thumbnail='https://static-cse.canva.com/blob/1040254/1600w-wK95f3XNRaM.jpg', category='finance', url='test.net'
+        user_id=1, 
+        title='This Is Video 1', 
+        description='Nice description',
+        thumbnail='https://static-cse.canva.com/blob/1040254/1600w-wK95f3XNRaM.jpg', 
+        category='finance', 
+        url='test.net'
     )
     v2 = Video(
         user_id=2, title='This Is Video 2', description='Very nice',
