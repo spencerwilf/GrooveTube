@@ -1,0 +1,27 @@
+.video-page-comment-section {
+
+}
+
+
+.comment-delete-and-edit {
+    
+}
+
+.individual-comment-container .comment-delete-and-edit {
+    position: absolute;
+    display: none;
+}
+
+
+.individual-comment-container:hover .comment-delete-and-edit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.video-page-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}

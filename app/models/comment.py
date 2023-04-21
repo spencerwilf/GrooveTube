@@ -24,5 +24,6 @@ class Comment(db.Model):
             'user_id': self.user_id,
             'video_id': self.video_id,
             'content': self.content,
+            'user': self.user.to_dict(),
             'created_at': self.created_at
         }

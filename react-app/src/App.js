@@ -5,6 +5,9 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import HomePage from "./components/HomePage";
+import VideoPage from "./components/VideoPage";
+import UserPage from "./components/UserPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +26,15 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/videos/:videoId'>
+          <VideoPage/>
+          </Route>
+          <Route path='/users/:userId'>
+          <UserPage/>
+          </Route>
+          <Route path='/'>
+            <HomePage/>
           </Route>
         </Switch>
       )}

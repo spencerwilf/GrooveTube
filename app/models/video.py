@@ -14,8 +14,8 @@ class Video(db.Model):
     thumbnail = db.Column(db.String(250), nullable=False)
     category = db.Column(db.String(100))
     url = db.Column(db.String(250))
-    likes = db.Column(db.Integer)
-    views = db.Column(db.Integer)
+    likes = db.Column(db.Integer, default=0)
+    views = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     user = db.relationship('User', back_populates='videos')
@@ -32,7 +32,8 @@ class Video(db.Model):
             'url': self.url,
             'likes': self.likes,
             'views': self.views,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'user': self.user.to_dict()
         }
 
     def to_dict_comments(self):

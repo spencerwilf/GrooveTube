@@ -19,6 +19,15 @@ def get_comments():
     return [comment.to_dict() for comment in comments] 
 
 
+## Get a comment
+@comment_routes.route('/<int:comment_id>')
+@login_required
+def get_one_comment(comment_id):
+    """
+    Get a comment
+    """
+    return Comment.query.get(comment_id).to_dict()
+
 
 ## Editing a current user's comment
 @comment_routes.route('/<int:comment_id>', methods=['PUT'])
