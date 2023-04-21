@@ -2,6 +2,8 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Video, Comment, db
 from ..forms.comment_form import CommentForm
+from .aws_helpers import upload_file_to_AWS, get_unique_filename, delete_file_from_AWS
+from ..forms.video_forms import VideoForm
 
 video_routes = Blueprint('videos', __name__)
 
@@ -47,6 +49,43 @@ def get_user_videos():
 
 ## Upload a video (AWS-- DO LATER)
 
+@video_routes.route('', methods=['POST'])
+@login_required
+def upload_video():
+    form = VideoForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        url = form.data['url']
+        thumbnail = form.data['thumbnail']
+
+        url.filename = get_unique_filename(url.filename)
+        url.filename = get_unique_filename(thumbnail.filename)
+
+        vid_upload = upload_file_to_AWS(video)
+        thumb_upload = upload_file_to_AWS(thumbnail)
+
+        if 'url' not in vid_upload:
+            return {"message": "video upload failed"}, 409
+
+        if 'thumbnail' not in thumb_upload:
+            return {"message": "thumbnail upload failed"}, 409
+
+        new_video = Video(
+            title = form.data['title'],
+            user_id = current_user.id
+            url = vid_upload['url'],
+            description = form.data['description'],
+            thumbnail = thumb_upload['thumbnail'],
+            category = form.data['category']
+        )
+
+        db.session.add(new_video)
+        db.session.commit()
+        return new_video.to_dict()
+    return {"message": "invalid data"}, 404
+
+
 
 
 
@@ -65,10 +104,14 @@ def delete_video(video_id):
     if video.user_id != current_user.id:
         return {"message": 'unauthorized'}, 401
 
-    db.session.delete(video)
-    db.session.commit()
+    video_delete = delete_file_from_AWS(video.url)
 
-    return {"message": "video successfully deleted"}
+    if video_delete:
+        db.session.delete(video)
+        db.session.commit()
+        return {"message": "video successfully deleted"}
+    
+    return {"message": "deletion error"} 
 
 
 
