@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8e3082d31f88
+Revision ID: 06a4e33b3e79
 Revises: 
-Create Date: 2023-04-20 18:44:47.021380
+Create Date: 2023-04-20 18:50:36.502796
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '8e3082d31f88'
+revision = '06a4e33b3e79'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -58,11 +58,11 @@ def upgrade():
     sa.ForeignKeyConstraint(['video_id'], ['videos.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-     if environment == "production":
+    if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-     if environment == "production":
+    if environment == "production":
         op.execute(f"ALTER TABLE videos SET SCHEMA {SCHEMA};")
-     if environment == "production":
+    if environment == "production":
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
