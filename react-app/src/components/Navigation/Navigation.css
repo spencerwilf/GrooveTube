@@ -1,7 +1,21 @@
 .profile-dropdown {
-  position: absolute;
+    position: absolute;
+      border: 1px solid #ddd;
+      padding: 10px 10px;
+      transform: translateX(-100px);
+      border-radius: 20px;
+      z-index: 1;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+      line-height: 4vh;
 }
 
 .hidden {
   display: none;
+}
+
+.nav-bar-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
