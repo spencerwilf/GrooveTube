@@ -13,33 +13,25 @@ function Navigation({ isLoaded }){
 	const history = useHistory()
 
 
-	const demoLogin = () => {
-		dispatch(login('demo@aa.io', 'password'));
-	}
 
 	const loginClick = (e) => {
 		e.preventDefault()
 		history.push('/login')
 	}
 
-	const signupClick = (e) => {
-		e.preventDefault()
-		history.push('/signup')
-	}
+
 
 	return (
 		<div className='nav-bar-wrapper'>
 			<div className='logo'>
 				<NavLink exact to="/">Logo Placeholder</NavLink>
 			</div>
-			<div className='search-bar'>
-				<input placeholder='Search' type='text'></input>
-			</div>
 			{!sessionUser && (
 				<div>
-					<div onClick={loginClick}>Login</div>
-					<div onClick={signupClick}>Sign Up</div>
-					<div onClick={demoLogin}>Demo Login</div>
+					<button onClick={loginClick} className='logged-out-sign-in-button'>
+					<i className="fas fa-user-circle" />
+						Sign in
+					</button>
 				</div>
 			)}
 			{sessionUser && (

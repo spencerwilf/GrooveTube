@@ -8,6 +8,7 @@ import './HomePage.css'
 const HomePage = () => {
     const allVideos = useSelector(state => state.videos.allVideos)
     const dispatch = useDispatch()
+    const sessionUser = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(loadAllVideosThunk())
@@ -19,12 +20,22 @@ const HomePage = () => {
 
 
   return (
+    <div className='home-page-wrapper'>
     <div className='all-videos-grid'>
         {Object.values(allVideos).map(video => (
             <Link to={`/videos/${video.id}`} key={video.id}>
                 <VideoCard video={video}/>
             </Link>
         ))}
+    </div>
+            <div className='home-side-bar-socials'>
+            {sessionUser && <p><Link to={`/users/${sessionUser?.id}`}>Your videos</Link></p>}
+            <div>
+            <p>Connect with me!</p>
+            <p><a href='https://github.com/spencerwilf' target='_blank'>Github</a></p>
+            <p><a href='https://www.linkedin.com/in/spencer-wilfahrt-1a4604156/' target='_blank'>LinkedIn</a></p>
+            </div>
+    </div>
     </div>
   )
 }

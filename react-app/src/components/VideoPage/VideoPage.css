@@ -4,19 +4,23 @@
 
 
 .comment-delete-and-edit {
-    
+
 }
 
-.individual-comment-container .comment-delete-and-edit {
+.video-page-wrapper {
+    margin-left: 1rem;
+}
+
+/* .individual-comment-container .comment-delete-and-edit {
     position: absolute;
     display: none;
-}
+} */
 
 
-.individual-comment-container:hover .comment-delete-and-edit {
+/* .individual-comment-container:hover .comment-delete-and-edit {
     display: flex;
     justify-content: flex-end;
-}
+} */
 
 
 .video-page-comments {
@@ -24,4 +28,30 @@
     flex-direction: column;
     gap: 2rem;
     margin-top: 2rem;
+}
+
+
+.individual-comment-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.comment-bottom-section-user-and-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.comment-user-name {
+    font-weight: 700;
+}
+
+
+
+.video-page-comment-user-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }

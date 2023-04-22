@@ -4,3 +4,17 @@ video {
   width: 1024px;
   height: 800px;
 }
+
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -1,4 +1,17 @@
 .all-videos-grid {
     display: flex;
     flex-wrap: wrap;
+    justify-self: center;
+}
+
+.home-page-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.home-side-bar-socials {
+    margin-right: 2rem;
+    margin-left: .5rem;
+    display: flex;
+    flex-direction: column;
 }

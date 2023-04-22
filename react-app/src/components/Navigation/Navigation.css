@@ -11,6 +11,29 @@
       line-height: 4vh;
 }
 
+.logged-out-sign-in-button {
+  background-color: rgba(221, 221, 221, 0);
+  font-family: 'Lato', sans-serif;
+  font-weight: 600px;
+  padding: 10px 10px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #085ED4;
+  border: .5px solid #085ED4;
+  cursor: pointer;
+}
+
+
+.logged-out-sign-in-button:hover {
+  background-color: #DEF0FE;
+}
+
+.logged-out-sign-in-button:active {
+  background-color: #C8D8E4;
+}
+
 .hidden {
   display: none;
 }
@@ -18,4 +41,10 @@
 .nav-bar-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 1rem 1rem;
+  /* position: sticky; */
+  /* top: 0; */
+  /* background-color: white;
+  z-index: 1; */
 }

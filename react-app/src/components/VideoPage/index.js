@@ -32,7 +32,7 @@ const VideoPage = () => {
         return() => {
             dispatch(clearVideosThunk())
         }
-    }, [dispatch, videoId, comment])
+    }, [dispatch, comment, videoId])
 
 
     if (!oneVideo || !videoComments) {
@@ -62,6 +62,7 @@ const VideoPage = () => {
             content: comment
         }
 
+
         setErrors({})
         await dispatch(createCommentThunk(payload, videoId))
         setComment('')
@@ -71,15 +72,14 @@ const VideoPage = () => {
 
 
   return (
-    <div>
+    <div className='video-page-wrapper'>
         <video autoPlay controls>
             <source src={oneVideo?.url}/>
         </video>
         <div className='below-vid-above-comments-section'>
             <h3>{oneVideo.title}</h3>
             <div className='user-pfp-subscribe-container'>
-            <span>{oneVideo.user?.profile_picture} {oneVideo.user?.username}</span>
-            <button>Subscribe</button>
+            <span>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span>
             </div>
             <p>{oneVideo?.description}</p>
         </div>
@@ -102,14 +102,17 @@ const VideoPage = () => {
 
             </div>
             <div className='video-page-comments'>
-            {Object.values(videoComments).reverse().map(comment => (
+            {Object.values(videoComments).map(comment => (
                 <div className='individual-comment-container' key={comment?.id}>
+
+                    <img className='video-page-comment-user-picture' src={comment?.user?.profile_picture} alt=''/>
+                    <div className='comment-bottom-section-user-and-content'>
                     <div className='comment-user-info'>
-                    <img src={comment?.user?.profile_picture} alt=''/>
-                    {comment?.user?.username}
+                    <span className='comment-user-name'>{`${comment?.user?.first_name} ${comment?.user?.last_name}`}</span>
                     </div>
                     <div>
                     {comment.content}
+                    </div>
                     </div>
                     {comment?.user_id == sessionUser?.id && (
                         <div className='comment-delete-and-edit'>
