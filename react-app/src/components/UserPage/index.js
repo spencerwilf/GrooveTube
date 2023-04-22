@@ -5,6 +5,8 @@ import { loadUserVideosThunk } from '../../store/videos'
 import OpenModalButton from '../OpenModalButton'
 import UploadModal from './UploadModal'
 import VideoCard from '../VideoCard'
+import EditVideoModal from './EditVideoModal'
+import DeleteVideoModal from './DeleteVideoModal'
 
 
 const UserPage = () => {
@@ -37,9 +39,19 @@ const UserPage = () => {
             />
             <div>
               {Object.values(userVideos).map(vid => (
+                <>
                 <Link to={`/videos/${vid?.id}`} key={vid?.id}>
                   <VideoCard video={vid}/>
                 </Link>
+                <OpenModalButton
+                modalComponent={<EditVideoModal/>}
+                buttonText='Edit Video'
+                />
+                <OpenModalButton
+                modalComponent={<DeleteVideoModal />}
+                buttonText='Delete Video'
+                  />
+                </>
               ))}
             </div>
             </div>
