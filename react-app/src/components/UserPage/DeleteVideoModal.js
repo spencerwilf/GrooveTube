@@ -14,7 +14,7 @@ const DeleteVideoModal = ({video}) => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        await dispatch(deleteVideoThunk(video))
+        await dispatch(deleteVideoThunk(video.id))
         await closeModal()
     }
 
