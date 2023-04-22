@@ -72,8 +72,17 @@ const VideoPage = () => {
 
   return (
     <div>
-        <h1>{oneVideo.title}</h1>
-        <img src={oneVideo.thumbnail} alt=''/>
+        <video autoPlay controls>
+            <source src={oneVideo?.url}/>
+        </video>
+        <div className='below-vid-above-comments-section'>
+            <h3>{oneVideo.title}</h3>
+            <div className='user-pfp-subscribe-container'>
+            <span>{oneVideo.user?.profile_picture} {oneVideo.user?.username}</span>
+            <button>Subscribe</button>
+            </div>
+            <p>{oneVideo?.description}</p>
+        </div>
         <div>
             <div className='video-page-comment-section-container'>
                 <h3>Comments</h3>

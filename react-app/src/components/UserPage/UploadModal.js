@@ -24,7 +24,8 @@ const UploadModal = () => {
         formData.append('description', description)
         formData.append('thumbnail', thumbnail)
 
-        const res = dispatch(createVideoThunk(formData))
+        dispatch(createVideoThunk(formData))
+        await closeModal()
     }
 
   return (

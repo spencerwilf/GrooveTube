@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { loadUserVideosThunk } from '../../store/videos'
 import OpenModalButton from '../OpenModalButton'
 import UploadModal from './UploadModal'
+import VideoCard from '../VideoCard'
 
 
 const UserPage = () => {
     const sessionUser = useSelector(state => state.session.user)
+    const userVideos = useSelector(state => state.videos.userVideos)
     const {userId} = useParams()
     const dispatch = useDispatch()
 
@@ -18,8 +20,8 @@ const UserPage = () => {
     }, [dispatch, userId])
 
 
-    const uploadClick = () => {
-
+    if (!userVideos) {
+      return <h1>Loading</h1>
     }
 
 
@@ -33,6 +35,13 @@ const UserPage = () => {
             modalComponent={<UploadModal/>}
             buttonText='Upload'
             />
+            <div>
+              {Object.values(userVideos).map(vid => (
+                <Link to={`/videos/${vid?.id}`} key={vid?.id}>
+                  <VideoCard video={vid}/>
+                </Link>
+              ))}
+            </div>
             </div>
         )}
     </div>

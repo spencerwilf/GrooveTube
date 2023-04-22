@@ -93,7 +93,6 @@ export const loadUserVideosThunk = () => async dispatch => {
 
 
 export const createVideoThunk = (video) => async dispatch => {
-    console.log('IN THE THUNK!!!!!',video)
     const res = await fetch(`/api/videos`, {
         method: 'POST',
         body: video
