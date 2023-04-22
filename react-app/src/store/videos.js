@@ -121,7 +121,7 @@ export const updateVideoThunk = (video) => async dispatch => {
 
 
 export const deleteVideoThunk = (videoId) => async dispatch => {
-    const res = await fetch(`/api/${videoId}`, {
+    const res = await fetch(`/api/videos/${videoId}`, {
         method: 'DELETE',
     })
     if (res.ok) {
