@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Video, Comment, db
 from ..forms.comment_form import CommentForm
 from .aws_helpers import upload_file_to_AWS, get_unique_filename, delete_file_from_AWS
-from ..forms.video_forms import VideoForm
+from ..forms.video_form import VideoForm
 
 video_routes = Blueprint('videos', __name__)
 
@@ -16,7 +16,7 @@ def get_videos():
     Get all videos in the database
     """
     videos = Video.query.all()
-    return [video.to_dict() for video in videos] 
+    return [video.to_dict() for video in videos]
 
 
 
@@ -27,7 +27,7 @@ def get_one_video(video_id):
     Get one videos in the database
     """
     video = Video.query.get(video_id)
-    
+
     if not video:
         return {"message": "video not found"}, 404
 
@@ -73,7 +73,7 @@ def upload_video():
 
         new_video = Video(
             title = form.data['title'],
-            user_id = current_user.id
+            user_id = current_user.id,
             url = vid_upload['url'],
             description = form.data['description'],
             thumbnail = thumb_upload['thumbnail'],
@@ -110,8 +110,8 @@ def delete_video(video_id):
         db.session.delete(video)
         db.session.commit()
         return {"message": "video successfully deleted"}
-    
-    return {"message": "deletion error"} 
+
+    return {"message": "deletion error"}
 
 
 
@@ -140,7 +140,7 @@ def edit_video(video_id):
         video.thumbnail = edit['thumbnail']
     if 'category' in edit:
         video.category = edit['category']
-    
+
     db.session.commit()
 
     return video.to_dict()
@@ -157,7 +157,7 @@ def get_video_comments(video_id):
 
     return [comment.to_dict() for comment in comments]
 
-    
+
 
 
 
@@ -185,6 +185,3 @@ def add_comment_to_video(video_id):
         db.session.commit()
         return newComment.to_dict()
     return {"message": "bad data"}, 404
-
-
-    
