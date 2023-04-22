@@ -8,6 +8,10 @@ const DeleteVideoModal = ({video}) => {
     const dispatch = useDispatch()
     
 
+    useEffect(() => {
+        dispatch(loadOneVideoThunk(video.id))
+    }, [dispatch, video.id])
+
     const onSubmit = async (e) => {
         e.preventDefault()
         await dispatch(deleteVideoThunk(video))
