@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Video, Comment, db
 from ..forms.comment_form import CommentForm
 from .aws_helpers import upload_file_to_AWS, get_unique_filename, delete_file_from_AWS
-from ..forms.video_form import VideoForm
+from app.forms import VideoForm
 
 video_routes = Blueprint('videos', __name__)
 
@@ -52,38 +52,43 @@ def get_user_videos():
 @video_routes.route('', methods=['POST'])
 @login_required
 def upload_video():
-    form = VideoForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
-        url = form.data['url']
-        thumbnail = form.data['thumbnail']
+    vid = request.files['video']
+    thumbnail = request.files['thumbnail']
 
-        url.filename = get_unique_filename(url.filename)
-        url.filename = get_unique_filename(thumbnail.filename)
+    vid.filename = get_unique_filename(vid.filename)
+    thumbnail.filename = get_unique_filename(thumbnail.filename)
+    # form = VideoForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    upload_vid = upload_file_to_AWS(vid)
+    upload_thumbnail = upload_file_to_AWS(thumbnail)
 
-        vid_upload = upload_file_to_AWS(video)
-        thumb_upload = upload_file_to_AWS(thumbnail)
+    print('ghuihiuhu',upload_vid)
+    print('jkhiuhuih',upload_thumbnail)
 
-        if 'url' not in vid_upload:
-            return {"message": "video upload failed"}, 409
+    print('!!!!!!', request)
 
-        if 'thumbnail' not in thumb_upload:
-            return {"message": "thumbnail upload failed"}, 409
+    # if 'url' not in upload_video or 'url' not in upload_thumbnail:
+    #     return {"error": "failed to upload"}
 
-        new_video = Video(
-            title = form.data['title'],
-            user_id = current_user.id,
-            url = vid_upload['url'],
-            description = form.data['description'],
-            thumbnail = thumb_upload['thumbnail'],
-            category = form.data['category']
-        )
 
-        db.session.add(new_video)
-        db.session.commit()
-        return new_video.to_dict()
-    return {"message": "invalid data"}, 404
+    url = upload_vid['url']
+    thumb_url = upload_thumbnail['url']
+
+    data = request.form
+
+    new_video = Video(
+        url = url,
+        thumbnail = thumb_url,
+        user_id = current_user.id,
+        title = data['title'],
+        description = data['description'],
+        category = data['category']
+    )
+
+    db.session.add(new_video)
+    db.session.commit()
+    return {'message': 'success'}
 
 
 
