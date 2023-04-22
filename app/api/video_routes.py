@@ -109,12 +109,12 @@ def delete_video(video_id):
     if video.user_id != current_user.id:
         return {"message": 'unauthorized'}, 401
 
-    video_delete = delete_file_from_AWS(video.url)
+    # video_delete = delete_file_from_AWS(video.url)
 
-    if video_delete:
-        db.session.delete(video)
-        db.session.commit()
-        return {"message": "video successfully deleted"}
+    # if video_delete:
+    db.session.delete(video)
+    db.session.commit()
+    return {"message": "video successfully deleted"}
 
     return {"message": "deletion error"}
 

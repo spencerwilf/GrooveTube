@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { loadUserVideosThunk } from '../../store/videos'
@@ -14,12 +14,13 @@ const UserPage = () => {
     const userVideos = useSelector(state => state.videos.userVideos)
     const {userId} = useParams()
     const dispatch = useDispatch()
+    const [videos, setVideos] = useState([])
 
 
 
     useEffect(() => {
         dispatch(loadUserVideosThunk(userId))
-    }, [dispatch, userId])
+    }, [dispatch, userId, videos])
 
 
     if (!userVideos) {
@@ -34,7 +35,7 @@ const UserPage = () => {
             <h3>Upload a video!</h3>
             <h5>Start sharing your story and connecting with viewers. Videos you upload will show up here.</h5>
             <OpenModalButton
-            modalComponent={<UploadModal/>}
+            modalComponent={<UploadModal videos={videos}/>}
             buttonText='Upload'
             />
             <div>
