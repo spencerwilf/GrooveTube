@@ -53,24 +53,24 @@ def get_user_videos():
 @login_required
 def upload_video():
 
+    if 'video' not in request.files:
+        return {'error': 'video file required'}
+
+
+    if 'thumbnail' not in request.files:
+        return {'error': 'thumbnail image required'}
+
     vid = request.files['video']
     thumbnail = request.files['thumbnail']
 
     vid.filename = get_unique_filename(vid.filename)
     thumbnail.filename = get_unique_filename(thumbnail.filename)
-    # form = VideoForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
+
     upload_vid = upload_file_to_AWS(vid)
     upload_thumbnail = upload_file_to_AWS(thumbnail)
 
-    print('ghuihiuhu',upload_vid)
-    print('jkhiuhuih',upload_thumbnail)
-
-    print('!!!!!!', request)
-
-    # if 'url' not in upload_video or 'url' not in upload_thumbnail:
-    #     return {"error": "failed to upload"}
-
+    if 'url' not in upload_vid or 'url' not in upload_thumbnail:
+        return {"error": "failed to upload"}
 
     url = upload_vid['url']
     thumb_url = upload_thumbnail['url']
