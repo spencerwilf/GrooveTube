@@ -44,11 +44,11 @@ const UserPage = () => {
                   <VideoCard video={vid}/>
                 </Link>
                 <OpenModalButton
-                modalComponent={<EditVideoModal/>}
+                modalComponent={<EditVideoModal video={vid}/>}
                 buttonText='Edit Video'
                 />
                 <OpenModalButton
-                modalComponent={<DeleteVideoModal />}
+                modalComponent={<DeleteVideoModal video={vid} />}
                 buttonText='Delete Video'
                   />
                 </>
