@@ -25,12 +25,12 @@ const UserPage = () => {
 
   return (
     <div className='main-user-page-container'>
-        {sessionUser.id == userId && (
+        {sessionUser?.id == userId && (
             <div>
             <h3>Upload a video!</h3>
             <h5>Start sharing your story and connecting with viewers. Videos you upload will show up here.</h5>
             <OpenModalButton
-            modalComponent={<UploadModal/>}
+            modalComponent={<UploadModal sessionUser={sessionUser}/>}
             buttonText='Upload'
             />
             </div>

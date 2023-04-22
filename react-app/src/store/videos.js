@@ -95,8 +95,7 @@ export const loadUserVideosThunk = () => async dispatch => {
 export const createVideoThunk = (video) => async dispatch => {
     const res = await fetch(`/api/videos`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(video)
+        body: video
     })
     if (res.ok) {
         const video = await res.json()

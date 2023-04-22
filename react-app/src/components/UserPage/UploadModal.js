@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useModal } from '../../context/Modal'
 import { useDispatch } from 'react-redux'
+import { createVideoThunk } from '../../store/videos'
 
-const UploadModal = () => {
+const UploadModal = ({sessionUser}) => {
 
     const dispatch = useDispatch()
     const {closeModal} = useModal()
@@ -16,23 +17,40 @@ const UploadModal = () => {
         e.preventDefault()
 
         const formData = new FormData()
-        formData.append('video', video)
+        formData.append('url', video)
         formData.append('title', title)
+        formData.append('user_id', sessionUser?.id)
         formData.append('description', description)
         formData.append('thumbnail', thumbnail)
+
+        dispatch(createVideoThunk(formData))
     }
 
   return (
     <div>
           <form
               encType='multipart/form-data'
+              onSubmit={submitVideo}
           >
-
             <input
+            placeholder='Title'
+            />
+            <input
+            placeholder='Description'
+            />
+            <input
+            placeholder='video'
             type='file'
-            onChange={(e) => setVideo(e.target.files[0])}
+            onChange={(e) => setThumbnail(e.target.files[0])}
+            accept='image/*'
+            />
+            <input
+            placeholder='thumbnail'
+            type='file'
+            onChange={(e) => setVideo(e.target.files[1])}
             accept='video/*'
             />
+            <button type='submit'>Submit</button>
             
           </form>
     </div>

@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Video, Comment, db
 from ..forms.comment_form import CommentForm
 from .aws_helpers import upload_file_to_AWS, get_unique_filename, delete_file_from_AWS
-from ..forms.video_forms import VideoForm
+from ..forms.video_form import VideoForm
 
 video_routes = Blueprint('videos', __name__)
 
@@ -62,7 +62,7 @@ def upload_video():
         url.filename = get_unique_filename(url.filename)
         url.filename = get_unique_filename(thumbnail.filename)
 
-        vid_upload = upload_file_to_AWS(video)
+        vid_upload = upload_file_to_AWS(url)
         thumb_upload = upload_file_to_AWS(thumbnail)
 
         if 'url' not in vid_upload:
@@ -73,10 +73,10 @@ def upload_video():
 
         new_video = Video(
             title = form.data['title'],
-            user_id = current_user.id
+            user_id = current_user.id,
             url = vid_upload['url'],
             description = form.data['description'],
-            thumbnail = thumb_upload['thumbnail'],
+            thumbnail = form.data['thumbnail'],
             category = form.data['category']
         )
 

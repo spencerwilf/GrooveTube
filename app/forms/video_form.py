@@ -6,7 +6,7 @@ from ..api.aws_helpers import ALLOWED_EXTENSIONS
 
 class VideoForm(FlaskForm):
     title = StringField('Title')
-    url = FileField('Image File', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    url = FileField('url', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     description = StringField('Description')
-    thumbnail = StringField('Thumbnail')
+    thumbnail = FileField('thumbnail', validators=[FileRequired(), FileAllowed(['png', 'jpeg', 'jpg'])])
     category = StringField('Category')
