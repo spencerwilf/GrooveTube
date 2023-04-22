@@ -22,13 +22,16 @@ const VideoPage = () => {
 
 
     useEffect(() => {
-        
+
     }, [errors])
 
 
     useEffect(() => {
         dispatch(loadOneVideoThunk(videoId))
         dispatch(getCommentsThunk(videoId))
+        return() => {
+            dispatch(clearVideosThunk())
+        }
     }, [dispatch, videoId, comment])
 
 
@@ -53,7 +56,7 @@ const VideoPage = () => {
             return alert('Please fix errors before submitting')
         }
 
-        
+
 
         const payload = {
             content: comment
@@ -81,13 +84,13 @@ const VideoPage = () => {
                               value={comment}
                               onChange={(e) => setComment(e.target.value)}
                           />
-                          <button 
+                          <button
                           type='submit'
                           disabled={comment.length <= 0 ? true : false}
                           >Add comment</button>
                       </form>
                 ) : <h3>Sign in to Leave a comment!</h3>}
-               
+
             </div>
             <div className='video-page-comments'>
             {Object.values(videoComments).reverse().map(comment => (
@@ -102,16 +105,16 @@ const VideoPage = () => {
                     {comment?.user_id == sessionUser?.id && (
                         <div className='comment-delete-and-edit'>
                         <OpenModalButton
-                            modalComponent={<EditCommentModal 
-                                comment={comment} 
-                                videoId={videoId} 
+                            modalComponent={<EditCommentModal
+                                comment={comment}
+                                videoId={videoId}
                             />}
                             buttonText='Edit Comment'
                         />
                         <OpenModalButton
-                            modalComponent={<DeleteCommentModal 
-                                comment={comment} 
-                                videoId={videoId} 
+                            modalComponent={<DeleteCommentModal
+                                comment={comment}
+                                videoId={videoId}
                             />}
                             buttonText='Delete Comment'
                         />
