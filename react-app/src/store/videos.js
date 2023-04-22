@@ -107,7 +107,7 @@ export const createVideoThunk = (video) => async dispatch => {
 
 
 export const updateVideoThunk = (video) => async dispatch => {
-    const res = await fetch(`/api/videos`, {
+    const res = await fetch(`/api/videos/${video.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(video)
@@ -148,16 +148,20 @@ const videoReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case LOAD_ALL_VIDEOS:
-            return {...state, allVideos: {...action.payload}}
+            newState = {...state, allVideos: {}}
+            Object.values(action.payload).forEach(ele => newState.allVideos[ele.id] = ele)
+            return newState
         case LOAD_ONE_VIDEO:
             return {...state, oneVideo: {...action.payload}}
         case LOAD_USER_VIDEOS:
-            return {...state, userVideos: {...action.payload}}
+            newState = {...state, userVideos: {}}
+            Object.values(action.payload).forEach(ele => newState.userVideos[ele.id] = ele)
+            return newState
         case CREATE_VIDEO:
-            return { ...state, allVideos: { ...state.allVideos, ...action.video }, userVideos: { ...state.userVideos, ...action.video }}
+            return { ...state, allVideos: { ...state.allVideos, ...action.payload }, userVideos: { ...state.userVideos, ...action.payload }}
         case UPDATE_VIDEO:
             newState = {...state, userVideos: {...state.userVideos}}
-            newState.userVideos[action.video.id] = action.video
+            newState.userVideos[action.payload.id] = action.payload
             return newState
         case DELETE_VIDEO:
             newState = {...state, allVideos: {...state.allVideos}, userVideos: {...state.userVideos}}
