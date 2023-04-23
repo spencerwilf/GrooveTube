@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Video, Comment, db
 from ..forms.comment_form import CommentForm
-from .aws_helpers import upload_file_to_AWS, get_unique_filename, delete_file_from_AWS
+from .aws_helpers import upload_vid_to_AWS, upload_thumb_to_AWS, get_unique_filename, delete_file_from_AWS
 from app.forms import VideoForm
 
 video_routes = Blueprint('videos', __name__)
@@ -66,8 +66,8 @@ def upload_video():
     vid.filename = get_unique_filename(vid.filename)
     thumbnail.filename = get_unique_filename(thumbnail.filename)
 
-    upload_vid = upload_file_to_AWS(vid)
-    upload_thumbnail = upload_file_to_AWS(thumbnail)
+    upload_vid = upload_vid_to_AWS(vid)
+    upload_thumbnail = upload_thumb_to_AWS(thumbnail)
 
     if 'url' not in upload_vid or 'url' not in upload_thumbnail:
         return {"error": "failed to upload"}

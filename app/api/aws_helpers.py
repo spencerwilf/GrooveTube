@@ -20,7 +20,7 @@ def get_unique_filename(filename):
 
 
 
-def upload_file_to_AWS(file, acl="public-read"):
+def upload_vid_to_AWS(file, acl="public-read"):
     try:
         s3.upload_fileobj(
             file,
@@ -36,6 +36,26 @@ def upload_file_to_AWS(file, acl="public-read"):
         return {"errors": str(e)}
 
     return {"url": f"{S3_LOCATION}{file.filename}"}
+
+
+
+def upload_thumb_to_AWS(file, acl="public-read"):
+    try:
+        s3.upload_fileobj(
+            file,
+            BUCKET_NAME,
+            file.filename,
+            ExtraArgs={
+                "ACL": acl,
+                "ContentType": file.content_type
+            }
+        )
+    except Exception as e:
+        # in case the our s3 upload fails
+        return {"errors": str(e)}
+
+    return {"url": f"{S3_LOCATION}{file.filename}"}
+
 
 
 def delete_file_from_AWS(file, acl="public-read"):
