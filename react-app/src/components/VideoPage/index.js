@@ -10,6 +10,7 @@ import EditCommentModal from './EditCommentModal'
 import DeleteCommentModal from './DeleteCommentModal'
 import { clearCommentsThunk } from '../../store/comments'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import ReactPlayer from 'react-player'
 import './VideoPage.css'
 
 const VideoPage = () => {
@@ -87,9 +88,7 @@ const VideoPage = () => {
   return (
     <div className='video-page-wrapper'>
         <div className='video-page-main-section-left'>
-        <video  width= '850px' height= '490px' autoPlay controls>
-            <source src={oneVideo.url}/>
-        </video>
+        <ReactPlayer  width= '850px' height= '490px' playing={true} controls url={oneVideo.url}/>
         <div className='below-vid-above-comments-section'>
             <div>
             <h3>{oneVideo.title}</h3>
