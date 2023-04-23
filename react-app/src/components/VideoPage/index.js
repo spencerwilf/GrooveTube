@@ -8,6 +8,7 @@ import { createCommentThunk } from '../../store/comments'
 import OpenModalButton from '../OpenModalButton'
 import EditCommentModal from './EditCommentModal'
 import DeleteCommentModal from './DeleteCommentModal'
+import { clearCommentsThunk } from '../../store/comments'
 import './VideoPage.css'
 
 const VideoPage = () => {
@@ -31,8 +32,9 @@ const VideoPage = () => {
         dispatch(getCommentsThunk(videoId))
         return() => {
             dispatch(clearVideosThunk())
+            // dispatch(clearCommentsThunk())
         }
-    }, [dispatch, comment, videoId])
+    }, [dispatch, hasSubmitted, videoId])
 
 
     if (!oneVideo || !videoComments) {
@@ -66,6 +68,7 @@ const VideoPage = () => {
         setErrors({})
         await dispatch(createCommentThunk(payload, videoId))
         setComment('')
+        setHasSubmitted(true)
     }
 
 

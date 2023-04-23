@@ -7,6 +7,7 @@ import UploadModal from './UploadModal'
 import VideoCard from '../VideoCard'
 import EditVideoModal from './EditVideoModal'
 import DeleteVideoModal from './DeleteVideoModal'
+import './UserPage.css'
 
 
 const UserPage = () => {

@@ -32,7 +32,7 @@ const createComment = payload => {
 
 const deleteComment = commentId => {
     return {
-        type: DELETE_COMMENT, 
+        type: DELETE_COMMENT,
         commentId
     }
 }
@@ -133,13 +133,17 @@ const commentsReducer = (state = initialState, action) => {
         case CREATE_COMMENT:
             return {...state, videoComments: {...state.videoComments, ...action.payload}}
         case DELETE_COMMENT:
-            newState = {...state, videoComments: {...state.videoComments}}
+            newState = {...state, videoComments: {...state.videoComments}, singleComment: {...state.singleComment}}
             delete newState.videoComments[action.commentId]
+            delete newState.singleComment[action.commentId]
             return newState
         case UPDATE_COMMENT:
-            newState = {...state, videoComments: {...state.videoComments}}
+            newState = {...state, videoComments: {...state.videoComments}, singleComment: {...state.singleComment}}
             newState.videoComments[action.payload.id] = action.payload
+            newState.singleComment[action.payload.id] = action.payload
             return newState
+        case CLEAR_COMMENTS:
+            return {...state, videoComments: {}, singleComment: {}}
         default:
             return state
     }

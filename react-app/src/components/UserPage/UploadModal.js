@@ -29,36 +29,44 @@ const UploadModal = () => {
     }
 
   return (
-    <div>
+    <div className='upload-video-wrapper'>
           <form
               encType='multipart/form-data'
               onSubmit={submitVideo}
+              className='upload-video-form'
           >
 
+          <input
+            type='text'
+            placeholder='Video Title'
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            />
+
+          <input
+            type='text'
+            placeholder='Video Description (optional)'
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            />
+
+          <input
+            type='text'
+            placeholder='Video Category (optional)'
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            />
+          <label>Video File</label>
             <input
             type='file'
             onChange={(e) => setVideo(e.target.files[0])}
             accept='video/*'
             />
+            <label>Thumbnail File</label>
             <input
             type='file'
             onChange={(e) => setThumbnail(e.target.files[0])}
             accept='image/*'
-            />
-            <input
-            type='text'
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-            type='text'
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            />
-            <input
-            type='text'
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
             />
           <button type='submit'>Submit</button>
           </form>
