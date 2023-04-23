@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useModal } from '../../context/Modal'
 import { useDispatch } from 'react-redux'
 import { createVideoThunk } from '../../store/videos'
@@ -13,12 +13,22 @@ const UploadModal = () => {
     const [description, setDescription] = useState('')
     const [thumbnail, setThumbnail] = useState(null)
     const [errors, setErrors] = useState({})
+    const [mediaLoading, setMediaLoading] = useState(false)
+    const [hasSubmitted, setHasSubmitted] = useState(false)
 
 
-
+  useEffect(() => {
+    let errors = {}
+    if (!video) errors.video = 'Video upload is required.'
+    if (!thumbnail) errors.thumbnail = 'Thumbnail upload is required.'
+    if (!title) errors.title = 'Video title is required.'
+    setErrors(errors)
+  }, [video, title, thumbnail])
 
     const submitVideo = async (e) => {
         e.preventDefault()
+        setHasSubmitted(true)
+        if (Object.values(errors).length) return alert('Please fix errors before submitting.')
 
         const formData = new FormData()
         formData.append('video', video)
@@ -27,12 +37,17 @@ const UploadModal = () => {
         formData.append('description', description)
         formData.append('thumbnail', thumbnail)
 
+        setMediaLoading(true)
+
         dispatch(createVideoThunk(formData))
+        setHasSubmitted(false)
+        setMediaLoading(false)
         await closeModal()
     }
 
   return (
     <div className='upload-video-wrapper'>
+      {/* {mediaLoading && <h1>Video Uploading...</h1>} */}
           <form
               encType='multipart/form-data'
               onSubmit={submitVideo}
@@ -45,7 +60,7 @@ const UploadModal = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             />
-
+          {hasSubmitted && errors.title && <p>{errors.title}</p>}
           <input
             type='text'
             placeholder='Video Description (optional)'
@@ -59,18 +74,21 @@ const UploadModal = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             />
+
           <label>Video File</label>
             <input
             type='file'
             onChange={(e) => setVideo(e.target.files[0])}
             accept='video/*'
             />
+            {hasSubmitted && errors.video && <p>{errors.video}</p>}
             <label>Thumbnail File</label>
             <input
             type='file'
             onChange={(e) => setThumbnail(e.target.files[0])}
             accept='image/*'
             />
+            {hasSubmitted && errors.thumbnail && <p>{errors.thumbnail}</p>}
           <button type='submit'>Submit</button>
           </form>
     </div>

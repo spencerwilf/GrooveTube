@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import './VideoPage.css'
 
 const VideoPage = () => {
+    const allVideos = useSelector(state => state.videos)
     const oneVideo = useSelector(state => state.videos.oneVideo)
     const videoComments = useSelector(state => state.comments.videoComments)
     const sessionUser = useSelector(state => state.session.user)
@@ -21,6 +22,7 @@ const VideoPage = () => {
     const [comment, setComment] = useState('')
     const [submittedComment, setSubmittedComment] = useState(false)
     const [errors, setErrors] = useState({})
+    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
@@ -28,9 +30,10 @@ const VideoPage = () => {
     }, [errors])
 
 
+
     useEffect(() => {
-        dispatch(loadOneVideoThunk(videoId))
-        dispatch(getCommentsThunk(videoId))
+         dispatch(loadOneVideoThunk(videoId))
+         dispatch(getCommentsThunk(videoId))
         return() => {
             dispatch(clearVideosThunk())
             // dispatch(clearCommentsThunk())
@@ -84,7 +87,7 @@ const VideoPage = () => {
   return (
     <div className='video-page-wrapper'>
         <div className='video-page-main-section-left'>
-        <video autoPlay controls>
+        <video  width= '850px' height= '490px' autoPlay controls>
             <source src={oneVideo.url}/>
         </video>
         <div className='below-vid-above-comments-section'>
