@@ -5,6 +5,9 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { login } from '../../store/session';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import OpenModalButton from '../OpenModalButton';
+import UploadModal from '../UserPage/UploadModal';
+
 
 
 function Navigation({ isLoaded }){
@@ -12,7 +15,14 @@ function Navigation({ isLoaded }){
 	const dispatch = useDispatch()
 	const history = useHistory()
 
-
+	const modalClick = (e) => {
+		// e.preventDefault()
+		history.push(`/users/${sessionUser.id}`)
+    const modalButton = document.getElementById('modal-open-user-button');
+    if (modalButton) {
+      modalButton.click();
+    }
+	}
 
 	const loginClick = (e) => {
 		e.preventDefault()
@@ -35,10 +45,12 @@ function Navigation({ isLoaded }){
 				</div>
 			)}
 			{sessionUser && (
-				<div>
-					<div className='search-container'>
+				<div className='signed-in-nav-profile-and-create'>
 
-					</div>
+						<button onClick={modalClick} id='create-video-nav-button' className='create-video-nav-button'>
+						<i class="fa-solid fa-video"></i>
+						CREATE
+						</button>
 					<ProfileButton user={sessionUser} />
 				</div>
 			)}

@@ -12,6 +12,9 @@ const UploadModal = () => {
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('')
     const [thumbnail, setThumbnail] = useState(null)
+    const [errors, setErrors] = useState({})
+
+
 
 
     const submitVideo = async (e) => {

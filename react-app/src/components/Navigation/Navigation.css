@@ -57,3 +57,27 @@
   /* background-color: white;
   z-index: 1; */
 }
+
+
+.create-video-nav-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: 1px solid #E5E5E5;
+  font-family: 'Lato', sans-serif;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+.create-video-nav-button:hover {
+  background-color: #E5E5E5;
+}
+
+
+.signed-in-nav-profile-and-create {
+  display: flex;
+  gap: 20px;
+}

@@ -19,7 +19,7 @@ const VideoPage = () => {
     const dispatch = useDispatch()
     const {videoId} = useParams()
     const [comment, setComment] = useState('')
-    const [hasSubmitted, setHasSubmitted] = useState(false)
+    const [submittedComment, setSubmittedComment] = useState(false)
     const [errors, setErrors] = useState({})
 
 
@@ -35,7 +35,7 @@ const VideoPage = () => {
             dispatch(clearVideosThunk())
             // dispatch(clearCommentsThunk())
         }
-    }, [dispatch, comment, videoId])
+    }, [dispatch, submittedComment, videoId])
 
 
     if (!oneVideo || !videoComments) {
@@ -69,7 +69,7 @@ const VideoPage = () => {
         setErrors({})
         await dispatch(createCommentThunk(payload, videoId))
         setComment('')
-        setHasSubmitted(true)
+        setSubmittedComment(!submittedComment)
     }
 
     let sortedComments;

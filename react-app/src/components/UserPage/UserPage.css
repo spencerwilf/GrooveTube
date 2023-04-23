@@ -13,3 +13,48 @@
   justify-content: center;
   padding: 10rem 10rem;
 }
+
+
+.user-page-account-info {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  border-bottom: 1px solid #E5E5E5;
+  padding-bottom: 20px;
+}
+
+
+.user-page-profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.lower-user-page-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+
+.upload-video-clipart {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}
+
+
+.user-page-username-and-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* .main-user-page-container {
+  display: flex;
+  flex-direction: column;
+} */
