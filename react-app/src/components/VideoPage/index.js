@@ -34,7 +34,7 @@ const VideoPage = () => {
             dispatch(clearVideosThunk())
             // dispatch(clearCommentsThunk())
         }
-    }, [dispatch, hasSubmitted, videoId])
+    }, [dispatch, comment, videoId])
 
 
     if (!oneVideo || !videoComments) {

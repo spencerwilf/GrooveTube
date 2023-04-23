@@ -13,7 +13,7 @@ const EditCommentModal = ({comment, videoId}) => {
 
  useEffect(()  => {
     dispatch(getSingleCommentThunk(comment.id))
- }, [dispatch, videoId, comment])
+ }, [dispatch, videoId, comment.id])
 
 
 const updateComment = async (e) => {
