@@ -29,7 +29,7 @@ const HomePage = () => {
         ))}
     </div>
             <div className='home-side-bar-socials'>
-            {sessionUser && <p><Link to={`/users/${sessionUser?.id}`}>Your videos</Link></p>}
+            {sessionUser && <p className='user-videos-link'><Link to={`/users/${sessionUser?.id}`}>Your videos</Link></p>}
             <div>
             <p>Connect with me!</p>
             <p><a href='https://github.com/spencerwilf' target='_blank'>Github</a></p>

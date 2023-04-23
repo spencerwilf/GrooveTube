@@ -14,4 +14,12 @@
     margin-left: .5rem;
     display: flex;
     flex-direction: column;
+    position: relative;
+    width: 20%;
+}
+
+.user-videos-link {
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 1rem 0
 }

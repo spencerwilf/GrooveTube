@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { loadOneVideoThunk } from '../../store/videos'
 import { getCommentsThunk } from '../../store/comments'
 import { useDispatch, useSelector } from 'react-redux'
@@ -72,35 +72,52 @@ const VideoPage = () => {
     }
 
 
+    console.log(oneVideo)
 
 
   return (
     <div className='video-page-wrapper'>
+        <div className='video-page-main-section-left'>
         <video autoPlay controls>
-            <source src={oneVideo?.url}/>
+            <source src={oneVideo.url}/>
         </video>
         <div className='below-vid-above-comments-section'>
+            <div>
             <h3>{oneVideo.title}</h3>
             <div className='user-pfp-subscribe-container'>
-            <span>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span>
+            <span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span>
             </div>
+            </div>
+            <div className='video-description-container'>
             <p>{oneVideo?.description}</p>
+            </div>
         </div>
         <div>
             <div className='video-page-comment-section-container'>
-                <h3>Comments</h3>
+            <span className='comments-number-header'>{videoComments && Object.values(videoComments)?.length}{videoComments && Object.values(videoComments)?.length === 1 ? <p>Comment</p> : <p>Comments</p>}</span>
                   {sessionUser ? (
-                      <form onSubmit={leaveComment}>
+                    <div className='comment-form-container'>
+                        <div className='leave-comment-pfp-and-input'>
+                        <img className='video-page-comment-user-picture' src={sessionUser?.profile_picture}/>
+                      <form className='comment-form' onSubmit={leaveComment}>
                           <input
                               placeholder='Leave a comment'
                               value={comment}
+                              className='comment-input'
                               onChange={(e) => setComment(e.target.value)}
                           />
-                          <button
-                          type='submit'
-                          disabled={comment.length <= 0 ? true : false}
-                          >Add comment</button>
                       </form>
+                      </div>
+                      <div className='leave-comment-button-container'>
+                      <button
+                          onClick={leaveComment}
+                          className='comment-submit-button'
+                          hidden={!sessionUser ? true : false}
+                          disabled={comment.length <= 0 ? true : false}
+                          >Add comment
+                        </button>
+                        </div>
+                      </div>
                 ) : <h3>Sign in to Leave a comment!</h3>}
 
             </div>
@@ -138,6 +155,10 @@ const VideoPage = () => {
                 </div>
             ))}
         </div>
+          </div>
+          </div>
+          <div className='video-section-scroller-right'>
+
           </div>
     </div>
   )
