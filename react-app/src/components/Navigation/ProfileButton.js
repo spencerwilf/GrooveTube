@@ -48,14 +48,14 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+
+        <img id="user-nav-pfp" onClick={openMenu} className="video-page-comment-user-picture" src={user?.profile_picture} alt=''/>
+
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>{user.username}</div>
-            <div>{user.email}</div>
+            <div>{`${user.first_name} ${user.last_name}`}</div>
+            <div>@{user.username}</div>
             <div>
               <button onClick={handleProfileClick}>My Account</button>
             </div>

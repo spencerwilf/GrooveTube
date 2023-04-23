@@ -1,14 +1,18 @@
 .profile-dropdown {
     position: absolute;
-      border: 1px solid #ddd;
-      padding: 10px 10px;
-      transform: translateX(-100px);
-      border-radius: 20px;
-      z-index: 1;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
-      line-height: 4vh;
+    border: 1px solid #ddd;
+    padding: 10px 10px;
+    transform: translateX(-180px);
+    border-radius: 20px;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    line-height: 4vh;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .logged-out-sign-in-button {
@@ -28,6 +32,11 @@
 
 .logged-out-sign-in-button:hover {
   background-color: #DEF0FE;
+}
+
+
+#user-nav-pfp {
+  cursor: pointer;
 }
 
 .logged-out-sign-in-button:active {
