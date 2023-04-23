@@ -11,16 +11,22 @@
     padding-bottom: 10rem;
 }
 
-/* .individual-comment-container .comment-delete-and-edit {
-    position: absolute;
+.individual-comment-container .comment-delete-and-edit {
     display: none;
-} */
+}
 
 
-/* .individual-comment-container:hover .comment-delete-and-edit {
+
+.individual-comment-container:hover .comment-delete-and-edit {
     display: flex;
-    justify-content: flex-end;
-} */
+}
+
+
+
+.comment-user-info-wrapper {
+    display: flex;
+    gap: 20px;
+}
 
 
 .comments-number-header {
@@ -47,6 +53,7 @@
 .individual-comment-container {
     display: flex;
     gap: 1rem;
+    justify-content: space-between;
 }
 
 .comment-bottom-section-user-and-content {

@@ -9,6 +9,7 @@ import OpenModalButton from '../OpenModalButton'
 import EditCommentModal from './EditCommentModal'
 import DeleteCommentModal from './DeleteCommentModal'
 import { clearCommentsThunk } from '../../store/comments'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import './VideoPage.css'
 
 const VideoPage = () => {
@@ -71,8 +72,13 @@ const VideoPage = () => {
         setHasSubmitted(true)
     }
 
-
-    console.log(oneVideo)
+    let sortedComments;
+    if (videoComments) {
+        sortedComments = Object.values(videoComments).sort((a, b) => {
+            return b.id - a.id
+        })
+        console.log(sortedComments)
+    }
 
 
   return (
@@ -85,7 +91,7 @@ const VideoPage = () => {
             <div>
             <h3>{oneVideo.title}</h3>
             <div className='user-pfp-subscribe-container'>
-            <span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span>
+            <Link to={`/users/${oneVideo?.user?.id}`}><span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span></Link>
             </div>
             </div>
             <div className='video-description-container'>
@@ -112,7 +118,7 @@ const VideoPage = () => {
                       <button
                           onClick={leaveComment}
                           className='comment-submit-button'
-                          hidden={!sessionUser ? true : false}
+                          hidden={!sessionUser || !comment?.length ? true : false}
                           disabled={comment.length <= 0 ? true : false}
                           >Add comment
                         </button>
@@ -124,7 +130,7 @@ const VideoPage = () => {
             <div className='video-page-comments'>
             {Object.values(videoComments).map(comment => (
                 <div className='individual-comment-container' key={comment?.id}>
-
+                    <div className='comment-user-info-wrapper'>
                     <img className='video-page-comment-user-picture' src={comment?.user?.profile_picture} alt=''/>
                     <div className='comment-bottom-section-user-and-content'>
                     <div className='comment-user-info'>
@@ -132,6 +138,7 @@ const VideoPage = () => {
                     </div>
                     <div>
                     {comment.content}
+                    </div>
                     </div>
                     </div>
                     {comment?.user_id == sessionUser?.id && (
