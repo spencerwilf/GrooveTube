@@ -59,12 +59,13 @@ const UploadModal = () => {
   return (
     <div className='upload-video-wrapper'>
       {mediaLoading && <h1>Video Uploading...</h1>}
+      <h2>Upload a video</h2>
           <form
               encType='multipart/form-data'
               onSubmit={submitVideo}
               className='upload-video-form'
           >
-
+            <div className='upload-modal-input-wrapper'>
           <input
             type='text'
             placeholder='Video Title'
@@ -101,6 +102,7 @@ const UploadModal = () => {
             />
             {hasSubmitted && errors.thumbnail && <p>{errors.thumbnail}</p>}
           <button type='submit'>Submit</button>
+          </div>
           </form>
     </div>
 
