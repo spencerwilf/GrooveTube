@@ -37,16 +37,22 @@ function LoginFormPage() {
   return (
     <div className="login-page-wrapper">
       <div className="outer-login-wrapper">
-      <h1>Log In</h1>
+        <div className="sign-in-box-header">
+      <h2 className="sign-in-form-header">Sign In</h2>
+      <p>to continue to GrooveTube</p>
+      </div>
       <form className="login-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <div className="login-inputs-container">
+          <div className="email-and-password-login-input">
         <label>
           <input
             type="text"
+            className="login-input"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -56,15 +62,20 @@ function LoginFormPage() {
         <label>
           <input
             type="password"
+            className="login-input"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
+        </div>
+        <button className="demo-login-form-button" onClick={demoLogin}>Demo Login</button>
+        <div className="login-form-button-wrapper">
+        <div className="login-form-create-account" onClick={signupClick}>Create account</div>
         <button type="submit">Log In</button>
-        <div onClick={demoLogin}>Demo Login</div>
-        <div onClick={signupClick}>Sign Up</div>
+        </div>
+        </div>
       </form>
       </div>
       </div>
