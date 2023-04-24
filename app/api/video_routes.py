@@ -54,14 +54,18 @@ def get_user_videos():
 def upload_video():
 
     if 'video' not in request.files:
-        return {'error': 'video file required'}
+        return {'error': 'video file required'}, 401
 
 
     if 'thumbnail' not in request.files:
-        return {'error': 'thumbnail image required'}
+        return {'error': 'thumbnail image required'}, 401
 
     vid = request.files['video']
     thumbnail = request.files['thumbnail']
+
+
+    if not allowed_file(vid.filename) or not allowed_file(thumbnail.filename):
+        return {"error": "file type not permitted"}, 403
 
     vid.filename = get_unique_filename(vid.filename)
     thumbnail.filename = get_unique_filename(thumbnail.filename)

@@ -8,6 +8,9 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
+  const [first_name, setFirstName] = useState('')
+  const [last_name, setLastName] = useState('')
+  const [profile_picture, setProfilePicture] = useState(null)
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,7 +21,14 @@ function SignupFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
+      let formData = new FormData()
+      formData.append('email', email)
+      formData.append('first_name', first_name)
+      formData.append('last_name', last_name)
+      formData.append('profile_picture', profile_picture)
+      formData.append('username', username)
+      formData.append('password', password)
+        const data = await dispatch(signUp(formData));
         if (data) {
           setErrors(data)
         }
@@ -35,6 +45,24 @@ function SignupFormPage() {
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <label>
+          First Name
+          <input
+            type="text"
+            value={first_name}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Last Name
+          <input
+            type="text"
+            value={last_name}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </label>
+        <label>
           Email
           <input
             type="text"
@@ -50,6 +78,14 @@ function SignupFormPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+          />
+        </label>
+        <label>
+          Profile Picture
+          <input
+            type="file"
+            onChange={(e) => setProfilePicture(e.target.files[0])}
+            accept='image/*'
           />
         </label>
         <label>

@@ -17,13 +17,21 @@ const UploadModal = () => {
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
 
+    // function validFiles(file) {
+    //   const valid = /\.(gif|png|jpg|jpeg|mp4)$/i
+    //   return valid.test(file)
+    // }
+
+
   useEffect(() => {
     let errors = {}
     if (!video) errors.video = 'Video upload is required.'
+    // if (validFiles(video) === false) errors.video = 'Please upload an mp4 file.'
     if (!thumbnail) errors.thumbnail = 'Thumbnail upload is required.'
+    // if (validFiles(thumbnail) === false) errors.thumbnail = 'Please upload a png, jpeg, jpg or png file.'
     if (!title) errors.title = 'Video title is required.'
     setErrors(errors)
-  }, [video, title, thumbnail])
+  }, [video, title, thumbnail, mediaLoading])
 
     const submitVideo = async (e) => {
         e.preventDefault()
@@ -37,17 +45,20 @@ const UploadModal = () => {
         formData.append('description', description)
         formData.append('thumbnail', thumbnail)
 
-        setMediaLoading(true)
 
-        dispatch(createVideoThunk(formData))
-        setHasSubmitted(false)
-        setMediaLoading(false)
-        await closeModal()
+
+        const res = dispatch(createVideoThunk(formData))
+        setMediaLoading(true)
+        if (res.ok) {
+          setHasSubmitted(false)
+          setMediaLoading(false)
+          await closeModal()
+        }
     }
 
   return (
     <div className='upload-video-wrapper'>
-      {/* {mediaLoading && <h1>Video Uploading...</h1>} */}
+      {mediaLoading && <h1>Video Uploading...</h1>}
           <form
               encType='multipart/form-data'
               onSubmit={submitVideo}
