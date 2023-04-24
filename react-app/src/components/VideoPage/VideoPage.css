@@ -157,7 +157,57 @@ background-color: #3F78CC;
 
 
 .video-section-scroller-right {
-    align-items: center;
     display: flex;
     flex-direction: column;
+    margin-left: 1.5rem;
+    gap: 6px;
+}
+
+.side-card-video-title {
+    font-weight: 700;
+}
+
+.video-page-side-vid-container {
+    display: flex;
+    gap: 10px;
+}
+
+
+.other-videos-header {
+    margin-top: 0;
+}
+
+.side-video-thumbnail {
+    height: 7rem;
+    width: 12rem;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
+.side-video-card-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.side-user-profile-picture {
+    height: 40px;
+    width: 40;
+}
+
+.side-video-card-lower-information {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.side-card-video-username {
+    color: #606060;
+}
+
+.side-card-video-views {
+    color: #606060;;
 }

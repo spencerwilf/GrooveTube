@@ -11,7 +11,7 @@ import DeleteCommentModal from './DeleteCommentModal'
 import { clearCommentsThunk } from '../../store/comments'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import ReactPlayer from 'react-player'
-import VideoCard from '../VideoCard'
+import VideoBarCard from './VideoSideBarCards'
 import './VideoPage.css'
 
 const VideoPage = () => {
@@ -180,10 +180,10 @@ const VideoPage = () => {
           </div>
           </div>
           <div className='video-section-scroller-right'>
-            <h2>Other videos you may like</h2>
+            <h2 className='other-videos-header'>Other videos you may like</h2>
             {vidsExceptCurrent.map(video => (
                 <Link key={video.id} to={`/videos/${video.id}`}>
-                    <VideoCard video={video}/>
+                    <VideoBarCard video={video}/>
                 </Link>
             ))}
           </div>

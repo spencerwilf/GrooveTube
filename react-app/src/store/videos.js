@@ -169,7 +169,7 @@ const videoReducer = (state = initialState, action) => {
             delete newState.userVideos[action.videoId]
             return newState
         case CLEAR_VIDEOS:
-            return {...state, oneVideo: {}}
+            return {...state, oneVideo: {}, allVideos: {}}
         default:
             return state
     }

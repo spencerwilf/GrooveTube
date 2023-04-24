@@ -2,7 +2,7 @@
     position: absolute;
     border: 1px solid #ddd;
     padding: 10px 10px;
-    transform: translateX(-180px);
+    transform: translateX(-120px);
     border-radius: 20px;
     z-index: 1;
     background-color: #fff;
