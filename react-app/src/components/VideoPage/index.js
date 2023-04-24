@@ -43,7 +43,7 @@ const VideoPage = () => {
          dispatch(loadAllVideosThunk())
         return() => {
             dispatch(clearVideosThunk())
-            // dispatch(clearCommentsThunk())
+            dispatch(clearCommentsThunk())
         }
     }, [dispatch, submittedComment, videoId])
 
