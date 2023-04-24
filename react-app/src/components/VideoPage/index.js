@@ -118,7 +118,7 @@ const VideoPage = () => {
                   {sessionUser ? (
                     <div className='comment-form-container'>
                         <div className='leave-comment-pfp-and-input'>
-                        <img className='video-page-comment-user-picture' src={sessionUser?.profile_picture}/>
+                        <img className='video-page-comment-user-picture' src={sessionUser?.profile_picture} alt=''/>
                       <form className='comment-form' onSubmit={leaveComment}>
                           <input
                               placeholder='Leave a comment'
@@ -142,7 +142,7 @@ const VideoPage = () => {
 
             </div>
             <div className='video-page-comments'>
-            {Object.values(videoComments).map(comment => (
+            {sortedComments?.map(comment => (
                 <div className='individual-comment-container' key={comment?.id}>
                     <div className='comment-user-info-wrapper'>
                     <img className='video-page-comment-user-picture' src={comment?.user?.profile_picture} alt=''/>
