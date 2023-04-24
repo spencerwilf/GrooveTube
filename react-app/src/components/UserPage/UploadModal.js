@@ -30,8 +30,11 @@ const UploadModal = () => {
     if (!thumbnail) errors.thumbnail = 'Thumbnail upload is required.'
     // if (validFiles(thumbnail) === false) errors.thumbnail = 'Please upload a png, jpeg, jpg or png file.'
     if (!title) errors.title = 'Video title is required.'
+    if (title.length > 100) errors.title = 'Title cannot be over 100 characters.'
+    if (description.length > 250) errors.description = 'Description cannot be over 250 characters.'
+    if (category.length > 100) errors.category = 'Category cannot be over 100 characters.'
     setErrors(errors)
-  }, [video, title, thumbnail, mediaLoading])
+  }, [video, title, thumbnail, mediaLoading, category.length, description.length])
 
     const submitVideo = async (e) => {
         e.preventDefault()
@@ -47,12 +50,14 @@ const UploadModal = () => {
 
 
 
-        const res = dispatch(createVideoThunk(formData))
+        const res = await dispatch(createVideoThunk(formData))
         setMediaLoading(true)
+        await closeModal()
+
         if (res.ok) {
           setHasSubmitted(false)
           setMediaLoading(false)
-          await closeModal()
+          return
         }
     }
 
@@ -79,14 +84,14 @@ const UploadModal = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             />
-
+          {hasSubmitted && errors.description && <p>{errors.description}</p>}
           <input
             type='text'
             placeholder='Video Category (optional)'
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             />
-
+          {hasSubmitted && errors.category && <p>{errors.category}</p>}
           <label>Video File</label>
             <input
             type='file'
