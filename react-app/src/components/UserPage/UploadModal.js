@@ -49,9 +49,8 @@ const UploadModal = () => {
         formData.append('thumbnail', thumbnail)
 
 
-
-        const res = await dispatch(createVideoThunk(formData))
         setMediaLoading(true)
+        const res = await dispatch(createVideoThunk(formData))
         await closeModal()
 
         if (res.ok) {
@@ -63,7 +62,8 @@ const UploadModal = () => {
 
   return (
     <div className='upload-video-wrapper'>
-      {mediaLoading && <h1>Video Uploading...</h1>}
+      {mediaLoading && <h1>This window will close upon successful upload</h1>}
+
       <h2>Upload a video</h2>
           <form
               encType='multipart/form-data'
@@ -92,14 +92,14 @@ const UploadModal = () => {
             onChange={(e) => setCategory(e.target.value)}
             />
           {hasSubmitted && errors.category && <p>{errors.category}</p>}
-          <label>Video File</label>
+          <label>Video File (mp4 only)</label>
             <input
             type='file'
             onChange={(e) => setVideo(e.target.files[0])}
             accept='video/*'
             />
             {hasSubmitted && errors.video && <p>{errors.video}</p>}
-            <label>Thumbnail File</label>
+            <label>Thumbnail File (jpeg, jpg, png only) </label>
             <input
             type='file'
             onChange={(e) => setThumbnail(e.target.files[0])}
