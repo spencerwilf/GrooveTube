@@ -87,7 +87,6 @@ const VideoPage = () => {
         sortedComments = Object.values(videoComments).sort((a, b) => {
             return b.id - a.id
         })
-        console.log(sortedComments)
     }
 
 

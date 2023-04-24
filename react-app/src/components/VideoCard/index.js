@@ -3,7 +3,6 @@ import './VideoCard.css'
 
 const VideoCard = ({video}) => {
 
-    console.log(video)
     if (!video) {
         return <h1>Loading...</h1>
     }
