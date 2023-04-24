@@ -54,6 +54,82 @@
   gap: 10px;
 }
 
+
+.upload-header-and-text {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0;
+}
+
+.upload-video-text {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+
+.initial-upload-text {
+  width: 80%;
+  text-align: center;
+  color: #606060;
+  font-size: 14px;
+  margin-bottom: 1.8rem;
+}
+
+.edit-delete-modal-user-buttons-video {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+.edit-delete-modal-user-buttons-video > button {
+  background-color: white;
+  border: 1px solid #0A5ED4;
+  color: #0A5ED4;
+  height: 2rem;
+  width: 6rem;
+  border-radius: 14px;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+
+
+.edit-delete-modal-user-buttons-video > button:hover {
+  background-color: #0A5ED4;
+  color: white;
+}
+
+.edit-delete-modal-user-buttons-video > button:active {
+  background-color: #4376bc;
+}
+
+#modal-open-user-button > button {
+  background-color: #0A5ED4;
+  border-radius: 16px;
+  border: none;
+  color: white;
+  font-weight: 700;
+  height: 2.3rem;
+  width: 7rem;
+  cursor: pointer;
+}
+
+
+#modal-open-user-button > button:hover {
+  background-color: #0356BE;
+}
+
+
+#modal-open-user-button > button:active {
+  background-color: #2a74e3;
+}
+
+
+
+
+
 /* .main-user-page-container {
   display: flex;
   flex-direction: column;

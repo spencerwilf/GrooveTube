@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { loadOneVideoThunk } from '../../store/videos'
+import { loadAllVideosThunk, loadOneVideoThunk } from '../../store/videos'
 import { getCommentsThunk } from '../../store/comments'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
@@ -11,10 +11,11 @@ import DeleteCommentModal from './DeleteCommentModal'
 import { clearCommentsThunk } from '../../store/comments'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import ReactPlayer from 'react-player'
+import VideoCard from '../VideoCard'
 import './VideoPage.css'
 
 const VideoPage = () => {
-    const allVideos = useSelector(state => state.videos)
+    const allVideos = useSelector(state => state.videos.allVideos)
     const oneVideo = useSelector(state => state.videos.oneVideo)
     const videoComments = useSelector(state => state.comments.videoComments)
     const sessionUser = useSelector(state => state.session.user)
@@ -31,10 +32,15 @@ const VideoPage = () => {
     }, [errors])
 
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
 
     useEffect(() => {
          dispatch(loadOneVideoThunk(videoId))
          dispatch(getCommentsThunk(videoId))
+         dispatch(loadAllVideosThunk())
         return() => {
             dispatch(clearVideosThunk())
             // dispatch(clearCommentsThunk())
@@ -84,6 +90,13 @@ const VideoPage = () => {
         console.log(sortedComments)
     }
 
+
+    let vidsExceptCurrent;
+    if (allVideos) {
+        vidsExceptCurrent = Object.values(allVideos).filter(vid => {
+            return vid.id !== oneVideo.id
+        })
+    }
 
   return (
     <div className='video-page-wrapper'>
@@ -167,7 +180,12 @@ const VideoPage = () => {
           </div>
           </div>
           <div className='video-section-scroller-right'>
-
+            <h2>Other videos you may like</h2>
+            {vidsExceptCurrent.map(video => (
+                <Link key={video.id} to={`/videos/${video.id}`}>
+                    <VideoCard video={video}/>
+                </Link>
+            ))}
           </div>
     </div>
   )

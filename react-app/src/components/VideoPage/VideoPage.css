@@ -154,3 +154,10 @@ background-color: #3F78CC;
     border-radius: 50%;
     object-fit: cover;
 }
+
+
+.video-section-scroller-right {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

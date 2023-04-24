@@ -30,31 +30,45 @@ const UserPage = () => {
 
   return (
     <div className='main-user-page-container'>
-        {sessionUser.id == userId && (
+        {sessionUser?.id == userId && (
           <>
           <div className='user-page-account-info'>
             <div><img className='user-page-profile-photo' src={sessionUser?.profile_picture} alt=''/></div>
             <div className='user-page-username-and-name'>
             <div>{`${sessionUser.first_name} ${sessionUser.last_name}`}</div>
             <div>@{sessionUser.username}</div>
+            <div id='modal-open-user-button'>
+                            <OpenModalButton
+                            modalComponent={<UploadModal videos={videos}/>}
+                            buttonText='Upload video'
+                            />
+                            </div>
             </div>
           </div>
             <div className='lower-user-page-upload'>
-            <div><img className='upload-video-clipart' src='https://www.gstatic.com/youtube/img/channels/empty_channel_illustration.svg' alt=''/></div>
-            <p>Upload a video!</p>
-            <p>Start sharing your story and connecting with viewers. Videos you upload will show up here.</p>
-            <div id='modal-open-user-button'>
-            <OpenModalButton
-            modalComponent={<UploadModal videos={videos}/>}
-            buttonText='Upload'
-            />
-            </div>
+            {userVideos && Object.values(userVideos).length < 1 && (
+              <>
+                            <div><img className='upload-video-clipart' src='https://www.gstatic.com/youtube/img/channels/empty_channel_illustration.svg' alt=''/></div>
+                            <div className='upload-header-and-text'>
+                            <p className='upload-video-text'>Upload a video to get started</p>
+                            <p className='initial-upload-text'>Start sharing your story and connecting with viewers. Videos you upload will show up here.</p>
+                            </div>
+                            <div id='modal-open-user-button'>
+                            <OpenModalButton
+                            modalComponent={<UploadModal videos={videos}/>}
+                            buttonText='Upload video'
+                            />
+                            </div>
+                            </>
+            )}
+
             <div>
               {Object.values(userVideos).map(vid => (
                 <>
                 <Link to={`/videos/${vid?.id}`} key={vid?.id}>
                   <VideoCard video={vid}/>
                 </Link>
+                <div className='edit-delete-modal-user-buttons-video'>
                 <OpenModalButton
                 modalComponent={<EditVideoModal video={vid}/>}
                 buttonText='Edit Video'
@@ -63,6 +77,7 @@ const UserPage = () => {
                 modalComponent={<DeleteVideoModal video={vid} />}
                 buttonText='Delete Video'
                   />
+                  </div>
                 </>
               ))}
             </div>
