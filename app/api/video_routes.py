@@ -69,14 +69,9 @@ def upload_video():
     upload_vid = upload_vid_to_AWS(vid)
     upload_thumbnail = upload_thumb_to_AWS(thumbnail)
 
-    print('UPLOAD VID',upload_vid)
-    print('UPLOAD THUMBNAIL',upload_thumbnail)
 
-    if 'url' not in upload_vid:
-        return {"error": "failed to upload on video"}
-
-    if 'url' not in upload_thumbnail:
-        return {"error": "failed to upload on thumbnail"}
+    if 'url' not in upload_vid or 'url' not in upload_thumbnail:
+        return {"error": "failed to upload"}
 
     url = upload_vid['url']
     thumb_url = upload_thumbnail['url']
