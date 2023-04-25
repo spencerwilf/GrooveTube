@@ -36,15 +36,17 @@ const VideoPage = () => {
 
     useEffect(() => {
         dispatch(loadOneVideoThunk(videoId))
-         dispatch(getCommentsThunk(videoId))
          dispatch(loadAllVideosThunk())
         return() => {
             dispatch(clearVideosThunk())
             dispatch(clearCommentsThunk())
         }
-    }, [dispatch, submittedComment, videoId])
+    }, [dispatch, videoId])
 
 
+    useEffect(() => {
+        dispatch(getCommentsThunk(videoId))
+    }, [dispatch, videoId, submittedComment])
 
     if (!oneVideo || !videoComments) {
         return <h1>Loading...</h1>
