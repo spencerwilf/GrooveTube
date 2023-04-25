@@ -1,18 +1,15 @@
 .upload-video-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 95%;
+  height: 80vh;
+  width: 70vw;
 }
 
 
 .upload-video-form {
   display: flex;
-  flex-direction: column;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  padding: 10rem 10rem;
-}
+} 
 
 
 .user-page-account-info {
@@ -41,11 +38,35 @@
 
 
 .upload-modal-input-wrapper {
-  display: flex;
+display: flex;
   flex-direction: column;
-  gap: 10px;
+  grid-gap: 10px;
+  gap: 3rem;
+  /* flex-wrap: wrap; */
+  position: absolute;
+  width: 80%;
+  top: 10%;
 }
 
+
+#upload-vid-modal-title-textarea {
+  height: 3rem;
+  font-family: 'Lato', sans-serif;
+  padding-left: 8px;
+}
+
+#upload-vid-modal-description-textarea {
+  height: 5rem;
+  font-family: 'Lato', sans-serif;
+  padding-left: 8px;
+}
+
+
+#upload-vid-modal-category-input {
+ height: 1.5rem;
+font-family: 'Lato', sans-serif;
+padding-left: 8px;
+}
 
 .upload-video-clipart {
   width: 140px;
@@ -234,4 +255,84 @@ gap: 0;
   to {
     transform: rotate(360deg);
   }
+}
+
+
+#modal-download-logo {
+  font-size: 60px;
+  color: #909090;
+  padding: 2rem;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+}
+
+
+#upload-video-modal-file-input  {
+  display: none
+}
+
+
+#fileInput {
+  display: none;
+}
+
+
+.custom-file-input {
+  background-color: #085ED4;
+  color: white;
+  padding: .5rem 1.3rem;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+
+#select-vid-file-to-upload {
+  margin-bottom: 0;
+}
+
+
+#your-details-will-be-private {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.file-input {
+  display: none;
+}
+
+
+.upload-modal-file-step-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.upload-video-text-header {
+align-self: flex-start;
+padding-left: 35px;
+font-weight: 400;
+border-bottom: 1px solid #E5E5E5;
+padding-bottom: 20px;
+}
+
+
+.upload-video-main-input-div {
+  display: flex;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10rem;
+}
+
+
+#video-upload-error {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 0;
 }
