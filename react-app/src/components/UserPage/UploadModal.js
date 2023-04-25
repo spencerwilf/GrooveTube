@@ -3,6 +3,7 @@ import { useModal } from '../../context/Modal'
 import { useDispatch } from 'react-redux'
 import { createVideoThunk } from '../../store/videos'
 import UploadLoadingScreen from './UploadLoadingScreen'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 const UploadModal = () => {
 
@@ -17,6 +18,7 @@ const UploadModal = () => {
     const [mediaLoading, setMediaLoading] = useState(false)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [uploadScreen, setUploadScreen] = useState(true)
+    const history = useHistory()
     // const [videoAttached, setVideoAttached] = useState(false)
 
     function validVideoFiles(file) {
@@ -39,6 +41,7 @@ const UploadModal = () => {
 
   //   reader.readAsDataURL(uploadedFile);
   // };
+
 
   useEffect(() => {
     let errors = {}
@@ -73,12 +76,14 @@ const UploadModal = () => {
 
         setMediaLoading(true)
         const res = await dispatch(createVideoThunk(formData))
+      history.push(`/videos/${res.id}`)
         await closeModal()
 
         if (res.ok) {
           setHasSubmitted(false)
           setMediaLoading(false)
-          return
+          
+          
         }
     }
 
@@ -91,7 +96,10 @@ const UploadModal = () => {
 
   return (
     <div className='upload-video-wrapper'>
-      <h2 className='upload-video-text-header'>Upload video</h2>
+      {(video && <h2 className='upload-video-text-header'>Your upload: <span className='video-upload-step2-name'>{video.name}</span></h2>) || <h2 className='upload-video-text-header'>Upload video</h2>}
+      {/* {!uploadScreen && (
+        <p onClick={setUploadScreen(true)}>Go Back</p>
+      )} */}
       <form
         encType='multipart/form-data'
         onSubmit={submitVideo}
