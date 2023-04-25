@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useModal } from '../../context/Modal'
 import { useDispatch } from 'react-redux'
 import { createVideoThunk } from '../../store/videos'
+import UploadLoadingScreen from './UploadLoadingScreen'
 
 const UploadModal = () => {
 
@@ -60,10 +61,12 @@ const UploadModal = () => {
         }
     }
 
+    if (mediaLoading) {
+      return <UploadLoadingScreen/>
+    }
+
   return (
     <div className='upload-video-wrapper'>
-      {mediaLoading && <h1>This window will close upon successful upload</h1>}
-
       <h2>Upload a video</h2>
           <form
               encType='multipart/form-data'
