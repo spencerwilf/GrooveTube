@@ -97,7 +97,7 @@ def upload_video():
 
     db.session.add(new_video)
     db.session.commit()
-    return {'message': 'success'}
+    return new_video.to_dict()
 
 
 

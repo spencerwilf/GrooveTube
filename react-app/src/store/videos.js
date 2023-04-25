@@ -162,7 +162,9 @@ const videoReducer = (state = initialState, action) => {
             Object.values(action.payload).forEach(ele => newState.userVideos[ele.id] = ele)
             return newState
         case CREATE_VIDEO:
-            return { ...state, allVideos: { ...state.allVideos, ...action.payload }, userVideos: { ...state.userVideos, ...action.payload }}
+            newState = { ...state, userVideos: { ...state.userVideos }}
+            newState.userVideos[action.payload.id] = action.payload
+            return newState
         case UPDATE_VIDEO:
             newState = {...state, userVideos: {...state.userVideos}}
             newState.userVideos[action.payload.id] = action.payload
