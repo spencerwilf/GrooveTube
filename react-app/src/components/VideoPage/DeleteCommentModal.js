@@ -21,18 +21,20 @@ const DeleteCommentModal = ({comment, videoId }) => {
     }
     
 
-    // const handleClose = async (e) => {
-    //     e.preventDefault()
-    //     await closeModal()
-    // }
+    const handleClose = async (e) => {
+        e.preventDefault()
+        await closeModal()
+    }
 
 
     return (
-        <div>
-            <form onSubmit={deleteComment}>
+        <div className='delete-comment-modal-wrapper'>
+            <form className='delete-comment-modal-form' onSubmit={deleteComment}>
                 <h2>Delete Comment?</h2>
+                <div className='delete-comment-modal-buttons'>
                 <button type='submit'>Confirm</button>
-                {/* <button onClick={handleClose}>Exit</button> */}
+                <button onClick={handleClose}>Exit</button>
+                </div>
             </form>
         </div>
     )

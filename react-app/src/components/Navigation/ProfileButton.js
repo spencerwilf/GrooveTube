@@ -55,13 +55,18 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>{`${user.first_name} ${user.last_name}`}</div>
-            <div>@{user.username}</div>
-            <div>
-              <button onClick={handleProfileClick}>My Account</button>
+            <div className="dropdown-top-section">
+            
+              <img className="video-page-comment-user-picture" src={user?.profile_picture} alt=''/>
+           
+              <div className="dropdown-name-and-pfp"><div>{`${user.first_name} ${user.last_name}`}</div>
+                <div>@{user.username}</div>
+              </div>
             </div>
+              <div className="my-channel-dropdown-text" onClick={handleProfileClick}>My Channel</div>
+            
             <div>
-              <button onClick={handleLogout}>Log Out</button>
+              <button id="dropdown-menu-logout-button" onClick={handleLogout}>Log Out</button>
             </div>
           </>
         ) : (

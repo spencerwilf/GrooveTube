@@ -33,12 +33,15 @@ const updateComment = async (e) => {
 
   return (
     <div>
-        <form onSubmit={updateComment}>
-            <h2>Edit Comment</h2>
-            <input
+        <form className='edit-comment-form' onSubmit={updateComment}>
+          <div>
+            <h2 className='edit-comment-modal-header'>Edit Comment</h2>
+            <textarea
+            className='edit-comment-textarea'
             value={commentContent}
             onChange={(e) => setCommentContent(e.target.value)}
             />
+        </div>
             <button type='submit'>Save</button>
         </form>
     </div>

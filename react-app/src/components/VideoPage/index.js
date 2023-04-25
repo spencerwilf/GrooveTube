@@ -141,7 +141,7 @@ const VideoPage = () => {
                         </button>
                         </div>
                       </div>
-                ) : <h3>Sign in to Leave a comment!</h3>}
+                ) : <h3>Sign in to join the conversation!</h3>}
 
             </div>
             <div className='video-page-comments'>
