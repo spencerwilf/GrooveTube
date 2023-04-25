@@ -134,10 +134,71 @@ gap: 0;
 }
 
 
+.edit-video-form-modal {
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.edit-video-form {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: 20rem;
+  padding: 1rem 2rem
+}
 
 
+#edit-modal-form-header {
+  text-align: center;
+}
 
+
+.edit-modal-inputs-wrapper {
+  display: flex;
+  margin-top: 1.3rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-modal-input-and-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.edit-modal-inputs-wrapper > input {
+  border-radius: 6px;
+  border: 1px solid #E5E5E5;
+  height: 2rem;
+  -webkit-padding-start: 10px;
+}
+
+
+.edit-modal-input-and-button-wrapper > button {
+  background-color: #0A5ED4;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  width: 6rem;
+  height: 2rem;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  align-self: center;
+}
 /* .main-user-page-container {
   display: flex;
   flex-direction: column;
 } */
+
+
+.edit-video-modal-save-button {
+  cursor: pointer;
+}
+
+.edit-video-modal-save-button:hover {
+  background-color: #0356BE;
+}
+
+.edit-video-modal-save-button:active {
+  background-color: #2a74e3;
+}

@@ -297,3 +297,8 @@ background-color: #3F78CC;
 .delete-comment-modal-buttons>button:active {
     background-color: #0469f7;
 }
+
+
+#edit-button-comment-save-button {
+    cursor: pointer;
+}

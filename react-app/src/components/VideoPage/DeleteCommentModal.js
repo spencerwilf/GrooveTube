@@ -4,6 +4,7 @@ import { useModal } from '../../context/Modal'
 import { useState } from 'react'
 import { deleteCommentThunk } from '../../store/comments'
 import { getSingleCommentThunk } from '../../store/comments'
+import './VideoPage.css'
 
 const DeleteCommentModal = ({comment, videoId }) => {
     const dispatch = useDispatch()

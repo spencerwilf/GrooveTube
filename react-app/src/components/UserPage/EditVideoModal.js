@@ -35,22 +35,29 @@ const EditVideoModal = ({video}) => {
 }
 
   return (
-    <div>
-        <form onSubmit={updateVideo}>
-            <h2>Edit Video</h2>
+    <div className='edit-video-form-modal'>
+        <form className='edit-video-form' onSubmit={updateVideo}>
+            <h2 id='edit-modal-form-header'>Edit Video</h2>
+            <div className='edit-modal-input-and-button-wrapper'>
+            <div className='edit-modal-inputs-wrapper'>
             <input
             value={title}
+            placeholder='Title'
             onChange={(e) => setTitle(e.target.value)}
             />
             <input
             value={description}
+            placeholder='Description'
             onChange={(e) => setDescription(e.target.value)}
             />
             <input
             value={category}
+            placeholder='Category'
             onChange={(e) => setCategory(e.target.value)}
             />
-            <button type='submit'>Save</button>
+        </div>
+            <button className='edit-video-modal-save-button' type='submit'>Save</button>
+        </div>
         </form>
     </div>
   )

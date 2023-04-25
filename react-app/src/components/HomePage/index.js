@@ -39,7 +39,7 @@ const HomePage = () => {
             </a>
             </div>
                   <div className='github-icon-wrapper'>
-                      <a className='github-a-tag' href='https://github.com/spencerwilf' target='_blank'>
+                      <a className='github-a-tag' href='https://www.linkedin.com/in/spencer-wilfahrt-1a4604156/' target='_blank'>
                           <i id='github-logo' className="fa-brands fa-linkedin"></i>
                           <p className='home-social-media-icons'>LinkedIn</p>
                       </a>

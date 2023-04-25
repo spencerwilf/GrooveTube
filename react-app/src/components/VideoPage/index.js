@@ -48,6 +48,7 @@ const VideoPage = () => {
         dispatch(getCommentsThunk(videoId))
     }, [dispatch, videoId, submittedComment])
 
+    
     if (!oneVideo || !videoComments) {
         return <h1>Loading...</h1>
     }
