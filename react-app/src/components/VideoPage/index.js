@@ -36,7 +36,7 @@ const VideoPage = () => {
 
     useEffect(() => {
         dispatch(loadOneVideoThunk(videoId))
-         dispatch(loadAllVideosThunk())
+        dispatch(loadAllVideosThunk())
         return() => {
             dispatch(clearVideosThunk())
             dispatch(clearCommentsThunk())

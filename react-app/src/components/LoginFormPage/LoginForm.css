@@ -3,7 +3,7 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 10rem;
 }
 
 
@@ -15,6 +15,12 @@
   height: 25rem;
   width: 23rem;
   border-radius: 8px;
+}
+
+.login-error {
+  color: red;
+  margin: 0 0;
+  margin-bottom: 6px;
 }
 
 
@@ -41,6 +47,15 @@
   border-radius: 6px;
   margin-bottom: 15px;
   border: 1px solid #dfdede;
+  font-family: 'Lato', sans-serif;
+  padding-left: 10px;
+}
+
+
+.login-input::placeholder {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 

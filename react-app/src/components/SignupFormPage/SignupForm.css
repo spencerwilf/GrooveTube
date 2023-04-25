@@ -1,9 +1,9 @@
 .sign-up-page-wrapper {
     display: flex;
-    align-items: center;
     height: 100vh;
     width: 100vw;
     justify-content: center;
+    margin-top: 10rem;
 }
 
 .sign-up-page-all-inputs {
@@ -25,4 +25,48 @@
     justify-content: center;
     width: 100%;
     border: 1px solid black;
+}
+
+
+#sign-up-input-wrapper {
+    align-items: center;
+}
+
+
+#sign-up-input-wrapper > input {
+ width: 100%;
+}
+
+
+.first-name-last-name-sign-up {
+    display: flex;
+    gap: 10px;
+}
+
+
+.upload-profile-pic-signup {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+}
+
+
+.upload-pfp-signup {
+        text-align: center;
+            display: flex;
+            flex-direction: column;
+}
+
+
+.signup-pfp-upload-header {
+    margin-top: 0;
+    margin-left: 0;
+    text-align: left;
+}
+
+
+
+.sign-up-errors {
+    color: red;
+    text-align: center;
 }

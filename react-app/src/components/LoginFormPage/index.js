@@ -42,14 +42,11 @@ function LoginFormPage() {
       <p>to continue to GrooveTube</p>
       </div>
       <form className="login-form" onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+
         <div className="login-inputs-container">
           <div className="email-and-password-login-input">
         <label>
+                {<p className="login-error" >{errors[0]}</p>}
           <input
             type="text"
             className="login-input"
@@ -59,7 +56,9 @@ function LoginFormPage() {
             required
           />
         </label>
+              
         <label>
+                {<p className="login-error" >{errors[1]}</p>}
           <input
             type="password"
             className="login-input"
@@ -69,6 +68,7 @@ function LoginFormPage() {
             required
           />
         </label>
+              
         </div>
         <button className="demo-login-form-button" onClick={demoLogin}>Demo Login</button>
         <div className="login-form-button-wrapper">
