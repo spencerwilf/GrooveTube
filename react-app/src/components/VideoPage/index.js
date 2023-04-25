@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import ReactPlayer from 'react-player'
 import VideoBarCard from './VideoSideBarCards'
 import './VideoPage.css'
-import { addViewThunk } from '../../store/videos'
+
 
 const VideoPage = () => {
     const allVideos = useSelector(state => state.videos.allVideos)
@@ -29,18 +29,13 @@ const VideoPage = () => {
 
 
 
-    // useEffect(() => {
+    //   useEffect(() => {
+    //     dispatch(loadOneVideoThunk(videoId))
     //     window.scrollTo(0, 0);
-    //   }, []);
-
-
-      useEffect(() => {
-        dispatch(loadOneVideoThunk(videoId))
-        window.scrollTo(0, 0);
-      }, [videoId, dispatch])
+    //   }, [videoId, dispatch])
 
     useEffect(() => {
-         
+        dispatch(loadOneVideoThunk(videoId))
          dispatch(getCommentsThunk(videoId))
          dispatch(loadAllVideosThunk())
         return() => {

@@ -5,7 +5,6 @@ const CREATE_VIDEO = 'videos/CREATE_VIDEO'
 const UPDATE_VIDEO = 'videos/UPDATE_VIDEO'
 const DELETE_VIDEO = 'videos/DELETE_VIDEO'
 const CLEAR_VIDEOS = 'videos/CLEAR_VIDEOS'
-const ADD_VIEW = 'videos/ADD_VIEW'
 
 
 const loadAllVideos = (payload) => {
@@ -48,12 +47,6 @@ const updateVideo = (payload) => {
 }
 
 
-const addView = (payload) => {
-    return {
-        type: ADD_VIEW,
-        payload
-    }
-}
 
 
 const deleteVideo = (videoId) => {
