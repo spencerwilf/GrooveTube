@@ -16,7 +16,7 @@ const VideoCard = ({video}) => {
                 <div className='home-video-card-lower-information'>
                 <span className='card-video-title'>{video?.title}</span>
                 <span className='card-video-username'>{video?.user?.username}</span>
-                <span className='card-video-views'>{video?.views} views</span>
+                <span className='card-video-views'>{video?.views} {video?.views === 1 ? <span>view</span> : <span>views</span>}</span>
                 </div>
             </div>
           <div>

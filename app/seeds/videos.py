@@ -28,10 +28,57 @@ def seed_videos():
         category='Sports', 
         url='https://new-groovetube-bucket.s3.amazonaws.com/a46b2914ac3e4aafb968853a03893e52.mp4'
     )
+    v4 = Video(
+        user_id=3, 
+        title='Travis Scott falls in autotune', 
+        description='Goodnight sweet prince',
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/f8f1c4416a6f4c2396a700e03dfee572.png', 
+        category='Music', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/4629cb1e408f43c28b833622fe30a2b3.mp4'
+    )
+    v5 = Video(
+        user_id=3, 
+        title='Kawhi Leonard being the funniest human alive', 
+        description="He's a fun guy",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/54cd89075a76415b823972cd7cd36bd0.png', 
+        category='Sports', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/e01087e88e3b4a64abd1a1607b99b007.mp4'
+    )
+    v6 = Video(
+        user_id=3, 
+        title='McLovin?!?', 
+        description="What're you trying to be? an Irish r&b singer?",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/3053ec4145ea44d78549bbe25f3baf00.png', 
+        category='Movies', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/da5842aff39049ea821f7968666a53f4.mp4'
+    )
+    v7 = Video(
+        user_id=3, 
+        title='Drake sees a dog at the club', 
+        description="nice description",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/07b8cc44d62d4a369fbf3eddbce79fe5.png', 
+        category='Music', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/b2cc3a8e49f24aeb9994fc1409158995.mp4'
+    )
+    v8 = Video(
+        user_id=3, 
+        title="American Psycho: Let's see Paul Allen's card", 
+        description="oh my god, it even has a watermark",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/03eccdd2b9d044c48fa165d5d58c8e7b.png', 
+        category='Movies', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/f27faf9534394d93b2d7ccd354aa1ed3.mp4'
+    )
+
+
 
     db.session.add(v1)
     db.session.add(v2)
     db.session.add(v3)
+    db.session.add(v4)
+    db.session.add(v5)
+    db.session.add(v6)
+    db.session.add(v7)
+    db.session.add(v8)
     db.session.commit()
 
 
