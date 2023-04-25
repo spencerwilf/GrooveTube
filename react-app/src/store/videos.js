@@ -5,6 +5,7 @@ const CREATE_VIDEO = 'videos/CREATE_VIDEO'
 const UPDATE_VIDEO = 'videos/UPDATE_VIDEO'
 const DELETE_VIDEO = 'videos/DELETE_VIDEO'
 const CLEAR_VIDEOS = 'videos/CLEAR_VIDEOS'
+const ADD_VIEW = 'videos/ADD_VIEW'
 
 
 const loadAllVideos = (payload) => {
@@ -42,6 +43,14 @@ const createVideo = (payload) => {
 const updateVideo = (payload) => {
     return {
         type: UPDATE_VIDEO,
+        payload
+    }
+}
+
+
+const addView = (payload) => {
+    return {
+        type: ADD_VIEW,
         payload
     }
 }
@@ -117,6 +126,8 @@ export const updateVideoThunk = (video) => async dispatch => {
         dispatch(updateVideo(video))
     }
 }
+
+
 
 
 

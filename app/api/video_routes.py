@@ -30,6 +30,10 @@ def get_one_video(video_id):
 
     if not video:
         return {"message": "video not found"}, 404
+    
+    video.views += 1
+
+    db.session.commit()
 
     return video.to_dict()
 
@@ -195,3 +199,6 @@ def add_comment_to_video(video_id):
         db.session.commit()
         return newComment.to_dict()
     return {"message": "bad data"}, 404
+
+
+
