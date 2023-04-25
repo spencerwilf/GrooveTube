@@ -131,7 +131,9 @@ const commentsReducer = (state = initialState, action) => {
         case LOAD_SINGLE_COMMENT:
             return {...state, singleComment: {...action.payload}}
         case CREATE_COMMENT:
-            return {...state, videoComments: {...state.videoComments, ...action.payload}}
+            newState = { ...state, videoComments: { ...state.videoComments } }
+            newState.videoComments[action.payload.id] = action.payload
+            return newState
         case DELETE_COMMENT:
             newState = {...state, videoComments: {...state.videoComments}, singleComment: {...state.singleComment}}
 
