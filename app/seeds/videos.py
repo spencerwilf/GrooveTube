@@ -6,19 +6,27 @@ from sqlalchemy.sql import text
 def seed_videos():
     v1 = Video(
         user_id=1, 
-        title='This Is Video 1', 
-        description='Nice description',
-        thumbnail='https://static-cse.canva.com/blob/1040254/1600w-wK95f3XNRaM.jpg', 
-        category='finance', 
-        url='test.net'
+        title='Chris Paul hits a huge three to cut the lead down to 42', 
+        description='This is what basketball is all about',
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/09f530322e9144f9aa7cdd521c7a13df.png', 
+        category='Sports', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/06b4b267875c40a686e7771d19d1009e.mp4'
     )
     v2 = Video(
-        user_id=2, title='This Is Video 2', description='Very nice',
-        thumbnail='https://static-cse.canva.com/blob/1040254/1600w-wK95f3XNRaM.jpg', category='sports', url='test.com'
+        user_id=2, 
+        title='Ronnie Coleman squats 800 SOLID pounds!!!', 
+        description='This man is an animal!!!',
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/1972bd98b11641b0b1db9799eed8c5d9.png', 
+        category='Fitness', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/17aa0cdab479481abec3397db49ded1a.mp4'
     )
     v3 = Video(
-        user_id=3, title='This Is Video 3', description='Cool!',
-        thumbnail='https://static-cse.canva.com/blob/1040254/1600w-wK95f3XNRaM.jpg', category='coding', url='test.gov'
+        user_id=3, 
+        title='BRUTAL soccer foul caught on film!', 
+        description='The horror!!',
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/e3d480f4145a4312b3891c77a7d164b2.png', 
+        category='Sports', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/a46b2914ac3e4aafb968853a03893e52.mp4'
     )
 
     db.session.add(v1)
