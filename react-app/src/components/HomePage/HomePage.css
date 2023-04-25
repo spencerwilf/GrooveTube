@@ -25,3 +25,32 @@
     border-bottom: 1px solid #e3e3e3;
     padding: 1rem 0
 }
+
+
+.home-social-media-icons {
+    display: flex;
+    gap: 10px;
+}
+
+
+.github-icon-wrapper {
+    display: flex;
+}
+
+
+.github-icon-wrapper:hover {
+    background-color: rgb(101, 194, 255);
+    border-radius: 8px;
+    padding-left: 5px;
+}
+
+.github-a-tag {
+ display: flex;
+gap: 10px;
+
+}
+
+
+#github-logo {
+    align-self: center;
+}
