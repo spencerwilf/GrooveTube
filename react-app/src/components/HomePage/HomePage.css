@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 20%;
+    width: 90%;
 }
 
 .user-videos-link {
@@ -53,4 +53,8 @@ gap: 10px;
 
 #github-logo {
     align-self: center;
+}
+
+.target-your-videos {
+    color: #1570F1;
 }
