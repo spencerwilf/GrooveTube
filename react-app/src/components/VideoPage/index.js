@@ -166,14 +166,14 @@ const VideoPage = () => {
                                 comment={comment}
                                 videoId={videoId}
                             />}
-                            buttonText='Edit Comment'
+                            buttonText='Edit'
                         />
                         <OpenModalButton
                             modalComponent={<DeleteCommentModal
                                 comment={comment}
                                 videoId={videoId}
                             />}
-                            buttonText='Delete Comment'
+                            buttonText='Delete'
                         />
                         </div>
                     )}
