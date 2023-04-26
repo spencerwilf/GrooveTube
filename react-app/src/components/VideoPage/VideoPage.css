@@ -19,6 +19,30 @@
 
 .individual-comment-container:hover .comment-delete-and-edit {
     display: flex;
+    gap: 10px;
+}
+
+.individual-comment-container:hover .comment-delete-and-edit button {
+    border: 1px solid #0A5ED4;
+    color: #0A5ED4;
+    height: 2rem;
+    width: 4rem;
+    border-radius: 14px;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0);
+    gap: 10px;
+}
+
+
+.individual-comment-container:hover .comment-delete-and-edit button:hover {
+    border: 1px solid #0A5ED4;
+    color: white;
+    border-radius: 14px;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+    background-color: #0A5ED4;
+    gap: 10px;
 }
 
 
