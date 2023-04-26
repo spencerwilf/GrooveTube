@@ -18,6 +18,7 @@ const UploadModal = () => {
     const [mediaLoading, setMediaLoading] = useState(false)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [uploadScreen, setUploadScreen] = useState(true)
+    const [thumbTest, setThumbTest] = useState(null)
     const history = useHistory()
     // const [videoAttached, setVideoAttached] = useState(false)
 
@@ -27,40 +28,47 @@ const UploadModal = () => {
     }
 
   function validImageFiles(file) {
-    const valid = /\.(gif|png|jpg|jpeg)$/i
+    const valid = /\.(png|jpg|jpeg)$/i
     return valid.test(file.name)
   }
 
-  // const thumbRender = (event) => {
-  //   const uploadedFile = event.target.files[0];
-  //   const reader = new FileReader();
+  const handleFileChange = (e) => {
+    const uploadedFile = e.target.files[0];
+    const reader = new FileReader();
+    setThumbnail(e.target.files[0]);
 
-  //   reader.onload = (event) => {
-  //     setImageDataUrl(event.target.result);
-  //   };
 
-  //   reader.readAsDataURL(uploadedFile);
-  // };
+    reader.onload = (event) => {
+      setThumbTest(event.target.result);
+    };
+
+    reader?.readAsDataURL(uploadedFile);
+  };
 
 
   useEffect(() => {
+
     let errors = {}
+
     if (!video) errors.video = 'Video upload is required.'
-    
     if (video && validVideoFiles(video) === false) errors.video = 'Please upload an mp4 file.'
+
     if (!thumbnail) errors.thumbnail = 'Thumbnail upload is required.'
-    // if (validFiles(thumbnail) === false) errors.thumbnail = 'Please upload a png, jpeg, jpg or png file.'
+    if (thumbnail && validImageFiles(thumbnail) === false) errors.thumbnail = 'Please upload a jpg, png or jpeg file.'
+    console.log(thumbnail)
     if (!title.length) errors.title = 'Video title is required.'
     if (title.length > 100) errors.title = 'Title cannot be over 100 characters.'
+
     if (description.length > 250) errors.description = 'Description cannot be over 250 characters.'
+
     if (category.length > 100) errors.category = 'Category cannot be over 100 characters.'
 
     if (video && !errors.video) setUploadScreen(false)
     setErrors(errors)
+
   }, [video, title, thumbnail, mediaLoading, category.length, description.length, uploadScreen])
 
-// console.log(video)
-// console.log(video.name.split('.')[1] === 'mp4')
+
     const submitVideo = async (e) => {
         e.preventDefault()
         setHasSubmitted(true)
@@ -76,7 +84,7 @@ const UploadModal = () => {
 
         setMediaLoading(true)
         const res = await dispatch(createVideoThunk(formData))
-      history.push(`/videos/${res.id}`)
+        history.push(`/videos/${res?.id}`)
         await closeModal()
 
         if (res.ok) {
@@ -131,7 +139,7 @@ const UploadModal = () => {
           <textarea
             type='text'
             id='upload-vid-modal-title-textarea'
-            placeholder='Video Title'
+            placeholder='Title (required)'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             />
@@ -139,7 +147,7 @@ const UploadModal = () => {
           <textarea
             type='text'
             id='upload-vid-modal-description-textarea'
-            placeholder='Video Description (optional)'
+            placeholder='Description (optional)'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             />
@@ -147,7 +155,7 @@ const UploadModal = () => {
           <input
             type='text'
             id='upload-vid-modal-category-input'
-            placeholder='Video Category (optional)'
+            placeholder='Category (optional)'
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             />
@@ -159,14 +167,34 @@ const UploadModal = () => {
             accept='video/*'
             />
             {hasSubmitted && errors.video && <p>{errors.video}</p>} */}
-            <label>Thumbnail File (jpeg, jpg, png only) </label>
+                <div className='thumbnail-preview-flex-test'>
+                  <div className='thumbnail-info-header-p-and-header'>
+            <label>Thumbnail (jpeg, jpg, png only) </label>
+              
+                <p id='thumbnail-description-text-area'>Select or upload a picture that shows what's in your video. A good thumbnail stands out and draws viewers' attention.</p>
+                  </div>
+                  {thumbnail && thumbTest && <div className='thumbnail-rendered-image-preview-info'>
+                                  <p id='thumbnail-preview-upload-text'>Thumbnail preview</p>
+                                <img className='uploaded-thumbnail-preview' src={thumbTest} alt='' />
+                                 </div>}
+                </div>
             <input
             type='file'
-            onChange={(e) => setThumbnail(e.target.files[0])}
+            id='thumbnail-input'
+            onChange={handleFileChange}
             accept='image/*'
             />
-            {hasSubmitted && errors.thumbnail && <p>{errors.thumbnail}</p>}
-          <button type='submit'>Submit</button>
+
+                <label htmlFor="thumbnail-input" className="thumbail-file-input">
+                  <div className='upload-thumbnail-section'>
+                  <i id='thumbnail-image-file-icon' class="fa-regular fa-file-image"></i>
+                    <p id='upload-thumbnail-border-button'>Upload thumbnail</p>
+                  </div>
+                
+                  </label>
+                {thumbnail && errors.thumbnail && <p id='video-upload-error'><i class="fa-solid fa-triangle-exclamation"></i>{errors.thumbnail}</p>}
+            {/* {hasSubmitted && errors.thumbnail && <p>{errors.thumbnail}</p>} */}
+          <button className='final-modal-upload-video-button' type='submit'>Upload video</button>
           </div>
           </>
       )}

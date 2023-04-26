@@ -1,5 +1,5 @@
 .upload-video-wrapper {
-  height: 80vh;
+  height: 90vh;
   width: 70vw;
 }
 
@@ -41,7 +41,7 @@
 display: flex;
   flex-direction: column;
   grid-gap: 10px;
-  gap: 3rem;
+  gap: 1.5rem;
   /* flex-wrap: wrap; */
   position: absolute;
   width: 80%;
@@ -53,12 +53,18 @@ display: flex;
   height: 3rem;
   font-family: 'Lato', sans-serif;
   padding-left: 8px;
+  border-radius: 4px;
+  padding-top: 6px;
+  border: 1px solid #CCCCCC;
 }
 
 #upload-vid-modal-description-textarea {
   height: 5rem;
+  padding-top: 6px;
   font-family: 'Lato', sans-serif;
   padding-left: 8px;
+  border-radius: 4px;
+  border: 1px solid #CCCCCC;
 }
 
 
@@ -66,6 +72,8 @@ display: flex;
  height: 1.5rem;
 font-family: 'Lato', sans-serif;
 padding-left: 8px;
+border-radius: 4px;
+border: 1px solid #CCCCCC;
 }
 
 .upload-video-clipart {
@@ -341,3 +349,90 @@ padding-bottom: 20px;
 .video-upload-step2-name {
   color: #085ED4;
 }
+
+
+#thumbnail-input {
+  display: none;
+}
+
+.upload-thumbnail-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+  align-items: flex-start;
+  align-items: center;
+  border: 1px dotted #dbdada;
+  border-radius: 4px;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* padding-bottom: px; */
+}
+
+#upload-thumbnail-border-button {
+  margin-top: 12px;
+  color: #7d7d7d;
+}
+
+#thumbnail-image-file-icon {
+  font-size: 26px;
+  color: #7d7d7d;
+}
+
+#thumbnail-description-text-area {
+  margin-top: 0;
+  width: 60%;
+  color: #606060;
+  font-weight: 300;
+}
+
+.uploaded-thumbnail-preview {
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}
+
+
+.thumbnail-preview-flex-test {
+  display: flex;
+}
+
+#thumbnail-preview-upload-text {
+  margin-bottom: 0;
+}
+
+
+.thumbnail-info-header-p-and-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.thumbnail-rendered-image-preview-info {
+      display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        right: 0;
+        bottom: 80px;
+}
+
+
+.final-modal-upload-video-button {
+        margin-top: 20px;
+          width: 12rem;
+          height: 4rem;
+          align-self: center;
+          border-radius: 6px;
+          color: white;
+          border: none;
+          cursor: pointer;
+          background-color: #085ED4;
+          font-size: 20px;
+          font-family: 'Lato', sans-serif;
+          font-weight: bold;
+}
+
+
