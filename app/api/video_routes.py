@@ -101,6 +101,11 @@ def upload_video():
 
 
 
+## Adding a like to a video
+@video_routes.route('/<int:video_id>/likes', methods=['POST'])
+@login_required
+def like_video():
+    pass
 
 
 ## Delete a video
