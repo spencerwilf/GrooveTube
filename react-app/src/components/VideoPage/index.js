@@ -10,6 +10,7 @@ import EditCommentModal from './EditCommentModal'
 import DeleteCommentModal from './DeleteCommentModal'
 import { clearCommentsThunk } from '../../store/comments'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { likeVideoThunk } from '../../store/videos'
 import ReactPlayer from 'react-player'
 import VideoBarCard from './VideoSideBarCards'
 import './VideoPage.css'
@@ -86,6 +87,13 @@ const VideoPage = () => {
         setSubmittedComment(!submittedComment)
     }
 
+
+    const likeVideo = (e) => {
+        e.preventDefault()
+        dispatch(likeVideoThunk(oneVideo))
+    }
+
+
     let sortedComments;
     if (videoComments) {
         sortedComments = Object.values(videoComments).sort((a, b) => {
@@ -101,8 +109,16 @@ const VideoPage = () => {
         })
     }
 
+    
+
   return (
     <div className='video-page-wrapper'>
+        {oneVideo && (
+            <>
+            <button onClick={likeVideo}>CLICK TO LIKE</button>
+            {oneVideo.likes}
+              </>
+        )}
         <div className='video-page-main-section-left'>
         <ReactPlayer  width= '850px' height= '490px' playing={true} controls url={oneVideo.url}/>
         <div className='below-vid-above-comments-section'>

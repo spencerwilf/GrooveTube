@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Video, Comment, db
+from app.models import Video, Comment, db, VideoLike
 from ..forms.comment_form import CommentForm
 from .aws_helpers import upload_vid_to_AWS, allowed_file, upload_thumb_to_AWS, get_unique_filename, delete_file_from_AWS
 from app.forms import VideoForm
@@ -104,8 +104,26 @@ def upload_video():
 ## Adding a like to a video
 @video_routes.route('/<int:video_id>/likes', methods=['POST'])
 @login_required
-def like_video():
-    pass
+def like_video(video_id):
+    video = Video.query.get(video_id)
+
+    if not video:
+        return {"message": "video not found"}, 404
+    
+    new_like = VideoLike(
+        user_id = current_user.id,
+        video_id=video_id
+    )
+
+    video.likes += 1
+
+    db.session.add(new_like)
+    db.session.commit()
+    return new_like.to_dict()
+    
+
+    
+
 
 
 ## Delete a video

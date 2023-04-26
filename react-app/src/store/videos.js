@@ -5,6 +5,7 @@ const CREATE_VIDEO = 'videos/CREATE_VIDEO'
 const UPDATE_VIDEO = 'videos/UPDATE_VIDEO'
 const DELETE_VIDEO = 'videos/DELETE_VIDEO'
 const CLEAR_VIDEOS = 'videos/CLEAR_VIDEOS'
+const LIKE_VIDEO = 'videos/LIKE_VIDEO'
 
 
 const loadAllVideos = (payload) => {
@@ -64,6 +65,14 @@ const clearVideos = () => {
 }
 
 
+const likeVideo = (payload) => {
+    return {
+        type: LIKE_VIDEO,
+        payload
+    }
+}
+
+
 
 export const loadAllVideosThunk = () => async dispatch => {
     const res = await fetch(`/api/videos`)
@@ -102,6 +111,20 @@ export const createVideoThunk = (video) => async dispatch => {
     if (res.ok) {
         const video = await res.json()
         dispatch(createVideo(video))
+        return video
+    }
+}
+
+
+export const likeVideoThunk = (video) => async dispatch => {
+    const res = await fetch(`/api/videos/${video.id}/likes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(video)
+    })
+    if (res.ok) {
+        const video = await res.json()
+        dispatch(likeVideo(video))
         return video
     }
 }
