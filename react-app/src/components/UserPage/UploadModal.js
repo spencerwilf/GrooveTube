@@ -18,7 +18,7 @@ const UploadModal = () => {
     const [mediaLoading, setMediaLoading] = useState(false)
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [uploadScreen, setUploadScreen] = useState(true)
-    const [thumbTest, setThumbTest] = useState(null)
+    // const [thumbTest, setThumbTest] = useState(null)
     const history = useHistory()
     // const [videoAttached, setVideoAttached] = useState(false)
 
@@ -32,18 +32,18 @@ const UploadModal = () => {
     return valid.test(file.name)
   }
 
-  const handleFileChange = (e) => {
-    const uploadedFile = e.target.files[0];
-    const reader = new FileReader();
-    setThumbnail(e.target.files[0]);
+  // const handleFileChange = (e) => {
+  //   const uploadedFile = e.target.files[0];
+  //   const reader = new FileReader();
+  //   setThumbnail(e.target.files[0]);
 
 
-    reader.onload = (event) => {
-      setThumbTest(event.target.result);
-    };
+  //   reader.onload = (event) => {
+  //     setThumbTest(event.target.result);
+  //   };
 
-    reader?.readAsDataURL(uploadedFile);
-  };
+  //   reader?.readAsDataURL(uploadedFile);
+  // };
 
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const UploadModal = () => {
 
     if (!thumbnail) errors.thumbnail = 'Thumbnail upload is required.'
     if (thumbnail && validImageFiles(thumbnail) === false) errors.thumbnail = 'Please upload a jpg, png or jpeg file.'
-    console.log(thumbnail)
+
     if (!title.length) errors.title = 'Video title is required.'
     if (title.length > 100) errors.title = 'Title cannot be over 100 characters.'
 
@@ -67,7 +67,7 @@ const UploadModal = () => {
     setErrors(errors)
 
   }, [video, title, thumbnail, mediaLoading, category.length, description.length, uploadScreen])
-
+console.log(thumbnail)
 
     const submitVideo = async (e) => {
         e.preventDefault()
@@ -143,7 +143,7 @@ const UploadModal = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             />
-          {hasSubmitted && errors.title && <p>{errors.title}</p>}
+                {hasSubmitted && errors.title && <p id='video-upload-error'>{errors.title}</p>}
           <textarea
             type='text'
             id='upload-vid-modal-description-textarea'
@@ -173,15 +173,15 @@ const UploadModal = () => {
               
                 <p id='thumbnail-description-text-area'>Select or upload a picture that shows what's in your video. A good thumbnail stands out and draws viewers' attention.</p>
                   </div>
-                  {thumbnail && thumbTest && <div className='thumbnail-rendered-image-preview-info'>
-                                  <p id='thumbnail-preview-upload-text'>Thumbnail preview</p>
-                                <img className='uploaded-thumbnail-preview' src={thumbTest} alt='' />
-                                 </div>}
+                  {/* {thumbnail && thumbTest && <div className='thumbnail-rendered-image-preview-info'>
+                                  <p id='thumbnail-preview-upload-text'>Thumbnail preview</p> */}
+                                {/* <img className='uploaded-thumbnail-preview' src={thumbTest} alt='' /> */}
+                                 {/* </div>} */}
                 </div>
             <input
             type='file'
             id='thumbnail-input'
-            onChange={handleFileChange}
+            onChange={(e) => setThumbnail(e.target.files[0])}
             accept='image/*'
             />
 
@@ -192,7 +192,8 @@ const UploadModal = () => {
                   </div>
                 
                   </label>
-                {thumbnail && errors.thumbnail && <p id='video-upload-error'><i class="fa-solid fa-triangle-exclamation"></i>{errors.thumbnail}</p>}
+                {thumbnail && <p style={{ color: '#085ED4', margin: 0}}>{thumbnail.name}</p>}
+                {hasSubmitted && errors.thumbnail && <p id='video-upload-error'><i class="fa-solid fa-triangle-exclamation"></i>{errors.thumbnail}</p>}
             {/* {hasSubmitted && errors.thumbnail && <p>{errors.thumbnail}</p>} */}
           <button className='final-modal-upload-video-button' type='submit'>Upload video</button>
           </div>
