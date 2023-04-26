@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import { likeVideoThunk } from '../../store/videos'
 import ReactPlayer from 'react-player'
 import VideoBarCard from './VideoSideBarCards'
+import { getVideoLikesThunk } from '../../store/videos'
 import './VideoPage.css'
 
 
@@ -24,20 +25,21 @@ const VideoPage = () => {
     const dispatch = useDispatch()
     const {videoId} = useParams()
     const [comment, setComment] = useState('')
+    const [likes, setLikes] = useState(oneVideo?.likes || 0)
     const [submittedComment, setSubmittedComment] = useState(false)
+    const [userHasLiked, setUserHasLiked] = useState(false)
     const [errors, setErrors] = useState({})
     const [isLoading, setIsLoading] = useState(true);
 
 
-
-    //   useEffect(() => {
-    //     dispatch(loadOneVideoThunk(videoId))
-    //     window.scrollTo(0, 0);
-    //   }, [videoId, dispatch])
+      useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [videoId, dispatch])
 
     useEffect(() => {
         dispatch(loadOneVideoThunk(videoId))
         dispatch(loadAllVideosThunk())
+        dispatch(getVideoLikesThunk(videoId))
         return() => {
             dispatch(clearVideosThunk())
             dispatch(clearCommentsThunk())
@@ -48,6 +50,8 @@ const VideoPage = () => {
     useEffect(() => {
         dispatch(getCommentsThunk(videoId))
     }, [dispatch, videoId, submittedComment])
+
+
 
     
     if (!oneVideo || !videoComments) {
@@ -88,10 +92,7 @@ const VideoPage = () => {
     }
 
 
-    const likeVideo = (e) => {
-        e.preventDefault()
-        dispatch(likeVideoThunk(oneVideo))
-    }
+
 
 
     let sortedComments;
@@ -110,15 +111,24 @@ const VideoPage = () => {
     }
 
     
+    const likeVideo =  () => {
+        console.log('hi')
+        // e.preventDefault()
+        // console.log('is this being hit')
+        // await dispatch(likeVideoThunk(oneVideo))
+        // setLikes(prev => prev + 1)
+        // console.log(likes)
+        // setUserHasLiked(true)
+    }
 
   return (
     <div className='video-page-wrapper'>
-        {oneVideo && (
+        {/* {oneVideo && (
             <>
             <button onClick={likeVideo}>CLICK TO LIKE</button>
-            {oneVideo.likes}
               </>
-        )}
+        )} */}
+        {/* <button onChange={likeVideo}></button> */}
         <div className='video-page-main-section-left'>
         <ReactPlayer  width= '850px' height= '490px' playing={true} controls url={oneVideo.url}/>
         <div className='below-vid-above-comments-section'>
