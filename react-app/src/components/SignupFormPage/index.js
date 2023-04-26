@@ -40,7 +40,7 @@ function SignupFormPage() {
   return (
     <div className="login-page-wrapper">
       {/* <h1>Sign Up</h1> */}
-      <div className="outer-login-wrapper">
+      <div className="outer-login-wrapper signup">
         <div className="sign-in-box-header">
           <h2 className="sign-in-form-header">Sign Up</h2>
           <p>to continue to GrooveTube</p>
@@ -69,6 +69,7 @@ function SignupFormPage() {
           />
         </label>
             </div>
+            <div className="other-signup-inputs">
         <label>
           <input
             type="text"
@@ -105,21 +106,36 @@ function SignupFormPage() {
                 required
               />
             </label>
+            </div>
             <div className="upload-profile-pic-signup">
         <label className="upload-pfp-signup">
-                <p className="signup-pfp-upload-header">Profile Picture (optional)</p>
+
           <input
             type="file"
+            id="signup-pfp-input"
             onChange={(e) => setProfilePicture(e.target.files[0])}
             accept='image/*'
           />
+
         </label>
-            
+
+
+            <div className="signup-button-and-upload-pfp-container">
+              <label htmlFor="signup-pfp-input" className="signup-pfp-file-input">
+                <div className='upload-thumbnail-section signup'>
+                  <i id='thumbnail-signup-image-file-icon' class="fa-regular fa-file-image"></i>
+                  <p id='upload-thumbnail-signup-border-button'>Upload profile picture (optional)</p>
+                </div>
+                </label>
+                
           
-        <button type="submit">Sign Up</button>
+        <button className="sign-up-form-submit-button" type="submit">Sign Up</button>
           </div>
           </div>
+          </div>
+          {profile_picture && <p style={{ color: '#1C71E8', marginTop: '40px', marginRight: '120px' }}>{profile_picture.name}</p>}
       </form>
+
       </div>
     </div>
   );

@@ -63,28 +63,42 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        if form.data['profile_picture']:
+            profile_picture = form.data['profile_picture']
 
-        profile_picture = form.data['profile_picture']
-
-        profile_picture.filename = get_unique_filename(profile_picture.filename)
-        profile_picture_upload = upload_pfp_to_AWS(profile_picture)
+            profile_picture.filename = get_unique_filename(profile_picture.filename)
+            profile_picture_upload = upload_pfp_to_AWS(profile_picture)
 
 
-        if 'url' not in profile_picture_upload:
-            return {"error": "profile picture did not upload"}, 401
+            if 'url' not in profile_picture_upload:
+                return {"error": "profile picture did not upload"}, 401
+            
 
-        user = User(
+            user = User(
             first_name = form.data['first_name'],
             last_name = form.data['last_name'],
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
             profile_picture = profile_picture_upload['url']
-        )
-        db.session.add(user)
-        db.session.commit()
-        login_user(user)
-        return user.to_dict()
+            )
+            db.session.add(user)
+            db.session.commit()
+            login_user(user)
+            return user.to_dict()
+        else:
+            user = User(
+                first_name = form.data['first_name'],
+                last_name = form.data['last_name'],
+                username=form.data['username'],
+                email=form.data['email'],
+                password=form.data['password'],
+                profile_picture =  None
+            )
+            db.session.add(user)
+            db.session.commit()
+            login_user(user)
+            return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

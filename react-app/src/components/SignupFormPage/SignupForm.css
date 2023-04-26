@@ -30,24 +30,44 @@
 
 #sign-up-input-wrapper {
     align-items: center;
+    gap: 20px;
 }
 
 
-#sign-up-input-wrapper > input {
+#sign-up-input-wrapper  input {
  width: 100%;
+ height: 2rem;
+ border-radius: 6px;
+ border: 1px solid #e9e8e8;
+ padding-left: 10px;
+ font-family: 'Lato', sans-serif;
 }
 
 
 .first-name-last-name-sign-up {
     display: flex;
-    gap: 10px;
+    gap: 30px;
 }
 
 
+.sign-up-form-submit-button {
+    background-color: #1B72E8;
+        color: white;
+        border: none;
+        height: 2rem;
+        width: 4rem;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: 'Lato', sans-serif;
+}
+
 .upload-profile-pic-signup {
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     justify-self: center;
+    gap: 20px;
 }
 
 
@@ -69,4 +89,53 @@
 .sign-up-errors {
     color: red;
     text-align: center;
+}
+
+.other-signup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+#signup-pfp-input {
+    display: none;
+}
+
+#upload-thumbnail-signup-border-button {
+    font-size: 12px;
+    text-align: center;
+}
+
+
+#thumbnail-signup-image-file-icon {
+    font-size: 16px;
+}
+
+
+.upload-thumbnail-section.signup {
+    height: 8rem;
+    width: 8rem;
+    display: flex;
+    flex-direction: column;
+       
+            justify-content: center;
+            border: 1px dotted #dbdada;
+            border-radius: 4px;
+            padding-top: 0;
+            padding-left: 0;
+            padding-right: 0;
+            color: #adadad;
+}
+
+
+.signup-button-and-upload-pfp-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+
+.outer-login-wrapper.signup {
+    height: 35rem;
 }
