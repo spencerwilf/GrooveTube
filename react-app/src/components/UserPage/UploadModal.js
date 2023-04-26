@@ -67,7 +67,7 @@ const UploadModal = () => {
     setErrors(errors)
 
   }, [video, title, thumbnail, mediaLoading, category.length, description.length, uploadScreen])
-console.log(thumbnail)
+  
 
     const submitVideo = async (e) => {
         e.preventDefault()
