@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import me from '../../media/me.jpg'
 import ball from '../../media/discoball.png'
 import September from '../../media/September2.mp3'
+import trippy from '../../media/trippy.png'
 
 const SplashPage = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -31,6 +32,9 @@ const SplashPage = () => {
 
               <Link to='/'><button className='go-to-app-button'>Take me to the app!</button></Link>
 
+<section className='splash-second-section-2'>
+    <div>hi</div>
+</section>
         </section>
         <section className='splash-second-section'>
               <a target='_blank' href='https://www.linkedin.com/in/spencer-wilfahrt-1a4604156'>
