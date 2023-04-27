@@ -32,14 +32,17 @@ function Navigation({ isLoaded }){
 		history.push('/login')
 	}
 
+	if (location.pathname === '/') {
+		return null
+	}
 
 
 	return (
 		<div className='nav-bar-wrapper'>
 			{/* <div className='logo'> */}
-				<NavLink exact to="/">{<img className='logo' src={logo} alt=''/>}</NavLink>
+				<NavLink exact to="/home">{<img className='logo' src={logo} alt=''/>}</NavLink>
 			{/* </div> */}
-			{!sessionUser && location?.pathname !== '/login' && location?.pathname !== '/signup' && (
+			{!sessionUser && location.pathname !== '/login' && location.pathname !== '/signup' && location && (
 				<div>
 					<button onClick={loginClick} className='logged-out-sign-in-button'>
 					<i className="fas fa-user-circle" />

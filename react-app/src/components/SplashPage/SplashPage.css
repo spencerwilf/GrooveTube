@@ -1,0 +1,158 @@
+.splash-page-top-animation.party {
+    background-image: url('../../media/2bef1e803125126ff1663c8c2f8a7a8b.gif');
+    height: 600px;
+    width: 1600px;
+}
+
+
+.splash-top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inactive-party-ball {
+    height: 64.15vh;
+}
+
+
+.splash-logo {
+    min-width: 200px;
+    width: 25vw;
+    height: 40vh;
+    align-self: center;
+    z-index: -1;
+}
+
+
+.splash-logo-and-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    width: 50%;
+}
+
+.splash-second-section {
+    background-image: url(../../media/dancing-guy.png);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.splash-all-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.welcome-to-groovetube {
+        color: #ff6db6;
+font-family: 'Lato', sans-serif;
+            text-decoration: none;
+            font-size: 60px;
+            font-weight: bold;
+            margin-top: 0;
+}
+
+
+
+
+.header-logo-splash-span {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav-logo-render {
+    height: 20vh;
+}
+
+
+
+.go-to-app-button {
+    height: 4rem;
+    width: 12rem;
+    margin-bottom: 2rem;
+    background-color: #FF66C3;
+    color: white;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+
+.splash-second-section-2 {
+    background-image: url(../../media/disco.png);
+    height: 100vh;
+    width: 100vw;
+}
+
+
+
+.audio-play-button {
+    align-self: flex-end;
+    position: fixed;
+    background-color: #FF66C3;
+    border: none;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    border-radius: 8px;
+    height: 3rem;
+    width: 8rem;
+    cursor: pointer;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+.go-to-app-button:hover {
+    transform: scale(1.1);
+}
+
+.splash-about-me {
+    margin-top: 6rem;
+    margin-left: 6rem;
+    height: 22rem;
+    width: 18rem;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    margin-right: 10rem
+}
+
+
+.splash-about-me:hover {
+    transform: scale(1.1);
+}
+
+.me-img {
+    width: 200px;
+    height: 200px;
+    object-fit:cover;
+    border-radius: 10px;
+}
+
+
+.splash-div-socials {
+    display: flex;
+    gap: 2rem;
+
+}
+
+
+#splash-social-icon {
+    color: #2E64AB;
+    font-size: 20px;
+}
+
+
+
+

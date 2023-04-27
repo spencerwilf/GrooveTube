@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import VideoPage from "./components/VideoPage";
 import UserPage from "./components/UserPage";
+import SplashPage from "./components/SplashPage/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,21 +22,31 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+
           <Route path="/login" >
             <LoginFormPage />
           </Route>
+
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+
           <Route path='/videos/:videoId'>
-          <VideoPage/>
+            <VideoPage/>
           </Route>
+
           <Route path='/users/:userId'>
-          <UserPage/>
+            <UserPage/>
           </Route>
+
+          <Route path='/home'>
+            <HomePage />
+          </Route>
+          
           <Route path='/'>
-            <HomePage/>
+            <SplashPage/>
           </Route>
+
         </Switch>
       )}
     </>
