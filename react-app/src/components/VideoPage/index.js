@@ -116,10 +116,11 @@ const VideoPage = () => {
             <div>
             <h3>{oneVideo.title}</h3>
             <div className='user-pfp-subscribe-container'>
-            <Link to={`/users/${oneVideo?.user?.id}`}><span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span></Link>
+            <span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username} </span>
             </div>
             </div>
             <div className='video-description-container'>
+                      <p className='video-views-description-text'>{oneVideo.views} views</p>
             <p>{oneVideo?.description}</p>
             </div>
         </div>

@@ -95,6 +95,13 @@
     padding: .8rem .8rem;
     display: flex;
     max-width: 50rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-views-description-text {
+    font-weight: bold;
+    font-size: 12px;
 }
 
 .video-description-container > p {

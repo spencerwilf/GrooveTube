@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import OpenModalButton from '../OpenModalButton';
 import UploadModal from '../UserPage/UploadModal';
 import logo from '../../media/GrooveTube.png'
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -15,6 +16,7 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	const dispatch = useDispatch()
 	const history = useHistory()
+	const location = useLocation()
 
 	const modalClick = (e) => {
 		// e.preventDefault()
@@ -35,9 +37,9 @@ function Navigation({ isLoaded }){
 	return (
 		<div className='nav-bar-wrapper'>
 			{/* <div className='logo'> */}
-				<NavLink exact to="/">{<img className='logo' src={logo}/>}</NavLink>
+				<NavLink exact to="/">{<img className='logo' src={logo} alt=''/>}</NavLink>
 			{/* </div> */}
-			{!sessionUser && (
+			{!sessionUser && location?.pathname !== '/login' && location?.pathname !== '/signup' && (
 				<div>
 					<button onClick={loginClick} className='logged-out-sign-in-button'>
 					<i className="fas fa-user-circle" />
