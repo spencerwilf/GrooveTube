@@ -143,6 +143,25 @@ def like_video(video_id):
     
 
     
+## Unliking a video
+@video_routes.route('/<int:video_id>/likes', methods=['DELETE'])
+@login_required
+def unlike_video(video_id):
+    video = Video.query.get(video_id)
+
+
+    if not video:
+        return {"message": "video not found"}, 404
+    
+
+    for like in video.video_likes:
+        if like.user_id == current_user.id:
+            video.video_likes.remove(like)
+            video.likes -= 1
+            db.session.commit()
+            return {"message": "successfully unliked"}
+        
+    return {"message": "no like found"}
 
 
 

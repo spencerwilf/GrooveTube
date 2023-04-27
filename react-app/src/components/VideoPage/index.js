@@ -11,6 +11,7 @@ import DeleteCommentModal from './DeleteCommentModal'
 import { clearCommentsThunk } from '../../store/comments'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import { likeVideoThunk } from '../../store/videos'
+import { unlikeVideoThunk } from '../../store/videos'
 import ReactPlayer from 'react-player'
 import VideoBarCard from './VideoSideBarCards'
 import { getVideoLikesThunk } from '../../store/videos'
@@ -128,6 +129,12 @@ const VideoPage = () => {
         await dispatch(likeVideoThunk(oneVideo))
         // setLikes(prev => prev + 1)
         setUserHasLiked(true)
+    }
+
+
+    const unlikeVideo = async (e) => {
+        e.preventDefault()
+        await dispatch(unlikeVideo(oneVideo))
     }
 
   return (
