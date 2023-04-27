@@ -48,6 +48,13 @@ const VideoPage = () => {
         dispatch(getCommentsThunk(videoId))
     }, [dispatch, videoId, submittedComment])
 
+
+    useEffect(() => {
+        let errors = {}
+        if (comment.length > 250) errors.comment = 'Comment cannot be over 250 characters.'
+        setErrors(errors)
+    }, [comment])
+
     
     if (!oneVideo || !videoComments) {
         return <h1>Loading...</h1>
@@ -133,13 +140,16 @@ const VideoPage = () => {
                       </form>
                       </div>
                       <div className='leave-comment-button-container'>
-                      <button
-                          onClick={leaveComment}
-                          className='comment-submit-button'
-                          hidden={!sessionUser || !comment?.length ? true : false}
-                          disabled={comment.length <= 0 ? true : false}
-                          >Add comment
-                        </button>
+                        {errors.comment ? <p style={{color: 'red'}}>{errors.comment}</p> : (
+                                      <button
+                                          onClick={leaveComment}
+                                          className='comment-submit-button'
+                                          hidden={!sessionUser || !comment?.length ? true : false}
+                                          disabled={comment.length <= 0 ? true : false}
+                                      >Add comment
+                                      </button>
+                                    )}
+
                         </div>
                       </div>
                 ) : <h3>Sign in to join the conversation!</h3>}
