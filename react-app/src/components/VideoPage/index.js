@@ -74,7 +74,7 @@ const VideoPage = () => {
             return alert('Please fix errors before submitting')
         }
 
-        if (comment.length >= 249) {
+        if (comment.length >= 250) {
             errors.comment = 'Comment cannot be over 250 characters'
             setErrors(errors)
             return alert('Please fix errors before submitting')

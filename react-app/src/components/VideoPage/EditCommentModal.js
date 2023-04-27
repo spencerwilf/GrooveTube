@@ -8,12 +8,20 @@ const EditCommentModal = ({comment, videoId}) => {
  const dispatch = useDispatch()
  const [commentContent, setCommentContent] = useState(comment.content)
  const {closeModal} = useModal()
+ const [errors, setErrors] = useState()
 
 // let videoComments = comments.filter(comment => comment.video_id == videoId)
 
  useEffect(()  => {
     dispatch(getSingleCommentThunk(comment.id))
  }, [dispatch, videoId, comment.id])
+
+
+useEffect(() => {
+  let errors = {}
+  if (commentContent?.length > 250) errors.comment = 'Comment cannot be over 250 characters.'
+  setErrors(errors)
+}, [commentContent])
 
 
 const updateComment = async (e) => {
@@ -42,7 +50,7 @@ const updateComment = async (e) => {
             onChange={(e) => setCommentContent(e.target.value)}
             />
         </div>
-            <button type='submit'>Save</button>
+            {!errors?.comment ? <button type='submit'>Save</button> : <p style={{color: 'red'}}>{errors.comment}</p>}
         </form>
     </div>
   )
