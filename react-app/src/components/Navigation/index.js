@@ -7,6 +7,7 @@ import { login } from '../../store/session';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import OpenModalButton from '../OpenModalButton';
 import UploadModal from '../UserPage/UploadModal';
+import logo from '../../media/GrooveTube.png'
 
 
 
@@ -33,9 +34,9 @@ function Navigation({ isLoaded }){
 
 	return (
 		<div className='nav-bar-wrapper'>
-			<div className='logo'>
-				<NavLink exact to="/">Logo Placeholder</NavLink>
-			</div>
+			{/* <div className='logo'> */}
+				<NavLink exact to="/">{<img className='logo' src={logo}/>}</NavLink>
+			{/* </div> */}
 			{!sessionUser && (
 				<div>
 					<button onClick={loginClick} className='logged-out-sign-in-button'>

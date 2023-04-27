@@ -52,6 +52,8 @@
   justify-content: space-between;
   align-items: center;
   margin: 1rem 1rem;
+  max-height: 3rem;
+  margin-bottom: 2rem;
   /* position: sticky; */
   /* top: 0; */
   /* background-color: white;
@@ -127,4 +129,10 @@
 
 .my-channel-dropdown-text:hover {
   color: #1671f1;
+}
+
+
+.logo {
+    width: 30vh;
+      margin-top: 2rem;
 }
