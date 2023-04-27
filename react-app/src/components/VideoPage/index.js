@@ -19,17 +19,31 @@ import './VideoPage.css'
 
 const VideoPage = () => {
     const allVideos = useSelector(state => state.videos.allVideos)
+    const videoLikes = useSelector(state => state.videos.videoLikes)
     const oneVideo = useSelector(state => state.videos.oneVideo)
+    const userLikes = Object.keys(videoLikes)
     const videoComments = useSelector(state => state.comments.videoComments)
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const {videoId} = useParams()
     const [comment, setComment] = useState('')
-    const [likes, setLikes] = useState(oneVideo.likes || 0)
+    // const [likes, setLikes] = useState(oneVideo.likes)
     const [submittedComment, setSubmittedComment] = useState(false)
     const [userHasLiked, setUserHasLiked] = useState(false)
     const [errors, setErrors] = useState({})
     const [isLoading, setIsLoading] = useState(true);
+
+
+
+
+    // useEffect(() => {
+    //    function f() {
+    //         if (Object.keys(videoLikes).indexOf(`${sessionUser.id}`) !== -1) {
+    //             setUserHasLiked(true)
+    //         }
+    //     }
+    //     f()
+    // }, [sessionUser.id, videoLikes])
 
 
       useEffect(() => {
@@ -57,9 +71,6 @@ const VideoPage = () => {
     if (!oneVideo || !videoComments) {
         return <h1>Loading...</h1>
     }
-
-
-    
 
 
     const leaveComment = async (e) => {
@@ -112,27 +123,27 @@ const VideoPage = () => {
 
     
     const likeVideo = async (e) => {
+        if (userHasLiked) return
         e.preventDefault()
         await dispatch(likeVideoThunk(oneVideo))
-        setLikes(prev => prev + 1)
-        console.log(likes)
+        // setLikes(prev => prev + 1)
         setUserHasLiked(true)
     }
 
   return (
     <div className='video-page-wrapper'>
-        {oneVideo && (
-            <>
-                  <i onClick={} class="fa-light fa-thumbs-up"></i>
-            {likes}
-              </>
-        )}
-       
         <div className='video-page-main-section-left'>
         <ReactPlayer  width= '850px' height= '490px' playing={true} controls url={oneVideo.url}/>
         <div className='below-vid-above-comments-section'>
             <div>
-            <h3>{oneVideo.title}</h3>
+                    <div className='header-likes-container'>
+                        <h3>{oneVideo.title}</h3>
+                        <div className='likes-number-and-thumb-logo'>
+                              <i id={userLikes?.includes(`${sessionUser?.id}`) ? 'liked-comment-thumb' : 'unliked-comment-thumb'} onClick={!userLikes.includes(`${sessionUser?.id}`) ? likeVideo : null} class="fa-solid fa-thumbs-up"></i>
+                        <p>{videoLikes && Object.values(videoLikes).length}</p>
+                          </div>
+                    </div>
+
             <div className='user-pfp-subscribe-container'>
             <Link to={`/users/${oneVideo?.user?.id}`}><span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span></Link>
             </div>

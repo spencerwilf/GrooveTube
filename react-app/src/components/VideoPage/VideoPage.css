@@ -63,6 +63,29 @@
 }
 
 
+.header-likes-container {
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+}
+
+.likes-number-and-thumb-logo {
+            display: flex;
+                align-items: center;
+                margin-right: 8rem;
+                gap: 10px;
+}
+
+
+#liked-comment-thumb {
+    color: blue;
+}
+
+#unliked-comment-thumb {
+    color: pink;
+}
+
+
 .video-description-container {
     background-color: #F2F2F2;
     border-radius: 16px;

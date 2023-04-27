@@ -219,7 +219,14 @@ const videoReducer = (state = initialState, action) => {
         case CLEAR_VIDEOS:
             return {...state, oneVideo: {}, allVideos: {}}
         case GET_LIKES:
-            return {...state, videoLikes: {...action.payload}}
+            // return {...state, videoLikes: {...action.payload}}
+            newState = {...state, videoLikes: {}}
+            Object.values(action.payload).forEach(ele => newState.videoLikes[ele.user_id] = ele)
+            return newState
+        case LIKE_VIDEO:
+            newState = {...state, videoLikes: {...state.videoLikes}}
+            newState.videoLikes[action.payload.user_id] = action.payload
+            return newState
         default:
             return state
     }
