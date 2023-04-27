@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
+    border-top: 1px solid #ff66c22a;
 }
 
 .home-side-bar-socials {

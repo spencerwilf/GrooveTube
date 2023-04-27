@@ -48,6 +48,13 @@ const VideoPage = () => {
         dispatch(getCommentsThunk(videoId))
     }, [dispatch, videoId, submittedComment])
 
+
+    useEffect(() => {
+        let errors = {}
+        if (comment.length > 250) errors.comment = 'Comment cannot be over 250 characters.'
+        setErrors(errors)
+    }, [comment])
+
     
     if (!oneVideo || !videoComments) {
         return <h1>Loading...</h1>
@@ -67,7 +74,7 @@ const VideoPage = () => {
             return alert('Please fix errors before submitting')
         }
 
-        if (comment.length >= 249) {
+        if (comment.length >= 250) {
             errors.comment = 'Comment cannot be over 250 characters'
             setErrors(errors)
             return alert('Please fix errors before submitting')
@@ -109,10 +116,11 @@ const VideoPage = () => {
             <div>
             <h3>{oneVideo.title}</h3>
             <div className='user-pfp-subscribe-container'>
-            <Link to={`/users/${oneVideo?.user?.id}`}><span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span></Link>
+            <span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username} </span>
             </div>
             </div>
             <div className='video-description-container'>
+                      <p className='video-views-description-text'>{oneVideo.views} views</p>
             <p>{oneVideo?.description}</p>
             </div>
         </div>
@@ -133,13 +141,16 @@ const VideoPage = () => {
                       </form>
                       </div>
                       <div className='leave-comment-button-container'>
-                      <button
-                          onClick={leaveComment}
-                          className='comment-submit-button'
-                          hidden={!sessionUser || !comment?.length ? true : false}
-                          disabled={comment.length <= 0 ? true : false}
-                          >Add comment
-                        </button>
+                        {errors.comment ? <p style={{color: 'red'}}>{errors.comment}</p> : (
+                                      <button
+                                          onClick={leaveComment}
+                                          className='comment-submit-button'
+                                          hidden={!sessionUser || !comment?.length ? true : false}
+                                          disabled={comment.length <= 0 ? true : false}
+                                      >Add comment
+                                      </button>
+                                    )}
+
                         </div>
                       </div>
                 ) : <h3>Sign in to join the conversation!</h3>}
