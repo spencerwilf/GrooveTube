@@ -120,7 +120,7 @@ const VideoPage = () => {
             </div>
             </div>
             <div className='video-description-container'>
-                      <p className='video-views-description-text'>{oneVideo.views} views</p>
+                      <p className='video-views-description-text'> {oneVideo?.views} {oneVideo?.views === 1 ? <span>view</span> : <span>views</span>}</p>
             <p>{oneVideo?.description}</p>
             </div>
         </div>
