@@ -1,0 +1,121 @@
+.splash-page-top-animation {
+    background-image: url('../../media/2bef1e803125126ff1663c8c2f8a7a8b.gif');
+    height: 65vh;
+    width: 50%;
+}
+
+
+.splash-top-section {
+    display: flex;
+
+}
+
+
+.splash-logo {
+    min-width: 200px;
+    width: 25vw;
+    height: 40vh;
+    align-self: center;
+    z-index: -1;
+}
+
+
+.splash-logo-and-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    width: 50%;
+}
+
+.splash-second-section {
+    background-image: url(../../media/dancing-guy.png);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.splash-all-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.welcome-to-groovetube {
+        color: #ff6db6;
+            text-shadow: 2px 2px #ff94a9, -2px -2px #fffff0;
+            margin-left: 60px;
+            text-decoration: none;
+            font-size: 60px;
+            font-weight: bold;
+}
+
+
+
+
+
+
+
+
+.go-to-app-button {
+    margin-right: 14rem;
+    margin-top: 8rem;
+    height: 6rem;
+    background-color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    border: 1px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.go-to-app-button:hover {
+    transform: scale(1.1);
+}
+
+.splash-about-me {
+    margin-top: 6rem;
+    margin-left: 6rem;
+    height: 18rem;
+    width: 12rem;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+
+.splash-about-me:hover {
+    transform: scale(1.1);
+}
+
+.me-img {
+    width: 150px;
+    height: 150px;
+    object-fit:cover;
+    border-radius: 10px;
+}
+
+
+.splash-div-socials {
+    display: flex;
+    gap: 2rem;
+
+}
+
+
+#splash-social-icon {
+    color: #2E64AB;
+    font-size: 20px;
+}
+
+
+
+

@@ -32,6 +32,9 @@ function Navigation({ isLoaded }){
 		history.push('/login')
 	}
 
+	if (location.pathname === '/splash') {
+		return null
+	}
 
 
 	return (
@@ -39,7 +42,7 @@ function Navigation({ isLoaded }){
 			{/* <div className='logo'> */}
 				<NavLink exact to="/">{<img className='logo' src={logo} alt=''/>}</NavLink>
 			{/* </div> */}
-			{!sessionUser && location?.pathname !== '/login' && location?.pathname !== '/signup' && (
+			{!sessionUser && location.pathname !== '/login' && location.pathname !== '/signup' && location && (
 				<div>
 					<button onClick={loginClick} className='logged-out-sign-in-button'>
 					<i className="fas fa-user-circle" />

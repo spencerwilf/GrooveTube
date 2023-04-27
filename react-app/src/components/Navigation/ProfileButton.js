@@ -33,7 +33,7 @@ function ProfileButton({ user }) {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    history.push('/')
+    history.push('/splash')
     dispatch(logout());
   };
 

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import VideoPage from "./components/VideoPage";
 import UserPage from "./components/UserPage";
+import SplashPage from "./components/SplashPage/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path='/users/:userId'>
           <UserPage/>
+          </Route>
+          <Route path='/splash'>
+            <SplashPage/>
           </Route>
           <Route path='/'>
             <HomePage/>
