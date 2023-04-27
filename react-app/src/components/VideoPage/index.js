@@ -25,7 +25,7 @@ const VideoPage = () => {
     const dispatch = useDispatch()
     const {videoId} = useParams()
     const [comment, setComment] = useState('')
-    const [likes, setLikes] = useState(oneVideo?.likes || 0)
+    const [likes, setLikes] = useState(oneVideo.likes || 0)
     const [submittedComment, setSubmittedComment] = useState(false)
     const [userHasLiked, setUserHasLiked] = useState(false)
     const [errors, setErrors] = useState({})
@@ -111,24 +111,23 @@ const VideoPage = () => {
     }
 
     
-    const likeVideo =  () => {
-        console.log('hi')
-        // e.preventDefault()
-        // console.log('is this being hit')
-        // await dispatch(likeVideoThunk(oneVideo))
-        // setLikes(prev => prev + 1)
-        // console.log(likes)
-        // setUserHasLiked(true)
+    const likeVideo = async (e) => {
+        e.preventDefault()
+        await dispatch(likeVideoThunk(oneVideo))
+        setLikes(prev => prev + 1)
+        console.log(likes)
+        setUserHasLiked(true)
     }
 
   return (
     <div className='video-page-wrapper'>
-        {/* {oneVideo && (
+        {oneVideo && (
             <>
-            <button onClick={likeVideo}>CLICK TO LIKE</button>
+                  <i onClick={} class="fa-light fa-thumbs-up"></i>
+            {likes}
               </>
-        )} */}
-        {/* <button onChange={likeVideo}></button> */}
+        )}
+       
         <div className='video-page-main-section-left'>
         <ReactPlayer  width= '850px' height= '490px' playing={true} controls url={oneVideo.url}/>
         <div className='below-vid-above-comments-section'>
