@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import me from '../../media/me.jpg'
 import ball from '../../media/discoball.png'
 import September from '../../media/September2.mp3'
-import trippy from '../../media/trippy.png'
 
 const SplashPage = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -25,12 +24,12 @@ const SplashPage = () => {
           <button className='audio-play-button' onClick={togglePlay}>{isPlaying ? "Stop the party!" : 'Party Button'}</button>
           <audio id="audio" src={September}/>
         <section className='splash-top-section'>
-              <Link to='/'><span className='header-logo-splash-span'><img className='header-nav-logo-render' src={logo} /></span></Link>
+              <Link to='/home'><span className='header-logo-splash-span'><img className='header-nav-logo-render' src={logo} /></span></Link>
           <div className={isPlaying ? 'splash-page-top-animation party' : 'splash-page-top-animation regular'}>
             {!isPlaying && <img className='inactive-party-ball' src={ball}/>}
           </div>
 
-              <Link to='/'><button className='go-to-app-button'>Take me to the app!</button></Link>
+              <Link to='/home'><button className='go-to-app-button'>Take me to the app!</button></Link>
 
 <section className='splash-second-section-2'>
     <div>hi</div>

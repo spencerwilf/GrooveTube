@@ -22,24 +22,31 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+
           <Route path="/login" >
             <LoginFormPage />
           </Route>
+
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+
           <Route path='/videos/:videoId'>
-          <VideoPage/>
+            <VideoPage/>
           </Route>
+
           <Route path='/users/:userId'>
-          <UserPage/>
+            <UserPage/>
           </Route>
-          <Route path='/splash'>
+
+          <Route path='/home'>
+            <HomePage />
+          </Route>
+          
+          <Route path='/'>
             <SplashPage/>
           </Route>
-          <Route path='/'>
-            <HomePage/>
-          </Route>
+
         </Switch>
       )}
     </>
