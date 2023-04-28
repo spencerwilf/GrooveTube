@@ -6,6 +6,10 @@ import me from '../../media/me.jpg'
 import ball from '../../media/discoball.png'
 import September from '../../media/September2.mp3'
 import discoBackground from '../../media/pexels-pixabay-855645-1920x1080-24fps.mp4'
+import smiley from '../../media/smiley.png'
+import heart from '../../media/heart.png'
+import groovy from '../../media/groovy.png'
+import skull from '../../media/skull.png'
 // import postgres from "../../media/postgres.png";
 // import react from "../../media/react.png";
 // import redux from "../../media/redux.png";
@@ -43,7 +47,24 @@ const SplashPage = () => {
         <section className='splash-top-section'>
               <Link to='/home'><span className='header-logo-splash-span'><img className='header-nav-logo-render' src={logo} /></span></Link>
           <div className={isPlaying ? 'splash-page-top-animation party' : 'splash-page-top-animation regular'}>
-            {!isPlaying && <img className='inactive-party-ball' src={ball}/>}
+            {!isPlaying && (
+                <div className='main-top-img-section'>
+                    <div className='indiv-img-top-sec'>
+                    <img className='main-top-img' src={smiley}/>
+                    <img className='main-top-img' src={heart} />
+                    </div>
+
+                    <div className='indiv-img-top-sec'>
+                        <img className='inactive-party-ball' src={ball} />
+                    </div>
+
+                    <div className='indiv-img-top-sec'>
+                    <img className='main-top-img' src={groovy} /> 
+                    <img className='main-top-img' src={skull} />  
+                    </div>
+
+                </div>
+            )}
           </div>
 
               <Link to='/home'><button className='go-to-app-button'>Take me to the app!</button></Link>
