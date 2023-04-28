@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User
+from flask_login import login_required, current_user
+from app.models import User, UserLike
 
 user_routes = Blueprint('users', __name__)
 
@@ -13,6 +13,16 @@ def users():
     """
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
+
+
+
+## Getting the current user's likes
+@user_routes.route('/current/likes')
+@login_required
+def get_user_likes():
+    video_likes = UserLike.query.filter(UserLike.user_id == current_user.id).all()
+    return [likes.to_dict_video() for likes in video_likes]
+
 
 
 @user_routes.route('/<int:id>')

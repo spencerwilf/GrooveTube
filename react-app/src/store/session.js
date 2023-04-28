@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const GET_USER_LIKES = 'session/GET_USER_LIKES'
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -11,7 +12,15 @@ const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
-const initialState = { user: null };
+
+const getUserLikes = (payload) => {
+	return {
+		type: GET_USER_LIKES,
+		payload
+	}
+}
+
+const initialState = { user: null, userLikes: {} };
 
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
@@ -87,12 +96,25 @@ export const signUp = (data) => async (dispatch) => {
 	}
 };
 
+
+
+export const getUserLikesThunk = () => async (dispatch) => {
+	const res = await fetch('/api/users/current/likes')
+	if (res.ok) {
+		const data = await res.json()
+		dispatch(getUserLikes(data))
+		return data
+	}
+} 
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		case GET_USER_LIKES:
+			return {...state, userLikes: {...action.payload}}
 		default:
 			return state;
 	}

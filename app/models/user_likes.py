@@ -24,3 +24,11 @@ class UserLike(db.Model):
             'user_id': self.user_id,
             'video_id': self.video_id
         }
+    
+    def to_dict_video(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'video_id': self.video_id,
+            'video': self.video.to_dict()
+        }

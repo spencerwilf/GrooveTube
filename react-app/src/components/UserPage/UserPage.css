@@ -18,6 +18,28 @@
   gap: 15px;
   border-bottom: 1px solid #E5E5E5;
   padding-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-pfp-image-and-upload-button-name {
+  display: flex;
+  gap: 2rem;
+}
+
+
+.likes-and-my-videos-row {
+      display: flex;
+        gap: 2rem;
+        cursor: pointer;
+}
+
+
+
+.select-my-videos-active {
+  /* background-color: #2a74e35b; */
+  border-bottom: 1.5px solid #085ED4;
+  padding-bottom: 1rem;
 }
 
 

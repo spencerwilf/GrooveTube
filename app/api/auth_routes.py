@@ -93,7 +93,7 @@ def sign_up():
                 username=form.data['username'],
                 email=form.data['email'],
                 password=form.data['password'],
-                profile_picture =  None
+                profile_picture =  'https://i.stack.imgur.com/34AD2.jpg'
             )
             db.session.add(user)
             db.session.commit()

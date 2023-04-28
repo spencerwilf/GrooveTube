@@ -109,6 +109,7 @@ def get_video_likes(video_id):
 
 
 
+
 ## Adding a like to a video
 @video_routes.route('/<int:video_id>/likes', methods=['POST'])
 @login_required
