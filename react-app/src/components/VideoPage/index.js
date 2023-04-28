@@ -160,7 +160,7 @@ const VideoPage = () => {
                                   <i id='liked-comment-thumb'  onClick={unlikeVideo} class="fa-solid fa-thumbs-up"></i>
                               )} 
 
-                        <p>{Object.values(videoLikes).length}</p>
+                        <p style={{fontWeight: 'bold', fontSize: '14px'}}>{Object.values(videoLikes).length}</p>
                           </div>
                     </div>
 

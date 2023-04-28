@@ -70,19 +70,43 @@
 }
 
 .likes-number-and-thumb-logo {
-            display: flex;
-                align-items: center;
-                margin-right: 8rem;
-                gap: 10px;
+    display: flex;
+    align-items: center;
+    margin-right: 8rem;
+    gap: 7px;
+    border: 1px solid;
+    height: 1.8rem;
+    width: 3rem;
+    border-radius: 12px;
+    background-color: #F2F2F2;
+    border: none;
 }
 
 
 #liked-comment-thumb {
-    color: blue;
+    color: #FF66C3;
+    transition: background-color 0.2s;
+    animation: pop 1s ease-in-out;
+    margin-left: 10px;
+}
+
+
+
+@keyframes pop {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1.0);
+  }
 }
 
 #unliked-comment-thumb {
-    color: pink;
+    color: rgb(168, 161, 161);
+    margin-left: 10px;
 }
 
 
