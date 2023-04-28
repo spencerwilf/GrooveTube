@@ -86,7 +86,7 @@ const SplashPage = () => {
                     <h2>Terms and Conditions</h2>
                     <p>Welcome to GrooveTube. These terms and conditions outline the rules and regulations for the use of the application.</p>
                     <p>By accessing GrooveTube, you accept these terms and conditions in full. If you disagree with these terms and conditions or any part of these terms and conditions, you may not use the application.</p>
-                    <p>First (and only) Article: </p>
+                    <p>First article: </p>
                     <h1 style={{fontWeight:'bold'}}>ONLY DISCO ALLOWED.</h1>
                     <button className='second-section-button two' onClick={handleTermsClicked}>Go back</button>
                     </div>}
