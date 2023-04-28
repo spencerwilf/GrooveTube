@@ -148,6 +148,7 @@ def like_video(video_id):
 @login_required
 def unlike_video(video_id):
     video = Video.query.get(video_id)
+    user = User.query.get(current_user.id)
 
 
     if not video:
@@ -156,10 +157,12 @@ def unlike_video(video_id):
 
     for like in video.video_likes:
         if like.user_id == current_user.id:
-            video.video_likes.remove(like)
+            db.session.delete(like)
+            # video.video_likes.remove(like)
             video.likes -= 1
             db.session.commit()
             return {"message": "successfully unliked"}
+    
         
     return {"message": "no like found"}
 
