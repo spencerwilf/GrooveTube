@@ -32,7 +32,7 @@ const SplashPage = () => {
               <Link to='/home'><button className='go-to-app-button'>Take me to the app!</button></Link>
 
 <section className='splash-second-section-2'>
-    <div>hi</div>
+    <h1 className='second-section-groovetube-header'>So what's GrooveTube?</h1>
 </section>
         </section>
         <section className='splash-second-section'>

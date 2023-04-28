@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { loadAllVideosThunk } from '../../store/videos'
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import VideoCard from '../VideoCard';
 import './HomePage.css'
 
+
 const HomePage = () => {
     const allVideos = useSelector(state => state.videos.allVideos)
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
+
 
     useEffect(() => {
         dispatch(loadAllVideosThunk())
@@ -19,6 +21,8 @@ const HomePage = () => {
     }
 
 
+
+
   return (
     <div className='home-page-wrapper'>
     <div className='all-videos-grid'>
@@ -26,6 +30,7 @@ const HomePage = () => {
             <Link to={`/videos/${video.id}`} key={video.id}>
                 <VideoCard video={video}/>
             </Link>
+
         ))}
     </div>
             <div className='home-side-bar-socials'>

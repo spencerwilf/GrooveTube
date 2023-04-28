@@ -47,6 +47,7 @@ function App() {
             <SplashPage/>
           </Route>
 
+
         </Switch>
       )}
     </>
