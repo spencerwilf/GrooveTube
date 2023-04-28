@@ -88,6 +88,7 @@
     transition: background-color 0.2s;
     animation: pop 1s ease-in-out;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 
@@ -105,8 +106,9 @@
 }
 
 #unliked-comment-thumb {
-    color: rgb(168, 161, 161);
+    color: rgba(160, 157, 157, 0.528);
     margin-left: 10px;
+    cursor: pointer;
 }
 
 
@@ -175,6 +177,7 @@
 .user-pfp-subscribe-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .leave-comment-button-container > button:hover {

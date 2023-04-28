@@ -150,22 +150,23 @@ const VideoPage = () => {
             <div>
                     <div className='header-likes-container'>
                         <h3>{oneVideo.title}</h3>
-                        <div className='likes-number-and-thumb-logo'>
 
-                              {!userLikes?.includes(`${sessionUser?.id}`) && (
-                                  <i id= 'unliked-comment-thumb' onClick={likeVideo} class="fa-solid fa-thumbs-up"></i>
-                              )} 
-
-                              {userLikes.includes(`${sessionUser?.id}`) && (
-                                  <i id='liked-comment-thumb'  onClick={unlikeVideo} class="fa-solid fa-thumbs-up"></i>
-                              )} 
-
-                        <p style={{fontWeight: 'bold', fontSize: '14px'}}>{Object.values(videoLikes).length}</p>
-                          </div>
                     </div>
 
             <div className='user-pfp-subscribe-container'>
             <Link to={`/users/${oneVideo?.user?.id}`}><span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span></Link>
+                          <div className='likes-number-and-thumb-logo'>
+
+                              {!userLikes?.includes(`${sessionUser?.id}`) && (
+                                  <i id='unliked-comment-thumb' onClick={likeVideo} class="fa-solid fa-thumbs-up"></i>
+                              )}
+
+                              {userLikes.includes(`${sessionUser?.id}`) && (
+                                  <i id='liked-comment-thumb' onClick={unlikeVideo} class="fa-solid fa-thumbs-up"></i>
+                              )}
+
+                              <p style={{ fontWeight: 'bold', fontSize: '14px' }}>{Object.values(videoLikes).length}</p>
+                          </div>
             </div>
             </div>
             <div className='video-description-container'>
