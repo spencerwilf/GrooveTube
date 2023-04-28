@@ -62,6 +62,11 @@ const VideoPage = () => {
     }, [dispatch, videoId])
 
 
+    // useEffect(() => {
+    //     getVideoLikesThunk(videoId)
+    // }, [dispatch, videoId, videoLikes])
+
+
     useEffect(() => {
         dispatch(getCommentsThunk(videoId))
     }, [dispatch, videoId, submittedComment])
@@ -127,14 +132,14 @@ const VideoPage = () => {
         if (userHasLiked) return
         e.preventDefault()
         await dispatch(likeVideoThunk(oneVideo))
-        // setLikes(prev => prev + 1)
         setUserHasLiked(true)
     }
 
 
     const unlikeVideo = async (e) => {
         e.preventDefault()
-        await dispatch(unlikeVideo(oneVideo))
+        await dispatch(unlikeVideoThunk(sessionUser.id, videoId))
+        setUserHasLiked(false)
     }
 
   return (
@@ -146,8 +151,16 @@ const VideoPage = () => {
                     <div className='header-likes-container'>
                         <h3>{oneVideo.title}</h3>
                         <div className='likes-number-and-thumb-logo'>
-                              <i id={userLikes?.includes(`${sessionUser?.id}`) ? 'liked-comment-thumb' : 'unliked-comment-thumb'} onClick={!userLikes.includes(`${sessionUser?.id}`) ? likeVideo : null} class="fa-solid fa-thumbs-up"></i>
-                        <p>{videoLikes && Object.values(videoLikes).length}</p>
+
+                              {!userLikes?.includes(`${sessionUser?.id}`) && (
+                                  <i id= 'unliked-comment-thumb' onClick={likeVideo} class="fa-solid fa-thumbs-up"></i>
+                              )} 
+
+                              {userLikes.includes(`${sessionUser?.id}`) && (
+                                  <i id='liked-comment-thumb'  onClick={unlikeVideo} class="fa-solid fa-thumbs-up"></i>
+                              )} 
+
+                        <p>{Object.values(videoLikes).length}</p>
                           </div>
                     </div>
 

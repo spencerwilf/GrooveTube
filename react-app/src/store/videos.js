@@ -6,7 +6,7 @@ const UPDATE_VIDEO = 'videos/UPDATE_VIDEO'
 const DELETE_VIDEO = 'videos/DELETE_VIDEO'
 const CLEAR_VIDEOS = 'videos/CLEAR_VIDEOS'
 const LIKE_VIDEO = 'videos/LIKE_VIDEO'
-const UNLIKE_VIDEO = 'videos/LIKE_VIDEO'
+const UNLIKE_VIDEO = 'videos/UNLIKE_VIDEO'
 const GET_LIKES = 'videos/GET_LIKES'
 
 
@@ -75,10 +75,10 @@ const likeVideo = (payload) => {
 }
 
 
-const unlikeVideo = (payload) => {
+const unlikeVideo = (userId, videoId) => {
     return {
         type: UNLIKE_VIDEO,
-        payload
+        payload: {userId, videoId}
     }
 }
 
@@ -148,12 +148,13 @@ export const likeVideoThunk = (video) => async dispatch => {
 }
 
 
-export const unlikeVideoThunk = (video) => async dispatch => {
-    const res = await fetch(`/api/videos/${video.id}/likes`, {
+export const unlikeVideoThunk = (userId, videoId) => async dispatch => {
+    
+    const res = await fetch(`/api/videos/${videoId}/likes`, {
         method: 'DELETE',
     })
     if (res.ok) {
-        dispatch(unlikeVideo(video.id))
+        dispatch(unlikeVideo(userId, videoId))
     }
 }
 
@@ -247,8 +248,9 @@ const videoReducer = (state = initialState, action) => {
             newState.videoLikes[action.payload.user_id] = action.payload
             return newState
         case UNLIKE_VIDEO:
+            console.log(action.payload)
             newState = { ...state, videoLikes: { ...state.videoLikes } }
-            delete newState.videoLikes[action.payload.user_id]
+            delete newState.videoLikes[action.payload.userId]
             return newState
         default:
             return state
