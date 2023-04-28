@@ -16,7 +16,8 @@
 
 .card-video-title {
     font-weight: 900;
-    max-width: 70%;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 
