@@ -22,8 +22,10 @@ const VideoCard = ({video}) => {
         {isPlaying ? (
           <>
             <div className='video-thumbnail'>
-            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} >
-            <ReactPlayer className='home-video-thumbnail' url={video?.url} playing={true} width='330px' height='200px'/>
+            <div  >
+              <ReactPlayer className='home-video-thumbnail' url={video?.url} playing={true} width="330px !important"
+                height="200px !important"
+                style={{ width: '330px', objectFit:'cover', height:'200px,', position: 'absolute', top: 0, left: 0 }} />
             </div>
             <img style={{backgroundColor: 'black'}} className='home-video-thumbnail' src={video?.thumbnail} alt=''/>
             

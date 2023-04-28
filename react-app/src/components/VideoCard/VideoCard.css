@@ -9,6 +9,8 @@
 .video-thumbnail {
     position: relative;
     margin-bottom: .1rem;
+    width: 330px;
+        height: 200px;
 }
 
 
