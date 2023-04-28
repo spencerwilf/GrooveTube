@@ -5,6 +5,9 @@ const CREATE_VIDEO = 'videos/CREATE_VIDEO'
 const UPDATE_VIDEO = 'videos/UPDATE_VIDEO'
 const DELETE_VIDEO = 'videos/DELETE_VIDEO'
 const CLEAR_VIDEOS = 'videos/CLEAR_VIDEOS'
+const LIKE_VIDEO = 'videos/LIKE_VIDEO'
+const UNLIKE_VIDEO = 'videos/UNLIKE_VIDEO'
+const GET_LIKES = 'videos/GET_LIKES'
 
 
 const loadAllVideos = (payload) => {
@@ -64,6 +67,30 @@ const clearVideos = () => {
 }
 
 
+const likeVideo = (payload) => {
+    return {
+        type: LIKE_VIDEO,
+        payload
+    }
+}
+
+
+const unlikeVideo = (userId, videoId) => {
+    return {
+        type: UNLIKE_VIDEO,
+        payload: {userId, videoId}
+    }
+}
+
+
+const getLikes = (payload) => {
+    return {
+        type: GET_LIKES,
+        payload
+    }
+}
+
+
 
 export const loadAllVideosThunk = () => async dispatch => {
     const res = await fetch(`/api/videos`)
@@ -107,6 +134,40 @@ export const createVideoThunk = (video) => async dispatch => {
 }
 
 
+export const likeVideoThunk = (video) => async dispatch => {
+    const res = await fetch(`/api/videos/${video.id}/likes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(video)
+    })
+    if (res.ok) {
+        const video = await res.json()
+        dispatch(likeVideo(video))
+        return video
+    }
+}
+
+
+export const unlikeVideoThunk = (userId, videoId) => async dispatch => {
+    
+    const res = await fetch(`/api/videos/${videoId}/likes`, {
+        method: 'DELETE',
+    })
+    if (res.ok) {
+        dispatch(unlikeVideo(userId, videoId))
+    }
+}
+
+
+export const getVideoLikesThunk = (videoId) => async dispatch => {
+    const res = await fetch(`/api/videos/${videoId}/likes`)
+    if (res.ok) {
+        const likes = await res.json()
+        dispatch(getLikes(likes))
+    }
+}
+
+
 
 export const updateVideoThunk = (video) => async dispatch => {
     const res = await fetch(`/api/videos/${video.id}`, {
@@ -144,7 +205,8 @@ export const clearVideosThunk = () => async dispatch => {
 const initialState = {
     allVideos: {},
     oneVideo: {},
-    userVideos: {}
+    userVideos: {},
+    videoLikes: {}
 }
 
 
@@ -176,6 +238,20 @@ const videoReducer = (state = initialState, action) => {
             return newState
         case CLEAR_VIDEOS:
             return {...state, oneVideo: {}, allVideos: {}}
+        case GET_LIKES:
+            // return {...state, videoLikes: {...action.payload}}
+            newState = {...state, videoLikes: {}}
+            Object.values(action.payload).forEach(ele => newState.videoLikes[ele.user_id] = ele)
+            return newState
+        case LIKE_VIDEO:
+            newState = {...state, videoLikes: {...state.videoLikes}}
+            newState.videoLikes[action.payload.user_id] = action.payload
+            return newState
+        case UNLIKE_VIDEO:
+            console.log(action.payload)
+            newState = { ...state, videoLikes: { ...state.videoLikes } }
+            delete newState.videoLikes[action.payload.userId]
+            return newState
         default:
             return state
     }

@@ -10,38 +10,61 @@ import EditCommentModal from './EditCommentModal'
 import DeleteCommentModal from './DeleteCommentModal'
 import { clearCommentsThunk } from '../../store/comments'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { likeVideoThunk } from '../../store/videos'
+import { unlikeVideoThunk } from '../../store/videos'
 import ReactPlayer from 'react-player'
 import VideoBarCard from './VideoSideBarCards'
+import { getVideoLikesThunk } from '../../store/videos'
 import './VideoPage.css'
 
 
 const VideoPage = () => {
     const allVideos = useSelector(state => state.videos.allVideos)
+    const videoLikes = useSelector(state => state.videos.videoLikes)
     const oneVideo = useSelector(state => state.videos.oneVideo)
+    const userLikes = Object.keys(videoLikes)
     const videoComments = useSelector(state => state.comments.videoComments)
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const {videoId} = useParams()
     const [comment, setComment] = useState('')
+    // const [likes, setLikes] = useState(oneVideo.likes)
     const [submittedComment, setSubmittedComment] = useState(false)
+    const [userHasLiked, setUserHasLiked] = useState(false)
     const [errors, setErrors] = useState({})
     const [isLoading, setIsLoading] = useState(true);
 
 
 
-    //   useEffect(() => {
-    //     dispatch(loadOneVideoThunk(videoId))
-    //     window.scrollTo(0, 0);
-    //   }, [videoId, dispatch])
+
+    // useEffect(() => {
+    //    function f() {
+    //         if (Object.keys(videoLikes).indexOf(`${sessionUser.id}`) !== -1) {
+    //             setUserHasLiked(true)
+    //         }
+    //     }
+    //     f()
+    // }, [sessionUser.id, videoLikes])
+
+
+      useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [videoId, dispatch])
 
     useEffect(() => {
         dispatch(loadOneVideoThunk(videoId))
         dispatch(loadAllVideosThunk())
+        dispatch(getVideoLikesThunk(videoId))
         return() => {
             dispatch(clearVideosThunk())
             dispatch(clearCommentsThunk())
         }
     }, [dispatch, videoId])
+
+
+    // useEffect(() => {
+    //     getVideoLikesThunk(videoId)
+    // }, [dispatch, videoId, videoLikes])
 
 
     useEffect(() => {
@@ -59,9 +82,6 @@ const VideoPage = () => {
     if (!oneVideo || !videoComments) {
         return <h1>Loading...</h1>
     }
-
-
-    
 
 
     const leaveComment = async (e) => {
@@ -93,6 +113,10 @@ const VideoPage = () => {
         setSubmittedComment(!submittedComment)
     }
 
+
+
+
+
     let sortedComments;
     if (videoComments) {
         sortedComments = Object.values(videoComments).sort((a, b) => {
@@ -108,15 +132,46 @@ const VideoPage = () => {
         })
     }
 
+    
+    const likeVideo = async (e) => {
+        if (userHasLiked) return
+        e.preventDefault()
+        await dispatch(likeVideoThunk(oneVideo))
+        setUserHasLiked(true)
+    }
+
+
+    const unlikeVideo = async (e) => {
+        e.preventDefault()
+        await dispatch(unlikeVideoThunk(sessionUser.id, videoId))
+        setUserHasLiked(false)
+    }
+
   return (
     <div className='video-page-wrapper'>
         <div className='video-page-main-section-left'>
         <ReactPlayer  width= '850px' height= '490px' playing={true} controls url={oneVideo.url}/>
         <div className='below-vid-above-comments-section'>
             <div>
-            <h3>{oneVideo.title}</h3>
+                    <div className='header-likes-container'>
+                        <h3>{oneVideo.title}</h3>
+
+                    </div>
+
             <div className='user-pfp-subscribe-container'>
-            <span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username} </span>
+            <Link to={`/users/${oneVideo?.user?.id}`}><span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span></Link>
+                          <div className='likes-number-and-thumb-logo'>
+
+                              {!userLikes?.includes(`${sessionUser?.id}`) && (
+                                  <i id='unliked-comment-thumb' onClick={likeVideo} class="fa-solid fa-thumbs-up"></i>
+                              )}
+
+                              {userLikes.includes(`${sessionUser?.id}`) && (
+                                  <i id='liked-comment-thumb' onClick={unlikeVideo} class="fa-solid fa-thumbs-up"></i>
+                              )}
+
+                              <p style={{ fontWeight: 'bold', fontSize: '14px' }}>{Object.values(videoLikes).length}</p>
+                          </div>
             </div>
             </div>
             <div className='video-description-container'>

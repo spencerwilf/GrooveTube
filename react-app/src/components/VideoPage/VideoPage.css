@@ -89,6 +89,55 @@
 }
 
 
+.header-likes-container {
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+}
+
+.likes-number-and-thumb-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 8rem;
+    gap: 7px;
+    border: 1px solid;
+    height: 1.8rem;
+    width: 3rem;
+    border-radius: 12px;
+    background-color: #F2F2F2;
+    border: none;
+}
+
+
+#liked-comment-thumb {
+    color: #FF66C3;
+    transition: background-color 0.2s;
+    animation: pop 1s ease-in-out;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+
+@keyframes pop {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+#unliked-comment-thumb {
+    color: rgba(160, 157, 157, 0.528);
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
 .video-description-container {
     background-color: #F2F2F2;
     border-radius: 16px;
@@ -162,6 +211,7 @@
 .user-pfp-subscribe-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .leave-comment-button-container > button:hover {

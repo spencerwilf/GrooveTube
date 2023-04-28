@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Video, Comment, db
+from app.models import User, Video, Comment, db, UserLike
 from ..forms.comment_form import CommentForm
 from .aws_helpers import upload_vid_to_AWS, allowed_file, upload_thumb_to_AWS, get_unique_filename, delete_file_from_AWS
 from app.forms import VideoForm
@@ -100,6 +100,71 @@ def upload_video():
     return new_video.to_dict()
 
 
+## Getting a video's likes
+@video_routes.route('/<int:video_id>/likes')
+def get_video_likes(video_id):
+    video = Video.query.get(video_id)
+    return [like.to_dict() for like in video.video_likes]
+
+
+
+
+## Adding a like to a video
+@video_routes.route('/<int:video_id>/likes', methods=['POST'])
+@login_required
+def like_video(video_id):
+    video = Video.query.get(video_id)
+    user = User.query.get(current_user.id)
+
+    current_user_video_likes = [like.video_id for like in user.likes]
+
+    if not video:
+        return {"message": "video not found"}, 404
+    
+
+    
+    if video_id in current_user_video_likes:
+        return {"message": "user has already liked video"}, 401
+    
+    
+
+    new_like = UserLike(
+        user_id = current_user.id,
+        video_id=video_id
+    )
+
+    
+
+    video.likes += 1
+
+    db.session.add(new_like)
+    db.session.commit()
+    return new_like.to_dict()
+    
+
+    
+## Unliking a video
+@video_routes.route('/<int:video_id>/likes', methods=['DELETE'])
+@login_required
+def unlike_video(video_id):
+    video = Video.query.get(video_id)
+    user = User.query.get(current_user.id)
+
+
+    if not video:
+        return {"message": "video not found"}, 404
+    
+
+    for like in video.video_likes:
+        if like.user_id == current_user.id:
+            db.session.delete(like)
+            # video.video_likes.remove(like)
+            video.likes -= 1
+            db.session.commit()
+            return {"message": "successfully unliked"}
+    
+        
+    return {"message": "no like found"}
 
 
 
