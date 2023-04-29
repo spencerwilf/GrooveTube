@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './SplashPage.css'
-import logo from '../../media/GrooveTube.png'
+import logo from '../../media/GrooveTube (4).png'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import me from '../../media/me.jpg'
 import ball from '../../media/discoball.png'
@@ -30,7 +30,6 @@ const SplashPage = () => {
             audio.pause();
         } else {
             audio.play();
-            window.scrollTo(0, 0);
         }
         setIsPlaying(!isPlaying);
     };
@@ -42,12 +41,15 @@ const SplashPage = () => {
 
   return (
     <div className='splash-all-wrapper'>
-          <button className='audio-play-button' onClick={togglePlay}>{isPlaying ? "Stop the party!" : 'Party Button'}</button>
-          <audio id="audio" src={September}/>
+        <button className='audio-play-button' onClick={togglePlay}>{isPlaying ? "Stop the party!" : 'Party Button'}</button>
+        <audio id="audio" src={September}/>
+
         <section className='splash-top-section'>
-              <Link to='/home'><span className='header-logo-splash-span'><img className='header-nav-logo-render' src={logo} /></span></Link>
-          <div className={isPlaying ? 'splash-page-top-animation party' : 'splash-page-top-animation regular'}>
-            {!isPlaying && (
+            <h1 className='groovetube-text-header'>GrooveTube</h1>
+            <img style={{width: '25vw'}} src={logo}/>
+        {/* <Link to='/home'><span className='header-logo-splash-span'><img className='header-nav-logo-render' src={logo} /></span></Link> */}
+        <div className={isPlaying ? 'splash-page-top-animation party' : 'splash-page-top-animation regular'}>
+            {/* {!isPlaying && (
                 <div className='main-top-img-section'>
                     <div className='indiv-img-top-sec'>
                     <img className='main-top-img' src={smiley}/>
@@ -64,10 +66,10 @@ const SplashPage = () => {
                     </div>
 
                 </div>
-            )}
+            )} */}
           </div>
 
-              <Link to='/home'><button className='go-to-app-button'>Take me to the app!</button></Link>
+              <Link to='/home'><button className='go-to-app-button'>Go to GrooveTube</button></Link>
 
 
         </section>
