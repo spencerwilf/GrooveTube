@@ -10,6 +10,7 @@ import smiley from '../../media/smiley.png'
 import heart from '../../media/heart.png'
 import groovy from '../../media/groovy.png'
 import skull from '../../media/skull.png'
+import bg from '../../media/AdobeStock_323832194.mp4'
 // import postgres from "../../media/postgres.png";
 // import react from "../../media/react.png";
 // import redux from "../../media/redux.png";
@@ -30,6 +31,7 @@ const SplashPage = () => {
             audio.pause();
         } else {
             audio.play();
+            window.scrollTo(0, 0);
         }
         setIsPlaying(!isPlaying);
     };
@@ -44,9 +46,14 @@ const SplashPage = () => {
         <button className='audio-play-button' onClick={togglePlay}>{isPlaying ? "Stop the party!" : 'Party Button'}</button>
         <audio id="audio" src={September}/>
 
-        <section className='splash-top-section'>
+        <section className={!isPlaying ? 'splash-top-section' : 'splash-top-section party'}>
+              <video id='video-background-splash-2' autoPlay muted loop>
+                  <source src={bg}></source>
+              </video>
+
+              <div className='splash-db-test'>
             <h1 className='groovetube-text-header'>GrooveTube</h1>
-            <img style={{width: '25vw'}} src={logo}/>
+            <img style={{zIndex: '1', width: '25vw'}} src={logo}/>
         {/* <Link to='/home'><span className='header-logo-splash-span'><img className='header-nav-logo-render' src={logo} /></span></Link> */}
         <div className={isPlaying ? 'splash-page-top-animation party' : 'splash-page-top-animation regular'}>
             {/* {!isPlaying && (
@@ -69,7 +76,8 @@ const SplashPage = () => {
             )} */}
           </div>
 
-              <Link to='/home'><button className='go-to-app-button'>Go to GrooveTube</button></Link>
+              <Link style={{zIndex:'1'}} to='/home'><button className='go-to-app-button'>Go to GrooveTube</button></Link>
+              </div>
 
 
         </section>

@@ -7,7 +7,7 @@
 
 .splash-top-section {
     display: flex;
-    background-image: url('../../media/background.jpeg');
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -16,13 +16,18 @@
     font-size: 100px;
 }
 
+
+.splash-top-section.party {
+    background-image: url('../../media/dancing-group.gif');
+}
+
 .inactive-party-ball {
     height: 64.15vh;
 }
 
 
 .groovetube-text-header {
-    font-family: 'Calligraffitti', cursive;
+    font-family: 'Keep on Truckin';
     margin-bottom: 0;
     font-size: 10rem;
     margin-top: 0;
@@ -48,6 +53,9 @@ background: linear-gradient(45deg, #7F71F7, #FAD961);
     border-radius: 30px;
     position: absolute;
     flex-direction: column;
+    background-image: url('../../media/bg5.jpeg');
+    background-size: cover;
+        background-position: center center;
     font-weight: 300;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -99,13 +107,6 @@ background: linear-gradient(45deg, #7F71F7, #FAD961);
     width: 50%;
 }
 
-.splash-second-section {
-    background-image: url(../../media/dancing-guy.png);
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: flex-end;
-}
 
 
 .splash-all-wrapper {
@@ -141,8 +142,9 @@ font-family: 'Lato', sans-serif;
     height: 4rem;
     width: 12rem;
     margin-bottom: 2rem;
-    background-color: #FF66C3;
-    color: white;
+    background-color: #F9f1cc; 
+    color: #FF66C3;
+
     font-size: 20px;
     font-family: 'Lato', sans-serif;
     border-radius: 8px;
@@ -150,6 +152,15 @@ font-family: 'Lato', sans-serif;
     border: none;
     transition: transform 0.3s ease;
     font-weight: bold;
+        /* text-shadow: 5px 5px 0px #FFB650,
+                2.5px 2.5px 0px #FFD662,
+                3.75px 3.75px 0px #FF80BF,
+                5px 5px 0px #EF5097,
+                6.25x 6.25px 0px #6868AC,
+                7.5px 7.5px 0px #90B1E0; */
+    /* background-image: url('../../media/bg4.jpeg');
+    background-size: cover;
+        background-position: center center; */
 
 }
 
@@ -176,9 +187,9 @@ font-family: 'Lato', sans-serif;
 
 
 #video-background-splash {
-      position: absolute;
+    position: absolute;
   right: 0;
-  bottom: 0;
+  /* bottom: 0; */
   min-width: 100%;
   min-height: 100%;
   width: auto;
@@ -186,6 +197,25 @@ font-family: 'Lato', sans-serif;
   z-index: -1;
 }
 
+
+.splash-db-test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-image: url('../../media/background.jpeg'); */
+    border-radius: 30px;
+    padding: 0 4rem;
+}
+
+#video-background-splash-2 {
+position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
 
 #video-background-splash::before{
     background-color: (0, 0, 0, 0.3);
@@ -214,10 +244,11 @@ font-family: 'Lato', sans-serif;
 
 .audio-play-button {
     align-self: flex-end;
+    font-weight: bold;
     position: fixed;
-    background-color: #FF66C3;
+    background-color: #F9F1CC;
     border: none;
-    color: white;
+    color: #FF66C3;
     font-family: 'Lato', sans-serif;
     border-radius: 8px;
     height: 3rem;
@@ -240,13 +271,16 @@ font-family: 'Lato', sans-serif;
     bottom: 6rem;
     left: 2rem;
     position: absolute;
-background: linear-gradient(45deg, #7F71F7, #FAD961);
+background-image: url('../../media/bg5.jpeg');
+    background-size: cover;
+    background-position: center center;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: transform 0.3s ease;
-    margin-right: 10rem
+    margin-right: 10rem;
+    bottom: 0;
 }
 
 
