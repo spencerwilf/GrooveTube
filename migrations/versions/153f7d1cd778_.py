@@ -1,16 +1,20 @@
 """empty message
 
-Revision ID: 7fd5644bc052
+Revision ID: 153f7d1cd778
 Revises: 
-Create Date: 2023-04-27 19:33:00.973619
+Create Date: 2023-04-28 17:01:44.526646
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
-revision = '7fd5644bc052'
+revision = '153f7d1cd778'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,6 +34,8 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('videos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -44,6 +50,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE videos SET SCHEMA {SCHEMA};")
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -54,6 +62,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['video_id'], ['videos.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
     op.create_table('user_likes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -63,6 +73,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('user_id', 'video_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE user_likes SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
