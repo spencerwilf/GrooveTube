@@ -142,14 +142,13 @@ font-family: 'Lato', sans-serif;
     height: 4rem;
     width: 12rem;
     margin-bottom: 2rem;
-    background-color: #F9f1cc; 
-    color: #FF66C3;
-
+    background-color: #f9f1cc00; 
+    color: #F9F1CC;;
+    border: 1px solid #F9F1CC;
     font-size: 20px;
     font-family: 'Lato', sans-serif;
-    border-radius: 8px;
+    border-radius: 30px;
     cursor: pointer;
-    border: none;
     transition: transform 0.3s ease;
     font-weight: bold;
         /* text-shadow: 5px 5px 0px #FFB650,
@@ -246,11 +245,13 @@ position: fixed;
     align-self: flex-end;
     font-weight: bold;
     position: fixed;
-    background-color: #F9F1CC;
-    border: none;
-    color: #FF66C3;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+    background-color: #f9f1cc00;
+    border: 1px solid #f9f1cc;
+    color: #f9f1cc;
     font-family: 'Lato', sans-serif;
-    border-radius: 8px;
+    border-radius: 30px;
     height: 3rem;
     width: 8rem;
     cursor: pointer;
@@ -260,6 +261,10 @@ position: fixed;
 }
 
 .go-to-app-button:hover {
+    transform: scale(1.1);
+}
+
+.audio-play-button:hover {
     transform: scale(1.1);
 }
 
