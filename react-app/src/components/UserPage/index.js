@@ -116,7 +116,6 @@ const UserPage = () => {
                 Object.values(userLikes).map(vid => (
                   <>
                     <Link to={`/videos/${vid.video.id}`} key={vid?.id}>
-                      {console.log(vid.video)}
                       <VideoCard video={vid.video} />
                     </Link>
                   </>
