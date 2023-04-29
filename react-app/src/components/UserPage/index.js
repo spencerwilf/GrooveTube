@@ -24,7 +24,7 @@ const UserPage = () => {
     useEffect(() => {
         dispatch(loadUserVideosThunk(userId))
         dispatch(getUserLikesThunk())
-    }, [dispatch, userId, videos])
+    }, [dispatch, userId, isLikes, videos])
 
 
     if (!userVideos) {

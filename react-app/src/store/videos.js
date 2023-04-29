@@ -248,7 +248,6 @@ const videoReducer = (state = initialState, action) => {
             newState.videoLikes[action.payload.user_id] = action.payload
             return newState
         case UNLIKE_VIDEO:
-            console.log(action.payload)
             newState = { ...state, videoLikes: { ...state.videoLikes } }
             delete newState.videoLikes[action.payload.userId]
             return newState

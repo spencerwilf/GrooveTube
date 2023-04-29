@@ -114,7 +114,9 @@ export default function reducer(state = initialState, action) {
 		case REMOVE_USER:
 			return { user: null };
 		case GET_USER_LIKES:
-			return {...state, userLikes: {...action.payload}}
+			let newState = { ...state, userLikes: {} }
+			Object.values(action.payload).forEach(ele => newState.userLikes[ele.video_id] = ele)
+			return newState
 		default:
 			return state;
 	}
