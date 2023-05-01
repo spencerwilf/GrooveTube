@@ -159,7 +159,7 @@ const VideoPage = () => {
                     </div>
 
             <div className='user-pfp-subscribe-container'>
-            <Link to={`/users/${oneVideo?.user?.id}`}><span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span></Link>
+<span className='video-owner-pic-and-name'>{<img className='video-page-comment-user-picture' src={oneVideo.user?.profile_picture} alt=''/>} {oneVideo.user?.username}</span>
                           <div className='likes-number-and-thumb-logo'>
 
                               {!userLikes?.includes(`${sessionUser?.id}`) && (

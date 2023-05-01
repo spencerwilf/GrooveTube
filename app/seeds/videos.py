@@ -5,68 +5,92 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_videos():
     v1 = Video(
-        user_id=1, 
-        title='Chris Paul hits a huge three to cut the lead down to 42', 
-        description='This is what basketball is all about',
-        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/09f530322e9144f9aa7cdd521c7a13df.png', 
-        category='Sports', 
-        url='https://new-groovetube-bucket.s3.amazonaws.com/06b4b267875c40a686e7771d19d1009e.mp4'
+        user_id=2, 
+        title='Santana - Soul Sacrifice 1969 Woodstock Drum Solo', 
+        description='Santana live at Woodstock',
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/4a89eb7585e34d3da13f2ff7eed99257.jpeg', 
+        category='Music', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/bf2caf1548614491813c9294c4eddc61.mp4'
     )
     v2 = Video(
         user_id=2, 
-        title='Ronnie Coleman squats 800 SOLID pounds!!!', 
-        description='This man is an animal!!!',
-        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/1972bd98b11641b0b1db9799eed8c5d9.png', 
-        category='Fitness', 
-        url='https://new-groovetube-bucket.s3.amazonaws.com/17aa0cdab479481abec3397db49ded1a.mp4'
+        title='The Jimi Hendrix Experience - Voodoo Child (Slight Return) (Live In Maui, 1970)', 
+        description="Experience Hendrix announces a brand new collection that couples the new feature length documentary Music, Money, Madness . . . Jimi Hendrix In Maui with the accompanying live performances on both audio and video. The film chronicles the Jimi Hendrix Experience’s storied visit to Maui, and how the band became ensnared with the ill-fated Rainbow Bridge movie and incorporates never before released original footage and new interviews",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/3363d6cfd6094f6ab96eb728744e5eb9.png', 
+        category='Music', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/8ab6dce9f0354b3aa4863ea16c54e137.mp4'
     )
     v3 = Video(
         user_id=3, 
-        title='BRUTAL soccer foul caught on film!', 
-        description='The horror!!',
-        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/e3d480f4145a4312b3891c77a7d164b2.png', 
-        category='Sports', 
-        url='https://new-groovetube-bucket.s3.amazonaws.com/a46b2914ac3e4aafb968853a03893e52.mp4'
+        title='Queen Live Aid 1985 - EEEEEOOOOOO', 
+        description='EEEEEOOOOOO',
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/379f9ace4cf94a03919f4163df21069a.jpeg', 
+        category='Music', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/adc949d858ce4d8f99ab574cccc50f3a.mp4'
     )
     v4 = Video(
-        user_id=3, 
-        title='Travis Scott falls in autotune', 
-        description='Goodnight sweet prince',
-        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/f8f1c4416a6f4c2396a700e03dfee572.png', 
+        user_id=4, 
+        title='Queen - Somebody To Love Intro - HD Live - 1981 Montreal', 
+        description='Live from Montreal',
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/39836c7717e8453b8d9f53c00c45f919.png', 
         category='Music', 
-        url='https://new-groovetube-bucket.s3.amazonaws.com/4629cb1e408f43c28b833622fe30a2b3.mp4'
+        url='https://new-groovetube-bucket.s3.amazonaws.com/27cb668a44ad416e95874d5c15a1f270.mp4'
     )
     v5 = Video(
-        user_id=3, 
-        title='Kawhi Leonard being the funniest human alive', 
-        description="He's a fun guy",
-        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/54cd89075a76415b823972cd7cd36bd0.png', 
-        category='Sports', 
-        url='https://new-groovetube-bucket.s3.amazonaws.com/e01087e88e3b4a64abd1a1607b99b007.mp4'
+        user_id=5, 
+        title='Michael Jackson debuts the moonwalk', 
+        description="All hail the king",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/040384b5eff147f2a644713eaee09a68.png', 
+        category='Music', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/a8887d2d27ec4a30bd6c82cd0214ec82.mp4'
     )
     v6 = Video(
-        user_id=3, 
-        title='McLovin?!?', 
-        description="What're you trying to be? an Irish r&b singer?",
-        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/3053ec4145ea44d78549bbe25f3baf00.png', 
+        user_id=6, 
+        title='Zohan - Disco Disco Good Good (HD)', 
+        description="You don't mess with the Zohan",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/5eb6f6e1cae341958dc0971a3db9f46f.png', 
         category='Movies', 
-        url='https://new-groovetube-bucket.s3.amazonaws.com/da5842aff39049ea821f7968666a53f4.mp4'
+        url='https://new-groovetube-bucket.s3.amazonaws.com/4e56ff4585d047d286a316f98287e49a.mp4'
     )
     v7 = Video(
-        user_id=3, 
-        title='Drake sees a dog at the club', 
-        description="nice description",
-        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/07b8cc44d62d4a369fbf3eddbce79fe5.png', 
-        category='Music', 
-        url='https://new-groovetube-bucket.s3.amazonaws.com/b2cc3a8e49f24aeb9994fc1409158995.mp4'
+        user_id=1, 
+        title='Saturday Night Fever (Opening Credits)', 
+        description="This man is smooth",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/05e5d2e88dc5464fa47bbb8716b9792c.png', 
+        category='Movies', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/094e6d8be26844d79d8076880d47df59.mp4'
     )
     v8 = Video(
+        user_id=2, 
+        title="Kid dancing at club can't be bothered. 1997.", 
+        description="Get down!",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/316d6fc84e844edab7808e0aa816cb78.png', 
+        category='Funny', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/b4655b19b559465c87f9059c0f64a0eb.mp4'
+    )
+    v9 = Video(
         user_id=3, 
-        title="American Psycho: Let's see Paul Allen's card", 
-        description="oh my god, it even has a watermark",
-        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/03eccdd2b9d044c48fa165d5d58c8e7b.png', 
+        title="NAPOLEON DYNAMITE Dance Scene.", 
+        description="How much do you want to bet I can throw this football over them mountains?",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/f8f16e7b32dc4e17a92f394771a96752.png', 
         category='Movies', 
-        url='https://new-groovetube-bucket.s3.amazonaws.com/f27faf9534394d93b2d7ccd354aa1ed3.mp4'
+        url='https://new-groovetube-bucket.s3.amazonaws.com/53557d06cd1345049aef55fc0d47cfc7.mp4'
+    )
+    v10 = Video(
+        user_id=4, 
+        title="Pulp Fiction - Dance Scene (HQ)", 
+        description="I do believe Marsellus Wallace, my husband, your boss, told you to take ME out and do WHATEVER I WANTED. Now I wanna dance, I wanna win. I want that trophy, so dance good.",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/356b45882ef74d88b598717159669ed5.jpg', 
+        category='Movies', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/93c0ef537aab46a0a63f95fb915ac1d5.mp4'
+    )
+    v11 = Video(
+        user_id=5, 
+        title="Airplane! | 'Staying Alive'", 
+        description="Ladies and gentlemen, this is your stewardess speaking... We regret any inconvenience the sudden cabin movement might have caused, this is due to periodic air pockets we encountered, there's no reason to become alarmed, and we hope you enjoy the rest of your flight... By the way, is there anyone on board who knows how to fly a plane?",
+        thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/879eb944e505463b8f0c7d07f745a281.png', 
+        category='Movies', 
+        url='https://new-groovetube-bucket.s3.amazonaws.com/07661bc08f1a419f97e862daf01e047c.mp4'
     )
 
 
@@ -79,6 +103,9 @@ def seed_videos():
     db.session.add(v6)
     db.session.add(v7)
     db.session.add(v8)
+    db.session.add(v9)
+    db.session.add(v10)
+    db.session.add(v11)
     db.session.commit()
 
 
