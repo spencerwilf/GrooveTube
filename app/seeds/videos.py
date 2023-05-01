@@ -15,7 +15,7 @@ def seed_videos():
     v2 = Video(
         user_id=2, 
         title='The Jimi Hendrix Experience - Voodoo Child (Slight Return) (Live In Maui, 1970)', 
-        description="Experience Hendrix announces a brand new collection that couples the new feature length documentary Music, Money, Madness . . . Jimi Hendrix In Maui with the accompanying live performances on both audio and video. The film chronicles the Jimi Hendrix Experience’s storied visit to Maui, and how the band became ensnared with the ill-fated Rainbow Bridge movie and incorporates never before released original footage and new interviews",
+        description="Experience Hendrix announces a brand new collection that couples the new feature length documentary Music, Money, Madness . . . Jimi Hendrix In Maui with the accompanying live performances on both audio and video.",
         thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/3363d6cfd6094f6ab96eb728744e5eb9.png', 
         category='Music', 
         url='https://new-groovetube-bucket.s3.amazonaws.com/8ab6dce9f0354b3aa4863ea16c54e137.mp4'
