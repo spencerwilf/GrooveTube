@@ -87,7 +87,7 @@ def seed_videos():
     v11 = Video(
         user_id=5, 
         title="Airplane! | 'Staying Alive'", 
-        description="Ladies and gentlemen, this is your stewardess speaking... We regret any inconvenience the sudden cabin movement might have caused, this is due to periodic air pockets we encountered, there's no reason to become alarmed, and we hope you enjoy the rest of your flight... By the way, is there anyone on board who knows how to fly a plane?",
+        description="Ladies and gentlemen, this is your stewardess speaking... is there anyone on board who knows how to fly a plane?",
         thumbnail='https://new-groovetube-bucket.s3.amazonaws.com/879eb944e505463b8f0c7d07f745a281.png', 
         category='Movies', 
         url='https://new-groovetube-bucket.s3.amazonaws.com/07661bc08f1a419f97e862daf01e047c.mp4'
