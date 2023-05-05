@@ -272,7 +272,7 @@ def add_comment_to_video(video_id):
 def search_videos():
     query = request.args.get('query')
     if query:
-        videos = Video.query.filter(Video.title.contains(query)).all()
+        videos = Video.query.filter(Video.title.ilike(f"%{query}%")).all()
     else:
         videos = Video.query.all()
     return [video.to_dict() for video in videos]
