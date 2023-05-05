@@ -7,10 +7,11 @@ import './Search.css'
 const SearchBar = () => {
 
     const [query, setQuery] = useState('');
+    const [results, setResults] = useState([])
     const dispatch = useDispatch()
     const history = useHistory()
 
-    function handleQueryChange(e) {
+    async function handleQueryChange(e) {
         setQuery(e.target.value);
     }
 

@@ -24,9 +24,14 @@ const SearchResults = () => {
 
   return (
     <div className='video-search-page'>
-        {videoArr?.map(video => (
-            <VideoCard key={video.id} video={video}/>
-        ))}
+        {videoArr.length ? (
+            <>
+            {videoArr.map(video => (
+                <VideoCard key={video.id} video={video}/>
+            ))}
+            </>
+        ): <h1>No videos found!</h1>}
+
     </div>
   )
 }
