@@ -26,7 +26,7 @@ const SearchBar = () => {
 
                
                     <input className='search-bar-input' type="text" value={query} onChange={handleQueryChange} placeholder='Search'/>
-                <button className='search-button' type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button disabled={!query} className='search-button' type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
          
             </form>
         </div>
