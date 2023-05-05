@@ -10,6 +10,7 @@ const UNLIKE_VIDEO = 'videos/UNLIKE_VIDEO'
 const GET_LIKES = 'videos/GET_LIKES'
 const GET_SEARCH_VIDEOS = 'videos/GET_SEARCH_VIDEOS'
 const GET_SEARCH_SUGGESTIONS = 'videos/GET_SEARCH_SUGGESTIONS'
+const CLEAR_SUGGESTIONS = 'videos/CLEAR_SUGGESTIONS'
 
 
 const loadAllVideos = (payload) => {
@@ -65,6 +66,12 @@ const deleteVideo = (videoId) => {
 const clearVideos = () => {
     return {
         type: CLEAR_VIDEOS
+    }
+}
+
+const clearSuggestions = () => {
+    return {
+        type: CLEAR_SUGGESTIONS
     }
 }
 
@@ -236,6 +243,10 @@ export const clearVideosThunk = () => async dispatch => {
     dispatch(clearVideos())
 }
 
+export const clearSuggestionsThunk = () => async dispatch => {
+    dispatch(clearSuggestions())
+}
+
 
 
 const initialState = {
@@ -296,6 +307,8 @@ const videoReducer = (state = initialState, action) => {
             newState = {...state, searchSuggestions: {}}
             Object.values(action.payload).forEach(ele => newState.searchSuggestions[ele.id] = ele)
             return newState
+        case CLEAR_SUGGESTIONS:
+            return {...state, searchSuggestions: {}}
         default:
             return state
     }

@@ -15,6 +15,7 @@ import { unlikeVideoThunk } from '../../store/videos'
 import ReactPlayer from 'react-player'
 import VideoBarCard from './VideoSideBarCards'
 import { getVideoLikesThunk } from '../../store/videos'
+import { clearSuggestionsThunk } from '../../store/videos'
 import './VideoPage.css'
 
 
@@ -52,6 +53,7 @@ const VideoPage = () => {
       }, [videoId, dispatch])
 
     useEffect(() => {
+        dispatch(clearSuggestionsThunk())
         dispatch(loadOneVideoThunk(videoId))
         dispatch(loadAllVideosThunk())
         dispatch(getVideoLikesThunk(videoId))

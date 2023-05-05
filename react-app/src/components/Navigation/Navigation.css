@@ -49,15 +49,16 @@
 
 .nav-bar-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin: 1rem 1rem;
-  max-height: 3rem;
-  margin-bottom: 1.5rem;
-  /* position: sticky; */
-  /* top: 0; */
-  /* background-color: white;
-  z-index: 1; */
+  /* margin:  1rem; */
+  /* max-height: 3rem; */
+  /* margin-bottom: 1.5rem; */
+  position: fixed;
+  top: 0;
+  background-color: white;
+  z-index: 999999999; 
+  width: 100vw;
 }
 
 
