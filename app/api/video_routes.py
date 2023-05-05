@@ -274,5 +274,5 @@ def search_videos():
     if query:
         videos = Video.query.filter(Video.title.ilike(f"%{query}%")).all()
     else:
-        videos = Video.query.all()
+        return None
     return [video.to_dict() for video in videos]

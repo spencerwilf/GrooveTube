@@ -9,6 +9,7 @@ const LIKE_VIDEO = 'videos/LIKE_VIDEO'
 const UNLIKE_VIDEO = 'videos/UNLIKE_VIDEO'
 const GET_LIKES = 'videos/GET_LIKES'
 const GET_SEARCH_VIDEOS = 'videos/GET_SEARCH_VIDEOS'
+const GET_SEARCH_SUGGESTIONS = 'videos/GET_SEARCH_SUGGESTIONS'
 
 
 const loadAllVideos = (payload) => {
@@ -100,6 +101,14 @@ const getSearchVideos = (payload) => {
 }
 
 
+const getSearchSuggestions = (payload) => {
+    return {
+        type: GET_SEARCH_SUGGESTIONS,
+        payload
+    }
+}
+
+
 
 export const loadAllVideosThunk = () => async dispatch => {
     const res = await fetch(`/api/videos`)
@@ -115,6 +124,15 @@ export const loadSearchVideosThunk = (query) => async dispatch => {
     if (res.ok) {
         const videos = await res.json()
         dispatch(getSearchVideos(videos))
+    }
+}
+
+
+export const loadSearchSuggestionsThunk = (query) => async dispatch => {
+    const res = await fetch(`/api/videos/search?query=${query}`)
+    if (res.ok) {
+        const videos = await res.json()
+        dispatch(getSearchSuggestions(videos))
     }
 }
 
@@ -225,6 +243,7 @@ const initialState = {
     oneVideo: {},
     userVideos: {},
     videoLikes: {},
+    searchSuggestions: {}
 }
 
 
@@ -272,6 +291,10 @@ const videoReducer = (state = initialState, action) => {
         case GET_SEARCH_VIDEOS:
             newState = { ...state, allVideos: {} }
             Object.values(action.payload).forEach(ele => newState.allVideos[ele.id] = ele)
+            return newState
+        case GET_SEARCH_SUGGESTIONS:
+            newState = {...state, searchSuggestions: {}}
+            Object.values(action.payload).forEach(ele => newState.searchSuggestions[ele.id] = ele)
             return newState
         default:
             return state
