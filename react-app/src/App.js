@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import VideoPage from "./components/VideoPage";
 import UserPage from "./components/UserPage";
 import SplashPage from "./components/SplashPage/SplashPage";
+import SearchResults from "./components/Search/SearchResults";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,10 @@ function App() {
 
           <Route path='/users/:userId'>
             <UserPage/>
+          </Route>
+
+          <Route path='/results'>  
+            <SearchResults/>
           </Route>
 
           <Route path='/home'>

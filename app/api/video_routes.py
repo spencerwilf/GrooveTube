@@ -268,3 +268,11 @@ def add_comment_to_video(video_id):
 
 
 
+@video_routes.route('/search')
+def search_videos():
+    query = request.args.get('query')
+    if query:
+        videos = Video.query.filter(Video.title.contains(query)).all()
+    else:
+        videos = Video.query.all()
+    return [video.to_dict() for video in videos]
