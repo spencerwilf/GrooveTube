@@ -49,7 +49,7 @@
 
 .nav-bar-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   /* margin:  1rem; */
   /* max-height: 3rem; */
@@ -57,7 +57,7 @@
   position: fixed;
   top: 0;
   background-color: white;
-  z-index: 999999999; 
+  z-index: 5; 
   width: 100vw;
 }
 
@@ -83,6 +83,7 @@
 .signed-in-nav-profile-and-create {
   display: flex;
   gap: 20px;
+  margin-right: 2rem;
 }
 
 

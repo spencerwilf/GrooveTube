@@ -4,7 +4,7 @@
     justify-self: center;
     gap: 6px;
     width: 85%;
-    margin-top: 3rem;
+    
 }
 
 .home-page-wrapper {
@@ -12,6 +12,7 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
     border-top: 1px solid #ff66c22a;
+    margin-top: 5rem;
 }
 
 .home-side-bar-socials {
@@ -24,7 +25,7 @@
 }
 
 .user-videos-link {
-    border-top: 1px solid #e3e3e3;
+    /* border-top: 1px solid #e3e3e3; */
     border-bottom: 1px solid #e3e3e3;
     padding: 1rem 0
 }

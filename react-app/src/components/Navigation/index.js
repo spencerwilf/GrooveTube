@@ -40,11 +40,16 @@ function Navigation({ isLoaded }){
 
 	return (
 		<div className='nav-bar-wrapper'>
-			{/* <div className='logo'> */}
 				<NavLink exact to="/home">{<img className='logo' src={logo} alt=''/>}</NavLink>
-				<SearchBar/>
-			{/* </div> */}
-			{!sessionUser && location.pathname !== '/login' && location.pathname !== '/signup' && location && (
+
+			{location.pathname !== '/login' && location.pathname !== '/signup' && location && (
+				<SearchBar />
+			)}
+		<div>
+				
+		</div>
+				
+		{!sessionUser && location.pathname !== '/login' && location.pathname !== '/signup' && location && (
 				<div>
 					<button onClick={loginClick} className='logged-out-sign-in-button'>
 					<i className="fas fa-user-circle" />

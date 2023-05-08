@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
+import { useLocation, Link } from 'react-router-dom/cjs/react-router-dom.min'
 import { loadSearchVideosThunk } from '../../store/videos'
 import VideoCard from '../VideoCard'
 import './Search.css'
@@ -27,7 +27,9 @@ const SearchResults = () => {
         {videoArr.length ? (
             <>
             {videoArr.map(video => (
-                <VideoCard key={video.id} video={video}/>
+                <Link to={`videos/${video.id}`} key={video.id}>
+                <VideoCard  video={video}/>
+                </Link>
             ))}
             </>
         ): <h1>No videos found!</h1>}
