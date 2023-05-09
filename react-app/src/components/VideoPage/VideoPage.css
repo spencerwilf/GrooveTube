@@ -4,6 +4,12 @@
     gap: 20px;
 }
 
+.post-date-and-views-div {
+    display: flex;
+        align-items: center;
+        gap: 6px;
+}
+
 
 .video-page-wrapper {
     margin-left: 4.5rem;
@@ -53,6 +59,16 @@
     gap: 20px;
 }
 
+.comment-user-info {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.comment-date-post {
+    color: #606060;
+    font-size: 12px;
+}
 
 .comments-number-header {
     display: flex;
@@ -154,9 +170,6 @@
     font-size: 12px;
 }
 
-.video-description-container > p {
-    margin-left: 1rem;
-}
 
 .leave-comment-pfp-and-input {
     display: flex;
@@ -250,16 +263,24 @@ background-color: #3F78CC;
 
 .side-card-video-title {
     font-weight: 700;
+    font-size: 13px;
 }
 
 .video-page-side-vid-container {
     display: flex;
     gap: 10px;
+    max-width: 24vw;
 }
 
 
 .other-videos-header {
     margin-top: 0;
+}
+
+
+.side-video-time-stamp {
+    color: #606060;
+    font-size: 12px;
 }
 
 .side-video-thumbnail {
@@ -291,10 +312,12 @@ background-color: #3F78CC;
 
 .side-card-video-username {
     color: #606060;
+    font-size: 12px;
 }
 
 .side-card-video-views {
-    color: #606060;;
+    color: #606060;
+    font-size: 12px;
 }
 
 

@@ -15,7 +15,8 @@
 
 
 .card-video-title {
-    font-weight: 900;
+    font-weight: 700;
+    font-size: 14px;
     max-width: 85%;
     word-wrap: break-word;
 }
@@ -23,11 +24,15 @@
 
 .card-video-username {
     color: #606060;
+    font-size: 13px;
 }
 
 
 .card-video-views {
     color: #606060;
+    font-size: 13px;
+    display: flex;
+    gap: 3px;
 }
 
 

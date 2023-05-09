@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './VideoCard.css'
 import ReactPlayer from 'react-player';
+import TimeAgo from 'react-timeago';
 
 const VideoCard = ({video}) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -35,7 +36,10 @@ const VideoCard = ({video}) => {
                 <div className='home-video-card-lower-information'>
                 <span className='card-video-title'>{video?.title}</span>
                 <span className='card-video-username'>{video?.user?.username}</span>
-                <span className='card-video-views'>{video?.views} {video?.views === 1 ? <span>view</span> : <span>views</span>}</span>
+                <span className='card-video-views'>{video?.views} {video?.views === 1 ? <span>view</span> : <span>views</span>}
+                &#183;
+                <span><TimeAgo date={video?.created_at} minPeriod='60' /></span>
+                </span>
                 </div>
             </div>
           <div>
@@ -54,7 +58,10 @@ const VideoCard = ({video}) => {
               <div className='home-video-card-lower-information'>
                 <span className='card-video-title'>{video?.title}</span>
                 <span className='card-video-username'>{video?.user?.username}</span>
-                <span className='card-video-views'>{video?.views} {video?.views === 1 ? <span>view</span> : <span>views</span>}</span>
+                <span style={{display:'flex', gap:'3px'}} className='card-video-views'>{video?.views} {video?.views === 1 ? <span>view</span> : <span>views</span>}
+                  &#183;
+                  <span><TimeAgo date={video?.created_at} minPeriod='60' /></span>
+                </span>
               </div>
             </div>
             <div>

@@ -17,6 +17,8 @@ import VideoBarCard from './VideoSideBarCards'
 import { getVideoLikesThunk } from '../../store/videos'
 import { clearSuggestionsThunk } from '../../store/videos'
 import './VideoPage.css'
+import TimeAgo from 'react-timeago';
+
 
 
 const VideoPage = () => {
@@ -34,6 +36,8 @@ const VideoPage = () => {
     const [userHasLiked, setUserHasLiked] = useState(false)
     const [errors, setErrors] = useState({})
     const [isLoading, setIsLoading] = useState(true);
+
+
 
 
 
@@ -177,7 +181,12 @@ const VideoPage = () => {
             </div>
             </div>
             <div className='video-description-container'>
-                      <p className='video-views-description-text'> {oneVideo?.views} {oneVideo?.views === 1 ? <span>view</span> : <span>views</span>}</p>
+                <div className='post-date-and-views-div'>
+                          <p className='video-views-description-text'>{oneVideo?.views} {oneVideo?.views === 1 ? <span>view</span> : <span>views</span>}</p>
+                          <p style={{fontSize:'12px', fontWeight:'bold'}}><TimeAgo date={oneVideo.created_at} minPeriod='60' /></p>
+                </div>
+                       
+                      
             <p>{oneVideo?.description}</p>
             </div>
         </div>
@@ -221,6 +230,9 @@ const VideoPage = () => {
                     <div className='comment-bottom-section-user-and-content'>
                     <div className='comment-user-info'>
                     <span className='comment-user-name'>{`${comment?.user?.first_name} ${comment?.user?.last_name}`}</span>
+                    <span className='comment-date-post'>
+                                    <TimeAgo date={comment?.created_at} minPeriod='60' />
+                    </span>
                     </div>
                     <div>
                     {comment.content}
