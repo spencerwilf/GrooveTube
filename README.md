@@ -1,3 +1,4 @@
+<div align="center">
 # Welcome to GrooveTube
 ### A full stack video sharing applicaition inspired by YouTube
 
@@ -128,3 +129,5 @@ flask run
 ```
 
 5.) To run the React App in development, check out the README inside the react-app directory.
+   
+</div>
