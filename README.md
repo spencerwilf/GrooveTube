@@ -58,3 +58,69 @@ GrooveTube is a video sharing application that answers the question that we've a
 
 <img width="1715" alt="Screenshot 2023-05-10 at 3 58 46 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/915b4376-6f2f-4374-a03c-784c4551b230">
 
+
+### Search
+
+<img width="592" alt="Screenshot 2023-05-10 at 4 20 42 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/888b28dc-bfab-49af-995b-4e266d50466e">
+
+
+
+## Features
+
+### Videos
+* Watch videos
+* Upload videos
+* Delete videos
+* Edit the name, category or description of a video
+
+### Comments
+* Leave a comment
+* Edit a comment
+* Delete a comment
+* View the commens of others
+
+### Likes
+* View your liked videos
+* Like a video
+* Unlike a video
+
+### Search
+* Search for video titles
+* Have videos dynamically recommended based on the present contents of the search bar
+
+### AWS
+* Upload a video and its associated thumbnail
+* Delete a video and its associated thmbnail
+* Set a profile picture
+
+
+## Future Features
+* Playlists
+* Subscriptions
+* Sorting videos by category
+
+
+## How to run GrooveTube locally
+
+1.) Clone the main branch on this repository
+
+2. Install dependencies
+
+```python
+pipenv install -r requirements.txt
+```
+
+3.) Create a .env file. Ensure that that a database connection variable is present.
+```python
+DATABASE_URL=sqlite:///dev.db
+```
+
+4.) Enter your shell, migrate the database, seed the database, and run the Flask app..
+```python
+pipenv shell
+flask db upgrade
+flask db seed all
+flask run
+```
+
+5.) To run the React App in development, check out the README inside the react-app directory.
