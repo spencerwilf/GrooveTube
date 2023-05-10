@@ -1,9 +1,9 @@
-<div align="center">
+
 # Welcome to GrooveTube
 ### A full stack video sharing applicaition inspired by YouTube
-
+<div align="center">
 <img src="https://github.com/spencerwilf/GrooveTube/assets/98922382/b66603b8-69f6-449e-8e5a-36af620112fb" alt="your-image-description" width="500" height="500">
-
+</div>
 
 ### What's GrooveTube?
 GrooveTube is a video sharing application that answers the question that we've all inevitably had at some point: "What if YouTube was groovier?" With this searing question in mind I built GrooveTube, an application where users can watch and like videos, comment on them, and even upload their own. Check out GrooveTube at the link below.
@@ -130,4 +130,4 @@ flask run
 
 5.) To run the React App in development, check out the README inside the react-app directory.
    
-</div>
+
