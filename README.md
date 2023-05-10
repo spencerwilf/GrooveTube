@@ -43,9 +43,18 @@ GrooveTube is a video sharing application that answers the question that we've a
 ![Screen_Recording_2023-05-10_at_3_08_29_PM_AdobeExpress](https://github.com/spencerwilf/GrooveTube/assets/98922382/ae5fd139-6138-4f8b-8ebd-a4cf1037fea5)
 
 
-### Comments
-#### Create, Read, Update, Delete Functionality
+### Upload Video Panel #1
 
-![Screen_Recording_2023-05-10_at_3_15_38_PM_AdobeExpress (1)](https://github.com/spencerwilf/GrooveTube/assets/98922382/93b46ebd-e63d-4b3e-abce-4dd1f59b1756)
 
+<img width="1719" alt="Screenshot 2023-05-10 at 3 33 40 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/d9f8add8-aece-490c-9af6-8dcbe733be19">
+
+
+### Upload Video Panel #2
+
+<img width="1724" alt="Screenshot 2023-05-10 at 3 57 49 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/fb6666bd-5099-44f5-89db-90464cc8faa8">
+
+
+### User Video Page
+
+<img width="1715" alt="Screenshot 2023-05-10 at 3 58 46 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/915b4376-6f2f-4374-a03c-784c4551b230">
 
