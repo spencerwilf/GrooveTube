@@ -9,7 +9,6 @@ GrooveTube is a video sharing application that answers the question that we've a
 
 [Access the live site here](https://groovetube.onrender.com/)
 
-&nbsp;
 ---
 
 ### Technologies Utilized
@@ -28,47 +27,47 @@ GrooveTube is a video sharing application that answers the question that we've a
 </div>
 
 ---
+&nbsp;
 
-
-## Overview
+# Overview
 
 ### Splash Page
 
 
 ![Screen_Recording_2023-05-10_at_2_31_15_PM_AdobeExpress](https://github.com/spencerwilf/GrooveTube/assets/98922382/0aedc0da-8525-4b3d-984d-653e5c9445e0)
-
+&nbsp;
 
 ### Home Page
 
 <img width="1717" alt="Screenshot 2023-05-10 at 3 04 30 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/15265af2-6685-4f4c-acd9-edb7182b2568">
-
+&nbsp;
 
 ### Video Page
 
 ![Screen_Recording_2023-05-10_at_3_08_29_PM_AdobeExpress](https://github.com/spencerwilf/GrooveTube/assets/98922382/ae5fd139-6138-4f8b-8ebd-a4cf1037fea5)
-
+&nbsp;
 
 ### Upload Video Panel #1
 
 
 <img width="1719" alt="Screenshot 2023-05-10 at 3 33 40 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/d9f8add8-aece-490c-9af6-8dcbe733be19">
-
+&nbsp;
 
 ### Upload Video Panel #2
 
 <img width="1724" alt="Screenshot 2023-05-10 at 3 57 49 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/fb6666bd-5099-44f5-89db-90464cc8faa8">
 
-
+&nbsp;
 ### User Video Page
 
 <img width="1715" alt="Screenshot 2023-05-10 at 3 58 46 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/915b4376-6f2f-4374-a03c-784c4551b230">
 
-
+&nbsp;
 ### Search
 
 <img width="592" alt="Screenshot 2023-05-10 at 4 20 42 PM" src="https://github.com/spencerwilf/GrooveTube/assets/98922382/888b28dc-bfab-49af-995b-4e266d50466e">
 
-
+---
 
 ## Features
 
@@ -103,7 +102,7 @@ GrooveTube is a video sharing application that answers the question that we've a
 * Playlists
 * Subscriptions
 * Sorting videos by category
-
+---
 
 ## How to run GrooveTube locally
 
