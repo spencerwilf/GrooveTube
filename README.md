@@ -46,5 +46,6 @@ GrooveTube is a video sharing application that answers the question that we've a
 ### Comments
 #### Create, Read, Update, Delete Functionality
 
-![Screen_Recording_2023-05-10_at_3_15_38_PM_AdobeExpress](https://github.com/spencerwilf/GrooveTube/assets/98922382/10b07ab2-cfd1-4635-bf45-43b36e9b193b)
+![Screen_Recording_2023-05-10_at_3_15_38_PM_AdobeExpress (1)](https://github.com/spencerwilf/GrooveTube/assets/98922382/93b46ebd-e63d-4b3e-abce-4dd1f59b1756)
+
 
