@@ -29,3 +29,5 @@ GrooveTube is a video sharing application that answers the question that we've a
 
 ### Splash page
 
+
+![Screen_Recording_2023-05-10_at_2_31_15_PM_AdobeExpress](https://github.com/spencerwilf/GrooveTube/assets/98922382/0aedc0da-8525-4b3d-984d-653e5c9445e0)
