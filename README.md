@@ -10,6 +10,7 @@ GrooveTube is a video sharing application that answers the question that we've a
 [Access the live site here](https://groovetube.onrender.com/)
 
 &nbsp;
+---
 
 ### Technologies Utilized
 <div>
@@ -25,6 +26,8 @@ GrooveTube is a video sharing application that answers the question that we've a
   <img src="https://github.com/devicons/devicon/blob/master/icons/postgresql/postgresql-original-wordmark.svg" title="postgres" **alt="postgres" width="40" height="40"/>
   <img src="https://github.com/devicons/devicon/blob/master/icons/sqlalchemy/sqlalchemy-original-wordmark.svg" title="sqlalchemy" **alt="sqlalchemy" width="40" height="40"/>
 </div>
+
+---
 
 
 ### Overview
