@@ -30,7 +30,7 @@ GrooveTube is a video sharing application that answers the question that we've a
 ---
 
 
-### Overview
+## Overview
 
 ### Splash Page
 
