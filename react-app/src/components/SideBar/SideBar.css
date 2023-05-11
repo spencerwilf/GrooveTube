@@ -1,0 +1,33 @@
+.home-and-signin-or-videos {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+
+.home-sidebar-tab {
+    /* border-bottom: 1px solid #DFDFDF; */
+    margin: 0;
+    /* padding-bottom: .6rem; */
+}
+
+
+.home-sidebar-tab.main > a > div {
+    background-color: #eeeeee;
+    border-radius: 12px;
+}
+
+.sidebar-sign-in-p {
+        font-size: 18px;
+            padding: 0.8rem;
+            margin: .3rem 0;
+                display: flex;
+                    align-items: center;
+                    gap: 10px;
+}
+
+
+.sidebar-sign-in-p:hover {
+        background-color: #eeeeee;
+            border-radius: 12px;
+}
