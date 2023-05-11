@@ -1,4 +1,3 @@
-
 <h1 align="center"> Welcome to GrooveTube <h1>
    <h2 align='center'>A full stack video sharing applicaition inspired by YouTube<h2>
 <div align="center">
