@@ -1,6 +1,6 @@
 
-# Welcome to GrooveTube
-### A full stack video sharing applicaition inspired by YouTube
+<h1 align="center"> Welcome to GrooveTube <h1>
+   <h2 align='center'>A full stack video sharing applicaition inspired by YouTube<h2>
 <div align="center">
 <img src="https://github.com/spencerwilf/GrooveTube/assets/98922382/b66603b8-69f6-449e-8e5a-36af620112fb" alt="your-image-description" width="500" height="500">
 </div>
