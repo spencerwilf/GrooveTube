@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -130,6 +131,7 @@ function SignupFormPage() {
                 
           
         <button className="sign-up-form-submit-button" type="submit">Sign Up</button>
+                {/* <Link to='/login'><p>Sign in instead</p></Link> */}
           </div>
           </div>
           </div>
