@@ -7,7 +7,7 @@
 ### What's GrooveTube?
 GrooveTube is a video sharing application that answers the question that we've all inevitably had at some point: "What if YouTube was groovier?" With this searing question in mind I built GrooveTube, an application where users can watch and like videos, comment on them, and even upload their own. Check out GrooveTube at the link below.
 
-[Access the live site here](https://groovetube.onrender.com/)
+[Access the live site here](https://groovetube-udj8.onrender.com)
 
 ---
 
